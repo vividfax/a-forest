@@ -17,8 +17,10 @@ class EmptyCell {
         push();
         translate(this.x, this.y);
 
-        fill("#97C791");
-        rect(0, 0, cellSize);
+        if (this.fog) {
+            fill("#E2E2E2");
+            rect(0, 0, cellSize);
+        }
 
         pop();
     }

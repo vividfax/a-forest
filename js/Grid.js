@@ -93,6 +93,8 @@ class Grid {
 
     display() {
 
+        background("#97C791");
+
         push();
 	    translate(-cellSize/2, -cellSize/2);
         translate(-player.x * cellSize + width/2, -player.y * cellSize + height/2);
@@ -115,7 +117,8 @@ class Grid {
                 if (targetY > j) translate(0, -worldHeight*cellSize);
                 else if (targetY < j) translate(0, worldHeight*cellSize);
 
-                if (!this.grid[targetX][targetY].fog) this.grid[targetX][targetY].display();
+                this.grid[targetX][targetY].display();
+
                 pop();
             }
         }

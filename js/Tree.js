@@ -17,6 +17,14 @@ class Tree {
             this.symbol = random([treeEmojis[1], treeEmojis[2]]);
             this.mature = true;
         }
+
+        this.offsetX = random(-cellSize/5, cellSize/5);
+        this.offsetY = random(-cellSize/5, cellSize/5);
+        this.scale = random(1, 2);
+
+        if (!this.mature) {
+            this.scale = 0.6;
+        }
     }
 
     addChar(c) {
@@ -26,6 +34,7 @@ class Tree {
         if (this.phrase.length > 15 && this.symbol == treeEmojis[0]) {
             this.symbol = random([treeEmojis[1], treeEmojis[2]]);
             this.mature = true;
+            this.scale = random(1, 2);
         }
     }
 
@@ -51,6 +60,7 @@ class Tree {
         if (this.phrase.length > this.maturityAge && this.symbol == treeEmojis[0]) {
             this.symbol = random([treeEmojis[1], treeEmojis[2]]);
             this.mature = true;
+            this.scale = random(1, 2);
         }
 
         if (this.mature) {
@@ -92,19 +102,28 @@ class Tree {
         push();
         translate(this.x, this.y);
 
-        fill("#97C791");
-        rect(0, 0, cellSize);
+        if (this.fog) {
+            fill("#E2E2E2");
+            rect(0, 0, cellSize);
+        } else {
+            // fill("#97C791");
+            // rect(0, 0, cellSize);
 
-        fill(255, 50);
-        textAlign(LEFT, TOP);
-        textWrap(CHAR);
-        textSize(cellSize/10);
-        text(this.phrase, 0, 0, cellSize, cellSize);
+            // fill(255, 50);
+            // textAlign(LEFT, TOP);
+            // textWrap(CHAR);
+            // textSize(cellSize/10);
+            // text(this.phrase, 0, 0, cellSize, cellSize);
 
-        fill(255);
-        textAlign(CENTER, CENTER);
-        textSize(cellSize * 2/3);
-        text(this.symbol, cellSize / 2, cellSize / 2 + 2);
+            translate(cellSize/2, cellSize/2 + 2);
+            translate(this.offsetX, this.offsetY);
+            scale(this.scale);
+
+            fill(255);
+            textAlign(CENTER, CENTER);
+            textSize(cellSize * 2/3);
+            text(this.symbol, 0, 0);
+        }
 
         pop();
     }
