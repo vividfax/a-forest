@@ -40,10 +40,6 @@ class Tree {
 
     update() {
 
-        if (this.fog) {
-            return;
-        }
-
         if (random() < 0.1) {
 
             // if (this.mature) {
@@ -77,8 +73,8 @@ class Tree {
                     let x = this.gridX + i;
                     let y = this.gridY + j;
 
-                    if (x < 0) x == grid.width;
-                    if (y < 0) y == grid.height;
+                    if (x < 0) x == grid.width-1;
+                    if (y < 0) y == grid.height-1;
                     if (x >= grid.width) x == 0;
                     if (y >= grid.height) y == 0;
 
@@ -88,7 +84,7 @@ class Tree {
                             let phrase = this.phrase.trim().replace(/[ ]+/g, " ");
                             let words = phrase.split(" ");
                             let word = random(words);
-                            grid.grid[x][y] = new Leaf(x, y, false, word);
+                            grid.grid[x][y] = new Leaf(x, y, grid.grid[x][y].fog, word);
                             break;
                         }
                     }
@@ -105,8 +101,7 @@ class Tree {
         translate(this.x, this.y);
 
         if (this.fog) {
-            fill("#E2E2E2");
-            rect(0, 0, cellSize);
+            drawFog();
         } else {
             // fill("#97C791");
             // rect(0, 0, cellSize);

@@ -23,10 +23,6 @@ class Leaf {
 
     update() {
 
-        if (this.fog) {
-            return;
-        }
-
         if (random() < 0.01) {
 
             let words = this.phrase.trim().split(" ");
@@ -48,8 +44,7 @@ class Leaf {
         translate(this.x, this.y);
 
         if (this.fog) {
-            fill("#E2E2E2");
-            rect(0, 0, cellSize);
+            drawFog();
         } else {
             // fill("#97C791");
             // rect(0, 0, cellSize);

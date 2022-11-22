@@ -42,15 +42,15 @@ class Grid {
 
         for (let i = 0; i < manualPlants.plants.length; i++) {
 
-            let x = int(random(this.width));
-            let y = int(random(this.height));
+            // let x = int(random(this.width));
+            // let y = int(random(this.height));
 
-            while (this.grid[x][y] instanceof EmptyCell == false) {
-                x = int(random(this.width));
-                y = int(random(this.height));
-            }
+            // while (this.grid[x][y] instanceof EmptyCell == false) {
+            //     x = int(random(this.width));
+            //     y = int(random(this.height));
+            // }
 
-            this.grid[x][y] = new Tree(x, y, true, manualPlants.plants[i]);
+            // this.grid[x][y] = new Tree(x, y, true, manualPlants.plants[i]);
             markov.addText(manualPlants.plants[i]);
         }
     }

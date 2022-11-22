@@ -222,3 +222,14 @@ function pasteMyText(text) {
 function mod(n, m) {
 	return ((n % m) + m) % m;
 }
+
+function drawFog() {
+
+	fill("#E2E2E2");
+	translate(cellSize/2, cellSize/2);
+	ellipse(0, 0, cellSize*random(1, 1.4));
+	ellipse(-cellSize/random(4, 8), -cellSize/random(4, 8), cellSize * random(.6, 1.4), cellSize * random(.6, 1.4));
+	ellipse(cellSize/random(4, 8), cellSize/random(4, 8), cellSize * random(.6, 1.4), cellSize * random(.6, 1.4));
+	ellipse(-cellSize/random(4, 8), cellSize/random(4, 8), cellSize * random(.6, 1.4), cellSize * random(.6, 1.4));
+	ellipse(cellSize/random(4, 8), -cellSize/random(4, 8), cellSize * random(.6, 1.4), cellSize * random(.6, 1.4));
+}

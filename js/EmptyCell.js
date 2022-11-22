@@ -18,8 +18,7 @@ class EmptyCell {
         translate(this.x, this.y);
 
         if (this.fog) {
-            fill("#E2E2E2");
-            rect(0, 0, cellSize);
+            drawFog();
         }
 
         pop();
