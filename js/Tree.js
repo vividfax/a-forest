@@ -11,7 +11,7 @@ class Tree {
 
         this.fog = fog;
         this.mature = false;
-        this.maturityAge = 30;
+        this.maturityAge = 40;
 
         if (this.phrase.length > this.maturityAge && this.symbol == treeEmojis[0]) {
             this.symbol = random([treeEmojis[1], treeEmojis[2]]);
@@ -23,7 +23,7 @@ class Tree {
 
         this.phrase += c;
 
-        if (this.phrase.length > this.maturityAge/2 && this.symbol == treeEmojis[0]) {
+        if (this.phrase.length > 15 && this.symbol == treeEmojis[0]) {
             this.symbol = random([treeEmojis[1], treeEmojis[2]]);
             this.mature = true;
         }
