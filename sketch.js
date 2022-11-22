@@ -48,7 +48,6 @@ function preload() {
 function setup() {
 
 	createCanvas(windowWidth, windowHeight);
-
 	markov = RiTa.markov(3);
 
 	window.addEventListener("copy", copyText);
@@ -63,7 +62,7 @@ function setup() {
 	grid = new Grid(worldWidth, worldHeight);
 	player = new Player();
 
-	createNoise();
+	// createNoise();
 
     noLoop();
     draw();
@@ -71,7 +70,7 @@ function setup() {
 
 function draw() {
 
-    background("#E2E2E2");
+    // background("#E2E2E2");
 
 	push();
 
