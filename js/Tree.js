@@ -11,13 +11,19 @@ class Tree {
 
         this.fog = fog;
         this.mature = false;
+        this.maturityAge = 30;
+
+        if (this.phrase.length > this.maturityAge && this.symbol == treeEmojis[0]) {
+            this.symbol = random([treeEmojis[1], treeEmojis[2]]);
+            this.mature = true;
+        }
     }
 
     addChar(c) {
 
         this.phrase += c;
 
-        if (this.phrase.length > 15 && this.symbol == treeEmojis[0]) {
+        if (this.phrase.length > this.maturityAge/2 && this.symbol == treeEmojis[0]) {
             this.symbol = random([treeEmojis[1], treeEmojis[2]]);
             this.mature = true;
         }
@@ -25,9 +31,15 @@ class Tree {
 
     update() {
 
+        if (this.fog) {
+            return;
+        }
+
         if (random() < 0.1) {
 
-            markov.addText(this.phrase);
+            if (this.mature) {
+                markov.addText(this.phrase);
+            }
             let words = this.phrase.trim().split(" ");
             let completions = markov.completions(words);
             if (completions.length > 0) {
@@ -36,7 +48,7 @@ class Tree {
             }
         }
 
-        if (this.phrase.length > 15 && this.symbol == treeEmojis[0]) {
+        if (this.phrase.length > this.maturityAge && this.symbol == treeEmojis[0]) {
             this.symbol = random([treeEmojis[1], treeEmojis[2]]);
             this.mature = true;
         }

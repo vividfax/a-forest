@@ -14,11 +14,16 @@ let treeEmojis = ["🌱", "🌳", "🌲"];
 let leafEmojis = ["🍂", "🍁", "🍃"];
 let flowerEmojis = ["🥀", "🌼", "🌻", "🌸", "🌹", "🌺", "🌷", "🏵️"];
 
-let emojis = treeEmojis.concat(leafEmojis).concat(flowerEmojis);
-
 let markov;
 
 let justCopyPaste = false;
+
+let manualPlants;
+
+function preload() {
+
+	manualPlants = loadJSON("./plants.json");
+}
 
 function setup() {
 
@@ -63,7 +68,7 @@ function displayUI() {
 	push();
 
 	textAlign(LEFT, TOP);
-	textSize(cellSize/3);
+	textSize(cellSize/2);
 
 	let currentCell = grid.grid[player.x][player.y];
 

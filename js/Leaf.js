@@ -19,9 +19,12 @@ class Leaf {
 
     update() {
 
+        if (this.fog) {
+            return;
+        }
+
         if (random() < 0.01) {
 
-            markov.addText(this.phrase);
             let words = this.phrase.trim().split(" ");
             let completions = markov.completions(words);
             let completion = random(completions);

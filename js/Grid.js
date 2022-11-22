@@ -25,7 +25,7 @@ class Grid {
     createGrid() {
 
         this.placeEmptyCells();
-
+        this.manuallyPlant();
     }
 
     placeEmptyCells() {
@@ -35,6 +35,23 @@ class Grid {
 
                 if (this.grid[i][j] == false) this.grid[i][j] = new EmptyCell(i, j, true);
             }
+        }
+    }
+
+    manuallyPlant() {
+
+        for (let i = 0; i < manualPlants.plants.length; i++) {
+
+            let x = int(random(this.width));
+            let y = int(random(this.height));
+
+            while (this.grid[x][y] instanceof EmptyCell == false) {
+                x = int(random(this.width));
+                y = int(random(this.height));
+            }
+
+            this.grid[x][y] = new Tree(x, y, true, manualPlants.plants[i]);
+            markov.addText(manualPlants.plants[i]);
         }
     }
 
