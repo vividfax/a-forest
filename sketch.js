@@ -96,9 +96,8 @@ function displayUI() {
 
 	if (currentCell instanceof EmptyCell == false) {
 		text(currentCell.phrase, 280, 20, width-300, height-40);
+		image(playerImage, 150, height-70, 500, 500);
 	}
-
-	image(playerImage, 150, height-70, 500, 500);
 
 	pop();
 }
