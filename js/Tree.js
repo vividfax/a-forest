@@ -18,8 +18,8 @@ class Tree {
             this.mature = true;
         }
 
-        this.offsetX = random(-cellSize/4, cellSize/4);
-        this.offsetY = random(-cellSize/4, cellSize/4);
+        this.offsetX = int(random(-cellSize/4, cellSize/4));
+        this.offsetY = int(random(-cellSize/4, cellSize/4));
         this.scale = random(1, 2);
 
         if (!this.mature) {

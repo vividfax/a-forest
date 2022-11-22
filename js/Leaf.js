@@ -11,8 +11,8 @@ class Leaf {
 
         this.fog = fog;
 
-        this.offsetX = random(-cellSize/4, cellSize/4);
-        this.offsetY = random(-cellSize/4, cellSize/4);
+        this.offsetX = int(random(-cellSize/4, cellSize/4));
+        this.offsetY = int(random(-cellSize/4, cellSize/4));
         this.scale = random(0.6, 0.8);
     }
 

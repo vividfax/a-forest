@@ -94,6 +94,7 @@ class Grid {
     display() {
 
         background("#97C791");
+        updatePixels();
 
         push();
 	    translate(-cellSize/2, -cellSize/2);
@@ -131,3 +132,21 @@ class Grid {
     }
 }
 
+function createNoise() {
+
+	for (let y = 0; y < height; y++) {
+		for (let x = 0; x < width; x++) {
+
+            let colour;
+
+			if (random() < 0.5) {
+				colour = color("#97C791");
+			} else {
+                colour = color("#98C192")
+            }
+            set(x, y, colour);
+		}
+	}
+
+    updatePixels();
+}

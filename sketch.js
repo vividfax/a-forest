@@ -3,7 +3,7 @@ let player;
 
 let worldWidth = 1000;
 let worldHeight = 1000;
-let cellSize = 45;
+let cellSize = 50;
 let renderScale = 0.5;
 
 let lastMoveWasDiagonal = false;
@@ -63,6 +63,8 @@ function setup() {
 	grid = new Grid(worldWidth, worldHeight);
 	player = new Player();
 
+	createNoise();
+
     noLoop();
     draw();
 }
@@ -87,14 +89,16 @@ function displayUI() {
 
 	push();
 
-	textAlign(LEFT, TOP);
+	textAlign(LEFT, BOTTOM);
 	textSize(cellSize/2);
 
 	let currentCell = grid.grid[player.x][player.y];
 
 	if (currentCell instanceof EmptyCell == false) {
-		text(currentCell.phrase, 10, 10, windowWidth-20, windowHeight-20);
+		text(currentCell.phrase, 280, 20, width-300, height-40);
 	}
+
+	image(playerImage, 150, height-70, 500, 500);
 
 	pop();
 }
