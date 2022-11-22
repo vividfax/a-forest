@@ -6,7 +6,7 @@ class Tree {
         this.gridY = y;
         this.x = x * cellSize;
         this.y = y * cellSize;
-        this.symbol = treeEmojis[0];
+        this.symbol = random(plantEmojis);
         this.phrase = phrase || "";
 
         this.fog = fog;
@@ -14,12 +14,12 @@ class Tree {
         this.maturityAge = 40;
 
         if (this.phrase.length > this.maturityAge && this.symbol == treeEmojis[0]) {
-            this.symbol = random([treeEmojis[1], treeEmojis[2]]);
+            this.symbol = random(treeEmojis);
             this.mature = true;
         }
 
-        this.offsetX = random(-cellSize/5, cellSize/5);
-        this.offsetY = random(-cellSize/5, cellSize/5);
+        this.offsetX = random(-cellSize/4, cellSize/4);
+        this.offsetY = random(-cellSize/4, cellSize/4);
         this.scale = random(1, 2);
 
         if (!this.mature) {
@@ -31,8 +31,8 @@ class Tree {
 
         this.phrase += c;
 
-        if (this.phrase.length > 15 && this.symbol == treeEmojis[0]) {
-            this.symbol = random([treeEmojis[1], treeEmojis[2]]);
+        if (this.phrase.length > 15 && !this.mature) {
+            this.symbol = random(treeEmojis);
             this.mature = true;
             this.scale = random(1, 2);
         }
@@ -46,19 +46,21 @@ class Tree {
 
         if (random() < 0.1) {
 
-            if (this.mature) {
-                markov.addText(this.phrase);
-            }
+            // if (this.mature) {
+            //     markov.addText(this.phrase);
+            // }
+
             let words = this.phrase.trim().split(" ");
             let completions = markov.completions(words);
             if (completions.length > 0) {
                 let completion = random(completions);
                 this.phrase += " " + completion;
+
             }
         }
 
-        if (this.phrase.length > this.maturityAge && this.symbol == treeEmojis[0]) {
-            this.symbol = random([treeEmojis[1], treeEmojis[2]]);
+        if (this.phrase.length > this.maturityAge && !this.mature) {
+            this.symbol = random(treeEmojis);
             this.mature = true;
             this.scale = random(1, 2);
         }
@@ -115,14 +117,15 @@ class Tree {
             // textSize(cellSize/10);
             // text(this.phrase, 0, 0, cellSize, cellSize);
 
-            translate(cellSize/2, cellSize/2 + 2);
+            translate(cellSize/2, cellSize/2);
             translate(this.offsetX, this.offsetY);
-            scale(this.scale);
+            // scale(this.scale);
 
-            fill(255);
-            textAlign(CENTER, CENTER);
-            textSize(cellSize * 2/3);
-            text(this.symbol, 0, 0);
+            // fill(255);
+            // textAlign(CENTER, CENTER);
+            // textSize(cellSize * 2/3);
+            image(this.symbol, 0, 0, 40*this.scale, 40*this.scale);
+            //text(this.symbol, 0, 0);
         }
 
         pop();

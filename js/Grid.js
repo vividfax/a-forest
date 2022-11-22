@@ -119,6 +119,10 @@ class Grid {
 
                 this.grid[targetX][targetY].display();
 
+                if (player.x == targetX && player.y == targetY) {
+                    player.display();
+                }
+
                 pop();
             }
         }

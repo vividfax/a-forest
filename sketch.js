@@ -10,8 +10,12 @@ let lastMoveWasDiagonal = false;
 let hasMoved = false;
 let hasMovedDiagonally = false;
 
-let treeEmojis = ["🌱", "🌳", "🌲"];
-let leafEmojis = ["🍂", "🍁", "🍃"];
+let playerImage;
+
+let seedlingEmoji;
+let plantEmojis = [];
+let treeEmojis = [];
+let leafEmojis = [];
 let flowerEmojis = ["🥀", "🌼", "🌻", "🌸", "🌹", "🌺", "🌷", "🏵️"];
 
 let markov;
@@ -23,6 +27,22 @@ let manualPlants;
 function preload() {
 
 	manualPlants = loadJSON("./plants.json");
+
+	playerImage = loadImage("./images/player.png");
+
+	seedlingEmoji = loadImage("./images/seedling.png");
+
+	plantEmojis.push(loadImage("./images/herb.png"));
+	plantEmojis.push(loadImage("./images/four-leaf-clover.png"));
+	plantEmojis.push(loadImage("./images/shamrock.png"));
+	plantEmojis.push(loadImage("./images/sheaf-of-rice.png"));
+
+	treeEmojis.push(loadImage("./images/deciduous-tree.png"));
+	treeEmojis.push(loadImage("./images/evergreen-tree.png"));
+
+	leafEmojis.push(loadImage("./images/fallen-leaf.png"));
+	leafEmojis.push(loadImage("./images/leaf-fluttering-in-wind.png"));
+	leafEmojis.push(loadImage("./images/maple-leaf.png"));
 }
 
 function setup() {
@@ -56,7 +76,7 @@ function draw() {
 	translate(-player.cameraX * cellSize, -player.cameraY * cellSize);
 
     grid.display();
-    player.display();
+    //player.display();
 
 	pop();
 
@@ -145,6 +165,7 @@ function tend() {
     if (!bannedKeys.includes(keyCode) && keyCode != 91 && keyCode != 20) {
 		if (currentCell instanceof EmptyCell && keyCode != 32) {
 			grid.grid[player.x][player.y] = new Tree(player.x, player.y);
+			grid.grid[player.x][player.y].symbol = seedlingEmoji;
 			currentCell = grid.grid[player.x][player.y];
 		}
 		if (currentCell instanceof Tree || currentCell instanceof Leaf) {

@@ -51,14 +51,16 @@ class Player {
     display() {
 
         push();
-        translate(width/2, height/2);
+        translate(this.x *cellSize, this.y * cellSize);
+        translate(cellSize/2, cellSize/2);
 
         //fill("#97C791");
         //rect(-cellSize/2, -cellSize/2, cellSize);
 
-        fill(0);
-        textSize(cellSize);
-        text(this.symbol, 0, 0);
+        // fill(0);
+        // textSize(cellSize);
+        // text(this.symbol, 0, 0);
+        image(playerImage, 0, 4, 50, 50);
 
         pop();
     }

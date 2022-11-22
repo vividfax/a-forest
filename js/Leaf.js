@@ -11,8 +11,8 @@ class Leaf {
 
         this.fog = fog;
 
-        this.offsetX = random(-cellSize/5, cellSize/5);
-        this.offsetY = random(-cellSize/5, cellSize/5);
+        this.offsetX = random(-cellSize/4, cellSize/4);
+        this.offsetY = random(-cellSize/4, cellSize/4);
         this.scale = random(0.6, 0.8);
     }
 
@@ -60,14 +60,15 @@ class Leaf {
             // textSize(cellSize/10);
             // text(this.phrase, 0, 0, cellSize, cellSize);
 
-            translate(cellSize/2, cellSize/2 + 2);
+            translate(cellSize/2, cellSize/2);
             translate(this.offsetX, this.offsetY);
-            scale(this.scale);
+            // scale(this.scale);
 
-            fill(255);
-            textAlign(CENTER, CENTER);
-            textSize(cellSize * 2/3);
-            text(this.symbol, 0, 0);
+            // fill(255);
+            // textAlign(CENTER, CENTER);
+            // textSize(cellSize * 2/3);
+            image(this.symbol, 0, 0, 40*this.scale, 40*this.scale);
+            //text(this.symbol, 0, 0);
         }
 
         pop();
