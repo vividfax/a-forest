@@ -20,7 +20,7 @@ class Tree {
 
         this.offsetX = int(random(-cellSize/4, cellSize/4));
         this.offsetY = int(random(-cellSize/4, cellSize/4));
-        this.scale = random(1, 2);
+        this.scale = random(1.8, 2.3);
 
         if (!this.mature) {
             this.scale = 0.6;
@@ -34,7 +34,7 @@ class Tree {
         if (this.phrase.length > 15 && !this.mature) {
             this.symbol = random(treeEmojis);
             this.mature = true;
-            this.scale = random(1, 2);
+            this.scale = random(1.8, 2.3);
         }
     }
 
@@ -58,7 +58,7 @@ class Tree {
         if (this.phrase.length > this.maturityAge && !this.mature) {
             this.symbol = random(treeEmojis);
             this.mature = true;
-            this.scale = random(1, 2);
+            this.scale = random(1.8, 2.3);
         }
 
         if (this.mature) {
