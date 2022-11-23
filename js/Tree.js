@@ -119,7 +119,7 @@ class Tree {
             // fill(255);
             // textAlign(CENTER, CENTER);
             // textSize(cellSize * 2/3);
-            image(this.symbol, 0, 0, 40*this.scale, 40*this.scale);
+            image(this.symbol, 0, 0, cellSize*.8*this.scale, cellSize*.8*this.scale);
             //text(this.symbol, 0, 0);
         }
 

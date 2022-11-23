@@ -24,8 +24,79 @@ class Grid {
 
     createGrid() {
 
+        this.placeFlowers();
+        this.growFlowers();
+        this.growFlowers();
+        this.growFlowers();
         this.placeEmptyCells();
         this.manuallyPlant();
+    }
+
+    placeFlowers() {
+
+        for (let i = 0; i < this.width; i++) {
+            for (let j = 0; j < this.height; j++) {
+
+                if (this.grid[i][j] == false) {
+                    if (random() < 0.08) {
+                        this.grid[i][j] = new Flower(i, j, true);
+                    }
+                }
+            }
+        }
+    }
+
+    growFlowers() {
+
+        let cache = this.new2dArray();
+
+        for (let i = 0; i < this.width; i++) {
+            for (let j = 0; j < this.height; j++) {
+
+                cache[i][j] = this.grid[i][j];
+            }
+        }
+
+        for (let i = 0; i < this.width; i++) {
+            for (let j = 0; j < this.height; j++) {
+
+                let numberOfNeighbours = 0;
+
+                for (let k = -1; k <= 1; k++) {
+                    for (let l = -1; l <= 1; l++) {
+
+                        if (k == 0 && l == 0) continue;
+
+                        let x = i + k;
+                        let y = j + l;
+
+                        if (x < 0) {
+                            x = this.width - 1;
+                        } else if (x >= this.width) {
+                            x = 0;
+                        }
+
+                        if (y < 0) {
+                            y = this.height - 1;
+                        } else if (y >= this.height) {
+                            y = 0;
+                        }
+
+                        if (cache[x][y] instanceof Flower) {
+                            numberOfNeighbours++;
+                        }
+                    }
+                }
+
+                let isAlive = cache[i][j];
+
+                if (isAlive && numberOfNeighbours <= 1) {
+                    this.grid[i][j] = false;
+                } else if (!isAlive && numberOfNeighbours > 2) {
+                    this.grid[i][j] = new Flower(i, j, true);
+                }
+            }
+        }
     }
 
     placeEmptyCells() {

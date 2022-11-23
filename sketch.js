@@ -16,7 +16,7 @@ let seedlingEmoji;
 let plantEmojis = [];
 let treeEmojis = [];
 let leafEmojis = [];
-let flowerEmojis = ["🥀", "🌼", "🌻", "🌸", "🌹", "🌺", "🌷", "🏵️"];
+let flowerEmojis = [];
 
 let markov;
 
@@ -43,6 +43,14 @@ function preload() {
 	leafEmojis.push(loadImage("./images/fallen-leaf.png"));
 	leafEmojis.push(loadImage("./images/leaf-fluttering-in-wind.png"));
 	leafEmojis.push(loadImage("./images/maple-leaf.png"));
+
+	flowerEmojis.push(loadImage("./images/blossom.png"));
+	flowerEmojis.push(loadImage("./images/cherry-blossom.png"));
+	flowerEmojis.push(loadImage("./images/hibiscus.png"));
+	flowerEmojis.push(loadImage("./images/rose.png"));
+	flowerEmojis.push(loadImage("./images/rosette.png"));
+	flowerEmojis.push(loadImage("./images/sunflower.png"));
+	flowerEmojis.push(loadImage("./images/tulip.png"));
 }
 
 function setup() {
