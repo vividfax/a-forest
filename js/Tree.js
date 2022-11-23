@@ -112,7 +112,7 @@ class Tree {
             // textSize(cellSize/10);
             // text(this.phrase, 0, 0, cellSize, cellSize);
 
-            translate(cellSize/2, cellSize/2);
+            translate(cellSize/2, cellSize/2 - cellSize/4);
             translate(this.offsetX, this.offsetY);
             // scale(this.scale);
 

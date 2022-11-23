@@ -38,7 +38,7 @@ class Grid {
             for (let j = 0; j < this.height; j++) {
 
                 if (this.grid[i][j] == false) {
-                    if (random() < 0.08) {
+                    if (random() < 0.05) {
                         this.grid[i][j] = new Flower(i, j, true);
                     }
                 }
