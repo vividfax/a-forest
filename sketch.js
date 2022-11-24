@@ -99,11 +99,14 @@ function displayUI() {
 	textAlign(LEFT, BOTTOM);
 	textSize(cellSize/2);
 
+	let uiWidth = width > 2048 ? 2048 : width;
+	let leftEdge = width/2-uiWidth/2;
+
 	let currentCell = grid.grid[player.x][player.y];
 
 	if (currentCell instanceof EmptyCell == false) {
-		text(currentCell.phrase, 280, 20, width-300, height-40);
-		image(playerImage, 150, height-70, 500, 500);
+		text(currentCell.phrase, leftEdge+280, 20, uiWidth-300, height-40);
+		image(playerImage, leftEdge+150, height-70, 500, 500);
 	}
 
 	pop();
