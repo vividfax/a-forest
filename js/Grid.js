@@ -29,6 +29,7 @@ class Grid {
         this.growFlowers();
         this.growFlowers();
         this.growFlowers();
+        this.placeHouses();
         this.placeEmptyCells();
         this.manuallyPlant();
     }
@@ -100,6 +101,18 @@ class Grid {
         }
     }
 
+    placeHouses() {
+
+        for (let i = 0; i < this.width; i++) {
+            for (let j = 0; j < this.height; j++) {
+
+                if (random() < 0.01) {
+                    this.grid[i][j] = new House(i, j, true);
+                }
+            }
+        }
+    }
+
     placeEmptyCells() {
 
         for (let i = 0; i < this.width; i++) {
@@ -158,6 +171,7 @@ class Grid {
         for (let i = 0; i < this.width; i++) {
             for (let j = 0; j < this.height; j++) {
 
+                //this.grid[i][j].fog = false;
                 this.grid[i][j].update();
             }
         }

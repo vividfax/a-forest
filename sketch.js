@@ -17,16 +17,19 @@ let plantEmojis = [];
 let treeEmojis = [];
 let leafEmojis = [];
 let flowerEmojis = [];
+let houseEmojis = [];
 
 let markov;
 
 let justCopyPaste = false;
 
 let manualPlants;
+let links;
 
 function preload() {
 
 	manualPlants = loadJSON("./plants.json");
+	links = loadJSON("./links.json");
 
 	playerImage = loadImage("./images/player.png");
 
@@ -51,6 +54,11 @@ function preload() {
 	flowerEmojis.push(loadImage("./images/rosette.png"));
 	flowerEmojis.push(loadImage("./images/sunflower.png"));
 	flowerEmojis.push(loadImage("./images/tulip.png"));
+
+	houseEmojis.push(loadImage("./images/house-with-garden.png"));
+	houseEmojis.push(loadImage("./images/house.png"));
+	houseEmojis.push(loadImage("./images/derelict-house.png"));
+	houseEmojis.push(loadImage("./images/hut.png"));
 }
 
 function setup() {
@@ -107,8 +115,8 @@ function displayUI() {
 	if (currentCell instanceof EmptyCell == false) {
 		text(currentCell.phrase, leftEdge+280, 20, uiWidth-300, height-40);
 		image(playerImage, leftEdge+150, height-70, 500, 500);
-	}
 
+	}
 	pop();
 }
 
@@ -127,6 +135,7 @@ function keyPressed() {
 
 	move();
 	tend();
+	enterHouse();
 
     draw();
 }
@@ -193,6 +202,15 @@ function tend() {
 				grid.grid[player.x][player.y].phrase = currentCell.phrase.slice(0, -1);
 			}
 		}
+	}
+}
+
+function enterHouse() {
+
+	let currentCell = grid.grid[player.x][player.y];
+
+	if (keyCode == ENTER && currentCell instanceof House) {
+		open(currentCell.data.link);
 	}
 }
 
