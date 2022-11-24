@@ -113,6 +113,16 @@ function displayUI() {
 	let currentCell = grid.grid[player.x][player.y];
 
 	if (currentCell instanceof EmptyCell == false) {
+		fill("#F2F2F2");
+		text(currentCell.phrase, leftEdge+280+2, 20+2, uiWidth-300, height-40);
+		text(currentCell.phrase, leftEdge+280-2, 20+2, uiWidth-300, height-40);
+		text(currentCell.phrase, leftEdge+280-2, 20-2, uiWidth-300, height-40);
+		text(currentCell.phrase, leftEdge+280+2, 20-2, uiWidth-300, height-40);
+		text(currentCell.phrase, leftEdge+280+2, 20, uiWidth-300, height-40);
+		text(currentCell.phrase, leftEdge+280-2, 20, uiWidth-300, height-40);
+		text(currentCell.phrase, leftEdge+280, 20-2, uiWidth-300, height-40);
+		text(currentCell.phrase, leftEdge+280, 20+2, uiWidth-300, height-40);
+		fill("#0A0A0A");
 		text(currentCell.phrase, leftEdge+280, 20, uiWidth-300, height-40);
 		image(playerImage, leftEdge+150, height-70, 500, 500);
 
