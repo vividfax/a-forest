@@ -28,6 +28,7 @@ class Grid {
         this.growFlowers();
         this.growFlowers();
         this.growFlowers();
+        this.growFlowers();
         this.placeEmptyCells();
         this.manuallyPlant();
     }
@@ -38,7 +39,7 @@ class Grid {
             for (let j = 0; j < this.height; j++) {
 
                 if (this.grid[i][j] == false) {
-                    if (random() < 0.05) {
+                    if (random() < 0.07) {
                         this.grid[i][j] = new Flower(i, j, true);
                     }
                 }
