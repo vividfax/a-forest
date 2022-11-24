@@ -28,7 +28,7 @@ class Animal {
         translate(this.x *cellSize, this.y * cellSize);
         translate(cellSize/2, cellSize/2);
 
-        image(this.symbol, 0, cellSize/10, cellSize/2, cellSize/2);
+        image(this.symbol, 0, cellSize/3, cellSize/2, cellSize/2);
 
         pop();
     }
