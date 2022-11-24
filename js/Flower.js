@@ -25,15 +25,14 @@ class Flower {
 
         if (this.fog) {
             drawFog();
+        } else {
+            translate(cellSize/2, cellSize/2);
+            translate(this.offsetX, this.offsetY);
+
+            image(this.symbol, -cellSize/5, -cellSize/5, cellSize*.8*this.scale, cellSize*.8*this.scale);
+            image(this.symbol, cellSize/5, -cellSize/5, cellSize*.8*this.scale, cellSize*.8*this.scale);
+            image(this.symbol, 0, cellSize/5, cellSize*.8*this.scale, cellSize*.8*this.scale);
         }
-
-
-        translate(cellSize/2, cellSize/2);
-        translate(this.offsetX, this.offsetY);
-
-        image(this.symbol, -cellSize/5, -cellSize/5, cellSize*.8*this.scale, cellSize*.8*this.scale);
-        image(this.symbol, cellSize/5, -cellSize/5, cellSize*.8*this.scale, cellSize*.8*this.scale);
-        image(this.symbol, 0, cellSize/5, cellSize*.8*this.scale, cellSize*.8*this.scale);
 
         pop();
     }
