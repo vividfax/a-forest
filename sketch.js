@@ -18,6 +18,7 @@ let treeEmojis = [];
 let leafEmojis = [];
 let flowerEmojis = [];
 let houseEmojis = [];
+let animalEmojis = [];
 
 let markov;
 
@@ -25,6 +26,7 @@ let justCopyPaste = false;
 
 let manualPlants;
 let links;
+let animals = [];
 
 function preload() {
 
@@ -59,6 +61,17 @@ function preload() {
 	houseEmojis.push(loadImage("./images/house.png"));
 	houseEmojis.push(loadImage("./images/derelict-house.png"));
 	houseEmojis.push(loadImage("./images/hut.png"));
+
+	animalEmojis.push(loadImage("./images/deer.png"));
+	animalEmojis.push(loadImage("./images/ewe.png"));
+	animalEmojis.push(loadImage("./images/turkey.png"));
+	animalEmojis.push(loadImage("./images/duck.png"));
+	animalEmojis.push(loadImage("./images/cat.png"));
+	animalEmojis.push(loadImage("./images/horse.png"));
+	animalEmojis.push(loadImage("./images/ram.png"));
+	animalEmojis.push(loadImage("./images/goat.png"));
+	animalEmojis.push(loadImage("./images/llama.png"));
+	animalEmojis.push(loadImage("./images/dog.png"));
 }
 
 function setup() {
@@ -76,6 +89,12 @@ function setup() {
 	noStroke();
 
 	grid = new Grid(worldWidth, worldHeight);
+
+	for (let i = 0; i < grid.width*grid.height/500; i++) {
+
+		animals.push(new Animal());
+	}
+
 	player = new Player();
 
 	// createNoise();
@@ -186,6 +205,10 @@ function move() {
 	}
 
     grid.update();
+
+	for (let i = 0; i < animals.length; i++) {
+		animals[i].move();
+	}
 }
 
 function tend() {

@@ -171,7 +171,7 @@ class Grid {
         for (let i = 0; i < this.width; i++) {
             for (let j = 0; j < this.height; j++) {
 
-                //this.grid[i][j].fog = false;
+                // this.grid[i][j].fog = false; // off by default
                 this.grid[i][j].update();
             }
         }
@@ -205,6 +205,14 @@ class Grid {
                 else if (targetY < j) translate(0, worldHeight*cellSize);
 
                 this.grid[targetX][targetY].display();
+
+                if (!this.grid[targetX][targetY].fog) {
+                    for (let k = 0; k < animals.length; k++) {
+                        if (animals[k].x == targetX && animals[k].y == targetY) {
+                            animals[k].display();
+                        }
+                    }
+                }
 
                 if (player.x == targetX && player.y == targetY) {
                     player.display();
