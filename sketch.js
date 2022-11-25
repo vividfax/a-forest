@@ -21,6 +21,7 @@ let abandonedHouseEmoji;
 let houseEmojis = [];
 let animalEmojis = [];
 let weatherEmojis = [];
+let pawPrintsEmoji;
 
 let markov;
 
@@ -91,7 +92,8 @@ function preload() {
 	animalEmojis.push(loadImage("./images/zebra.png"));
 
 	weatherEmojis.push(loadImage("./images/snowflake.png"));
-	// weatherEmojis.push(loadImage("./images/droplet.png"));
+
+	pawPrintsEmoji = loadImage("./images/paw-prints.png");
 }
 
 function setup() {
@@ -123,18 +125,21 @@ function setup() {
 
 function draw() {
 
-    // background("#E2E2E2");
+	weatherCanvas.clear();
 
 	push();
+	weatherCanvas.push();
 
 	translate(-player.cameraX * cellSize, -player.cameraY * cellSize);
+	weatherCanvas.translate(-player.cameraX * cellSize, -player.cameraY * cellSize);
 
     grid.display();
     //player.display();
 
 	pop();
+	weatherCanvas.pop();
 
-	image(weatherCanvas, 0, 0);
+	image(weatherCanvas, width/2, height/2);
 
 	displayUI();
 }
@@ -410,11 +415,15 @@ function mod(n, m) {
 
 function drawFog() {
 
-	fill("#eee");
+	weatherCanvas.push();
 	translate(cellSize/2, cellSize/2);
-	ellipse(0, 0, cellSize*random(1, 1.4));
-	ellipse(-cellSize/random(4, 8), -cellSize/random(4, 8), cellSize * random(.6, 1.4), cellSize * random(.6, 1.4));
-	ellipse(cellSize/random(4, 8), cellSize/random(4, 8), cellSize * random(.6, 1.4), cellSize * random(.6, 1.4));
-	ellipse(-cellSize/random(4, 8), cellSize/random(4, 8), cellSize * random(.6, 1.4), cellSize * random(.6, 1.4));
-	ellipse(cellSize/random(4, 8), -cellSize/random(4, 8), cellSize * random(.6, 1.4), cellSize * random(.6, 1.4));
+	weatherCanvas.translate(cellSize/2, cellSize/2);
+	weatherCanvas.noStroke();
+	weatherCanvas.fill("#eee");
+	weatherCanvas.ellipse(0, 0, cellSize*random(1, 1.4));
+	weatherCanvas.ellipse(-cellSize/random(4, 8), -cellSize/random(4, 8), cellSize * random(.6, 1.4), cellSize * random(.6, 1.4));
+	weatherCanvas.ellipse(cellSize/random(4, 8), cellSize/random(4, 8), cellSize * random(.6, 1.4), cellSize * random(.6, 1.4));
+	weatherCanvas.ellipse(-cellSize/random(4, 8), cellSize/random(4, 8), cellSize * random(.6, 1.4), cellSize * random(.6, 1.4));
+	weatherCanvas.ellipse(cellSize/random(4, 8), -cellSize/random(4, 8), cellSize * random(.6, 1.4), cellSize * random(.6, 1.4));
+	weatherCanvas.pop();
 }

@@ -105,6 +105,7 @@ class Tree {
 
         push();
         translate(this.x, this.y);
+        weatherCanvas.translate(this.x, this.y);
 
         if (this.fog) {
             drawFog();

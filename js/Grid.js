@@ -197,8 +197,11 @@ class Grid {
         // updatePixels();
 
         push();
+        weatherCanvas.push();
 	    translate(-cellSize/2, -cellSize/2);
         translate(-player.x * cellSize + width/2, -player.y * cellSize + height/2);
+	    weatherCanvas.translate(-cellSize/2, -cellSize/2);
+        weatherCanvas.translate(-player.x * cellSize + width/2, -player.y * cellSize + height/2);
 
         let visibleGridWidth = int(width/cellSize/2) * 1/renderScale;
         let visibleGridHeight = int(height/cellSize/2) * 1/renderScale;
@@ -213,10 +216,17 @@ class Grid {
                 if (targetY >= worldHeight || targetY < 0)  targetY = mod(targetY, worldHeight);
 
                 push();
+                weatherCanvas.push();
+
                 if (targetX > i) translate(-worldWidth*cellSize, 0);
                 else if (targetX < i) translate(worldWidth*cellSize, 0);
                 if (targetY > j) translate(0, -worldHeight*cellSize);
                 else if (targetY < j) translate(0, worldHeight*cellSize);
+
+                if (targetX > i) weatherCanvas.translate(-worldWidth*cellSize, 0);
+                else if (targetX < i) weatherCanvas.translate(worldWidth*cellSize, 0);
+                if (targetY > j) weatherCanvas.translate(0, -worldHeight*cellSize);
+                else if (targetY < j) weatherCanvas.translate(0, worldHeight*cellSize);
 
                 this.grid[targetX][targetY].display();
 
@@ -243,10 +253,12 @@ class Grid {
                 }
 
                 pop();
+                weatherCanvas.pop();
             }
         }
 
         pop();
+        weatherCanvas.pop();
     }
 }
 
