@@ -77,6 +77,14 @@ function preload() {
 	animalEmojis.push(loadImage("./images/goat.png"));
 	animalEmojis.push(loadImage("./images/llama.png"));
 	animalEmojis.push(loadImage("./images/dog.png"));
+	animalEmojis.push(loadImage("./images/cow.png"));
+	animalEmojis.push(loadImage("./images/badger.png"));
+	animalEmojis.push(loadImage("./images/hedgehog.png"));
+	animalEmojis.push(loadImage("./images/rabbit.png"));
+	animalEmojis.push(loadImage("./images/rooster.png"));
+	animalEmojis.push(loadImage("./images/swan.png"));
+	animalEmojis.push(loadImage("./images/turtle.png"));
+	animalEmojis.push(loadImage("./images/zebra.png"));
 }
 
 function setup() {
