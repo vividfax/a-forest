@@ -1,8 +1,8 @@
 let grid;
 let player;
 
-let worldWidth = 1000;
-let worldHeight = 1000;
+let worldWidth = 500;
+let worldHeight = 500;
 let cellSize = 50;
 let renderScale = 0.5;
 
@@ -36,6 +36,7 @@ let moved = false;
 let typed = false;
 let typedSentence = false;
 
+let cloudCanvas;
 let weatherCanvas;
 
 function preload() {
@@ -101,6 +102,7 @@ function setup() {
 	createCanvas(windowWidth, windowHeight);
 	markov = RiTa.markov(3);
 
+	cloudCanvas = createGraphics(windowWidth, windowHeight);
 	weatherCanvas = createGraphics(windowWidth, windowHeight);
 
 	window.addEventListener("copy", copyText);
@@ -125,20 +127,25 @@ function setup() {
 
 function draw() {
 
+	cloudCanvas.clear();
 	weatherCanvas.clear();
 
 	push();
+	cloudCanvas.push();
 	weatherCanvas.push();
 
 	translate(-player.cameraX * cellSize, -player.cameraY * cellSize);
+	cloudCanvas.translate(-player.cameraX * cellSize, -player.cameraY * cellSize);
 	weatherCanvas.translate(-player.cameraX * cellSize, -player.cameraY * cellSize);
 
     grid.display();
     //player.display();
 
 	pop();
+	cloudCanvas.pop();
 	weatherCanvas.pop();
 
+	image(cloudCanvas, width/2, height/2);
 	image(weatherCanvas, width/2, height/2);
 
 	displayUI();
@@ -415,15 +422,15 @@ function mod(n, m) {
 
 function drawFog() {
 
-	weatherCanvas.push();
+	cloudCanvas.push();
 	translate(cellSize/2, cellSize/2);
-	weatherCanvas.translate(cellSize/2, cellSize/2);
-	weatherCanvas.noStroke();
-	weatherCanvas.fill("#eee");
-	weatherCanvas.ellipse(0, 0, cellSize*random(1, 1.4));
-	weatherCanvas.ellipse(-cellSize/random(4, 8), -cellSize/random(4, 8), cellSize * random(.6, 1.4), cellSize * random(.6, 1.4));
-	weatherCanvas.ellipse(cellSize/random(4, 8), cellSize/random(4, 8), cellSize * random(.6, 1.4), cellSize * random(.6, 1.4));
-	weatherCanvas.ellipse(-cellSize/random(4, 8), cellSize/random(4, 8), cellSize * random(.6, 1.4), cellSize * random(.6, 1.4));
-	weatherCanvas.ellipse(cellSize/random(4, 8), -cellSize/random(4, 8), cellSize * random(.6, 1.4), cellSize * random(.6, 1.4));
-	weatherCanvas.pop();
+	cloudCanvas.translate(cellSize/2, cellSize/2);
+	cloudCanvas.noStroke();
+	cloudCanvas.fill("#eee");
+	cloudCanvas.ellipse(0, 0, cellSize*random(1, 1.4));
+	cloudCanvas.ellipse(-cellSize/random(4, 8), -cellSize/random(4, 8), cellSize * random(.6, 1.4), cellSize * random(.6, 1.4));
+	cloudCanvas.ellipse(cellSize/random(4, 8), cellSize/random(4, 8), cellSize * random(.6, 1.4), cellSize * random(.6, 1.4));
+	cloudCanvas.ellipse(-cellSize/random(4, 8), cellSize/random(4, 8), cellSize * random(.6, 1.4), cellSize * random(.6, 1.4));
+	cloudCanvas.ellipse(cellSize/random(4, 8), -cellSize/random(4, 8), cellSize * random(.6, 1.4), cellSize * random(.6, 1.4));
+	cloudCanvas.pop();
 }

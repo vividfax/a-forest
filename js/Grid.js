@@ -197,9 +197,12 @@ class Grid {
         // updatePixels();
 
         push();
+        cloudCanvas.push();
         weatherCanvas.push();
 	    translate(-cellSize/2, -cellSize/2);
         translate(-player.x * cellSize + width/2, -player.y * cellSize + height/2);
+	    cloudCanvas.translate(-cellSize/2, -cellSize/2);
+        cloudCanvas.translate(-player.x * cellSize + width/2, -player.y * cellSize + height/2);
 	    weatherCanvas.translate(-cellSize/2, -cellSize/2);
         weatherCanvas.translate(-player.x * cellSize + width/2, -player.y * cellSize + height/2);
 
@@ -216,12 +219,18 @@ class Grid {
                 if (targetY >= worldHeight || targetY < 0)  targetY = mod(targetY, worldHeight);
 
                 push();
+                cloudCanvas.push();
                 weatherCanvas.push();
 
                 if (targetX > i) translate(-worldWidth*cellSize, 0);
                 else if (targetX < i) translate(worldWidth*cellSize, 0);
                 if (targetY > j) translate(0, -worldHeight*cellSize);
                 else if (targetY < j) translate(0, worldHeight*cellSize);
+
+                if (targetX > i) cloudCanvas.translate(-worldWidth*cellSize, 0);
+                else if (targetX < i) cloudCanvas.translate(worldWidth*cellSize, 0);
+                if (targetY > j) cloudCanvas.translate(0, -worldHeight*cellSize);
+                else if (targetY < j) cloudCanvas.translate(0, worldHeight*cellSize);
 
                 if (targetX > i) weatherCanvas.translate(-worldWidth*cellSize, 0);
                 else if (targetX < i) weatherCanvas.translate(worldWidth*cellSize, 0);
@@ -234,30 +243,33 @@ class Grid {
                     for (let k = 0; k < animals.length; k++) {
                         if (animals[k].x == targetX && animals[k].y == targetY) {
                             animals[k].display();
+                            break;
                         }
                     }
                 }
-                // else if (this.grid[targetX][targetY].fog) {
-                //     for (let k = 0; k < weathers.length; k++) {
-                //         if (weathers[k].x == targetX && weathers[k].y == targetY) {
-                //             weathers[k].update();
-                //             weathers[k].move();
-                //             weathers[k].display();
-                //             break;
-                //         }
-                //     }
-                // }
+                else if (this.grid[targetX][targetY].fog) {
+                    for (let k = 0; k < weathers.length; k++) {
+                        if (weathers[k].x == targetX && weathers[k].y == targetY) {
+                            weathers[k].move();
+                            weathers[k].update();
+                            weathers[k].display();
+                            break;
+                        }
+                    }
+                }
 
                 if (player.x == targetX && player.y == targetY) {
                     player.display();
                 }
 
                 pop();
+                cloudCanvas.pop();
                 weatherCanvas.pop();
             }
         }
 
         pop();
+        cloudCanvas.pop();
         weatherCanvas.pop();
     }
 }

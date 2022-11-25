@@ -16,7 +16,7 @@ class EmptyCell {
 
         push();
         translate(this.x, this.y);
-        weatherCanvas.translate(this.x, this.y);
+        cloudCanvas.translate(this.x, this.y);
 
         if (this.fog) {
             drawFog();
