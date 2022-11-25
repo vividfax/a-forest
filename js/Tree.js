@@ -35,6 +35,7 @@ class Tree {
             this.symbol = random(treeEmojis);
             this.mature = true;
             this.scale = random(1.8, 2.3);
+			if (!typedSentence) typedSentence = true;
         }
     }
 

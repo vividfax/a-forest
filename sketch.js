@@ -29,6 +29,10 @@ let manualPlants;
 let links;
 let animals = [];
 
+let moved = false;
+let typed = false;
+let typedSentence = false;
+
 function preload() {
 
 	manualPlants = loadJSON("./plants.json");
@@ -144,6 +148,21 @@ function displayUI() {
 		}
 	}
 
+	let noCharacter = false;
+
+	if (uiText == "") {
+
+		noCharacter = true;
+
+		if (!moved) {
+			uiText = "Press the ARROW keys to walk";
+		} else if (!typed) {
+			uiText = "Try typing something…";
+		} else if (!typedSentence) {
+			uiText = "Try typing a longer sentence…";
+		}
+	}
+
 	if (uiText != "") {
 		fill("#F2F2F2");
 		text(uiText, leftEdge+280+2, 20+2, uiWidth-300, height-40);
@@ -156,7 +175,10 @@ function displayUI() {
 		text(uiText, leftEdge+280, 20+2, uiWidth-300, height-40);
 		fill("#0A0A0A");
 		text(uiText, leftEdge+280, 20, uiWidth-300, height-40);
-		image(playerImage, leftEdge+150, height-70, 500, 500);
+
+		if (!noCharacter) {
+			image(playerImage, leftEdge+150, height-70, 500, 500);
+		}
 	}
 
 	pop();
@@ -189,7 +211,7 @@ function move() {
 		return;
 	}
 
-   if ((keyCode == UP_ARROW && keyIsDown(LEFT_ARROW)) || (keyCode == LEFT_ARROW && keyIsDown(UP_ARROW))) {
+   	if ((keyCode == UP_ARROW && keyIsDown(LEFT_ARROW)) || (keyCode == LEFT_ARROW && keyIsDown(UP_ARROW))) {
 		player.move(-1, -1);
 		lastMoveWasDiagonal = true;
 		hasMovedDiagonally = true;
@@ -217,6 +239,8 @@ function move() {
 		return;
 	}
 
+	if (!moved) moved = true;
+
     grid.update();
 
 	for (let i = 0; i < animals.length; i++) {
@@ -235,6 +259,7 @@ function tend() {
 			grid.grid[player.x][player.y] = new Tree(player.x, player.y);
 			grid.grid[player.x][player.y].symbol = seedlingEmoji;
 			currentCell = grid.grid[player.x][player.y];
+			if (!typed) typed = true;
 		}
 		if (currentCell instanceof Tree || currentCell instanceof Leaf) {
 			grid.grid[player.x][player.y].addChar(key);
