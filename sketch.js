@@ -17,6 +17,7 @@ let plantEmojis = [];
 let treeEmojis = [];
 let leafEmojis = [];
 let flowerEmojis = [];
+let abandonedHouseEmoji;
 let houseEmojis = [];
 let animalEmojis = [];
 
@@ -57,10 +58,10 @@ function preload() {
 	flowerEmojis.push(loadImage("./images/sunflower.png"));
 	flowerEmojis.push(loadImage("./images/tulip.png"));
 
+	abandonedHouseEmoji = loadImage("./images/derelict-house.png");
 	houseEmojis.push(loadImage("./images/house-with-garden.png"));
 	houseEmojis.push(loadImage("./images/house.png"));
-	houseEmojis.push(loadImage("./images/derelict-house.png"));
-	houseEmojis.push(loadImage("./images/hut.png"));
+	// houseEmojis.push(loadImage("./images/hut.png"));
 
 	animalEmojis.push(loadImage("./images/deer.png"));
 	animalEmojis.push(loadImage("./images/ewe.png"));
@@ -130,22 +131,34 @@ function displayUI() {
 	let leftEdge = width/2-uiWidth/2;
 
 	let currentCell = grid.grid[player.x][player.y];
+	let uiText = "";
 
 	if (currentCell instanceof EmptyCell == false) {
-		fill("#F2F2F2");
-		text(currentCell.phrase, leftEdge+280+2, 20+2, uiWidth-300, height-40);
-		text(currentCell.phrase, leftEdge+280-2, 20+2, uiWidth-300, height-40);
-		text(currentCell.phrase, leftEdge+280-2, 20-2, uiWidth-300, height-40);
-		text(currentCell.phrase, leftEdge+280+2, 20-2, uiWidth-300, height-40);
-		text(currentCell.phrase, leftEdge+280+2, 20, uiWidth-300, height-40);
-		text(currentCell.phrase, leftEdge+280-2, 20, uiWidth-300, height-40);
-		text(currentCell.phrase, leftEdge+280, 20-2, uiWidth-300, height-40);
-		text(currentCell.phrase, leftEdge+280, 20+2, uiWidth-300, height-40);
-		fill("#0A0A0A");
-		text(currentCell.phrase, leftEdge+280, 20, uiWidth-300, height-40);
-		image(playerImage, leftEdge+150, height-70, 500, 500);
-
+		uiText = currentCell.phrase;
+	} else {
+		for (let i = 0; i < animals.length; i++) {
+			if (animals[i].x == player.x && animals[i].y == player.y) {
+				uiText = "^_^";
+				break;
+			}
+		}
 	}
+
+	if (uiText != "") {
+		fill("#F2F2F2");
+		text(uiText, leftEdge+280+2, 20+2, uiWidth-300, height-40);
+		text(uiText, leftEdge+280-2, 20+2, uiWidth-300, height-40);
+		text(uiText, leftEdge+280-2, 20-2, uiWidth-300, height-40);
+		text(uiText, leftEdge+280+2, 20-2, uiWidth-300, height-40);
+		text(uiText, leftEdge+280+2, 20, uiWidth-300, height-40);
+		text(uiText, leftEdge+280-2, 20, uiWidth-300, height-40);
+		text(uiText, leftEdge+280, 20-2, uiWidth-300, height-40);
+		text(uiText, leftEdge+280, 20+2, uiWidth-300, height-40);
+		fill("#0A0A0A");
+		text(uiText, leftEdge+280, 20, uiWidth-300, height-40);
+		image(playerImage, leftEdge+150, height-70, 500, 500);
+	}
+
 	pop();
 }
 
@@ -242,8 +255,23 @@ function enterHouse() {
 
 	let currentCell = grid.grid[player.x][player.y];
 
-	if (keyCode == ENTER && currentCell instanceof House) {
+	if ((keyCode == ENTER || keyCode == RETURN) && currentCell instanceof House) {
 		open(currentCell.data.link);
+
+		if (!currentCell.visited) {
+			grid.grid[player.x][player.y].visited = true;
+			grid.grid[player.x][player.y].symbol = random(houseEmojis);
+
+			for (let i = 0; i < grid.width; i++) {
+				for (let j = 0; j < grid.height; j++) {
+
+					if (grid.grid[i][j] instanceof House && !grid.grid[i][j].visited && grid.grid[i][j].data.label === grid.grid[player.x][player.y].data.label) {
+						grid.grid[i][j].visited = true;
+						grid.grid[i][j].symbol = random(houseEmojis);
+					}
+				}
+			}
+		}
 	}
 }
 
