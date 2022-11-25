@@ -227,6 +227,16 @@ class Grid {
                         }
                     }
                 }
+                // else if (this.grid[targetX][targetY].fog) {
+                //     for (let k = 0; k < weathers.length; k++) {
+                //         if (weathers[k].x == targetX && weathers[k].y == targetY) {
+                //             weathers[k].update();
+                //             weathers[k].move();
+                //             weathers[k].display();
+                //             break;
+                //         }
+                //     }
+                // }
 
                 if (player.x == targetX && player.y == targetY) {
                     player.display();

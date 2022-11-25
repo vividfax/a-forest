@@ -20,6 +20,7 @@ let flowerEmojis = [];
 let abandonedHouseEmoji;
 let houseEmojis = [];
 let animalEmojis = [];
+let weatherEmojis = [];
 
 let markov;
 
@@ -28,10 +29,13 @@ let justCopyPaste = false;
 let manualPlants;
 let links;
 let animals = [];
+let weathers = [];
 
 let moved = false;
 let typed = false;
 let typedSentence = false;
+
+let weatherCanvas;
 
 function preload() {
 
@@ -85,12 +89,17 @@ function preload() {
 	animalEmojis.push(loadImage("./images/swan.png"));
 	animalEmojis.push(loadImage("./images/turtle.png"));
 	animalEmojis.push(loadImage("./images/zebra.png"));
+
+	weatherEmojis.push(loadImage("./images/snowflake.png"));
+	// weatherEmojis.push(loadImage("./images/droplet.png"));
 }
 
 function setup() {
 
 	createCanvas(windowWidth, windowHeight);
 	markov = RiTa.markov(3);
+
+	weatherCanvas = createGraphics(windowWidth, windowHeight);
 
 	window.addEventListener("copy", copyText);
 	window.addEventListener("paste", pasteText);
@@ -103,6 +112,7 @@ function setup() {
 
 	grid = new Grid(worldWidth, worldHeight);
 	createAnimals();
+	createWeather();
 	player = new Player();
 
 	// createNoise();
@@ -123,6 +133,8 @@ function draw() {
     //player.display();
 
 	pop();
+
+	image(weatherCanvas, 0, 0);
 
 	displayUI();
 }
@@ -151,6 +163,34 @@ function createAnimals() {
 
 		if (valid) {
 			animals.push(new Animal(targetX, targetY));
+		}
+	}
+}
+
+function createWeather() {
+
+	for (let i = 0; i < grid.width*grid.height/50; i++) {
+
+		let targetX = int(random(grid.width));
+        let targetY = int(random(grid.height));
+
+		let x = int(worldWidth/2);
+        let y = int(worldHeight/2);
+
+		let valid = true;
+
+        for (let j = -1; j <= 1; j++) {
+            for (let k = -1; k <= 1; k++) {
+
+                if (x+j == targetX && y+k == targetY) {
+					valid = false;
+					break;
+                }
+            }
+        }
+
+		if (valid) {
+			weathers.push(new Weather(targetX, targetY));
 		}
 	}
 }
