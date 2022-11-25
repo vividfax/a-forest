@@ -1,9 +1,9 @@
 class Animal {
 
-    constructor() {
+    constructor(x, y) {
 
-        this.x = int(random(grid.width));
-        this.y = int(random(grid.height));
+        this.x = x;
+        this.y = y;
         this.symbol = random(animalEmojis);
     }
 

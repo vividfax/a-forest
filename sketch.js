@@ -94,12 +94,7 @@ function setup() {
 	noStroke();
 
 	grid = new Grid(worldWidth, worldHeight);
-
-	for (let i = 0; i < grid.width*grid.height/500; i++) {
-
-		animals.push(new Animal());
-	}
-
+	createAnimals();
 	player = new Player();
 
 	// createNoise();
@@ -122,6 +117,34 @@ function draw() {
 	pop();
 
 	displayUI();
+}
+
+function createAnimals() {
+
+	for (let i = 0; i < grid.width*grid.height/500; i++) {
+
+		let targetX = int(random(grid.width));
+        let targetY = int(random(grid.height));
+
+		let x = int(worldWidth/2);
+        let y = int(worldHeight/2);
+
+		let valid = true;
+
+        for (let j = -1; j <= 1; j++) {
+            for (let k = -1; k <= 1; k++) {
+
+                if (x+j == targetX && y+k == targetY) {
+					valid = false;
+					break;
+                }
+            }
+        }
+
+		if (valid) {
+			animals.push(new Animal(targetX, targetY));
+		}
+	}
 }
 
 function displayUI() {

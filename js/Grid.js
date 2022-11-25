@@ -30,6 +30,7 @@ class Grid {
         this.growFlowers();
         this.growFlowers();
         this.placeHouses();
+        this.clearCentre();
         this.placeEmptyCells();
         this.manuallyPlant();
     }
@@ -111,6 +112,19 @@ class Grid {
                 }
             }
         }
+    }
+
+    clearCentre() {
+
+        let x = int(worldWidth/2);
+        let y = int(worldHeight/2);
+
+        for (let i = -1; i <= 1; i++) {
+            for (let j = -1; j <= 1; j++) {
+                this.grid[x+i][y+j] = false;
+            }
+        }
+
     }
 
     placeEmptyCells() {
