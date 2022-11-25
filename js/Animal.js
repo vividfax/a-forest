@@ -11,8 +11,11 @@ class Animal {
 
         if (random() < 0.3) {
 
-            this.x += int(random(-2, 2));
-            this.y += int(random(-2, 2));
+            let directions = [[0,1],[1,0],[-1,0],[0,-1]];
+            let direction = random(directions);
+
+            this.x += direction[0];
+            this.y += direction[1];
 
             if (this.x < 0) this.x = grid.width-1;
             else if (this.x >= grid.width) this.x = 0;
