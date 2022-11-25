@@ -49,10 +49,15 @@ class Tree {
 
             let words = this.phrase.trim().split(" ");
             let completions = markov.completions(words);
+
+            while (completions.length <= 0 && words.length > 1) {
+                words.shift();
+                completions = markov.completions(words);
+            }
+
             if (completions.length > 0) {
                 let completion = random(completions);
                 this.phrase += " " + completion;
-
             }
         }
 
