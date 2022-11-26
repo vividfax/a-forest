@@ -461,7 +461,7 @@ function reset() {
 	moved = false;
 	typed = false;
 	typedSentence = false;
-
+	mailCount = 0;
 
 	grid = new Grid(worldWidth, worldHeight);
 	createAnimals();
