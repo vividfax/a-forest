@@ -30,9 +30,9 @@ class Grid {
         this.growFlowers();
         this.growFlowers();
         this.placeHouses();
+        this.placeMailboxes();
         this.clearCentre();
         this.placeEmptyCells();
-        this.manuallyPlant();
     }
 
     placeFlowers() {
@@ -114,6 +114,20 @@ class Grid {
         }
     }
 
+    placeMailboxes() {
+
+        for (let i = 0; i < this.width; i++) {
+            for (let j = 0; j < this.height; j++) {
+
+                if (random() < 0.003) {
+                    if (!this.grid[i][j]) {
+                        this.grid[i][j] = new Mailbox(i, j, true);
+                    }
+                }
+            }
+        }
+    }
+
     clearCentre() {
 
         let x = int(worldWidth/2);
@@ -134,23 +148,6 @@ class Grid {
 
                 if (this.grid[i][j] == false) this.grid[i][j] = new EmptyCell(i, j, true);
             }
-        }
-    }
-
-    manuallyPlant() {
-
-        for (let i = 0; i < manualPlants.plants.length; i++) {
-
-            // let x = int(random(this.width));
-            // let y = int(random(this.height));
-
-            // while (this.grid[x][y] instanceof EmptyCell == false) {
-            //     x = int(random(this.width));
-            //     y = int(random(this.height));
-            // }
-
-            // this.grid[x][y] = new Tree(x, y, true, manualPlants.plants[i]);
-            markov.addText(manualPlants.plants[i]);
         }
     }
 

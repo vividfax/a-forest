@@ -22,6 +22,7 @@ let houseEmojis = [];
 let animalEmojis = [];
 let weatherEmojis = [];
 let pawPrintsEmoji;
+let mailboxEmojis = [];
 
 let markov;
 
@@ -29,6 +30,10 @@ let justCopyPaste = false;
 
 let manualPlants;
 let links;
+let mail;
+
+let mailCount = 0;
+
 let animals = [];
 let weathers = [];
 
@@ -41,8 +46,9 @@ let weatherCanvas;
 
 function preload() {
 
-	manualPlants = loadJSON("./plants.json");
-	links = loadJSON("./links.json");
+	manualPlants = loadJSON("./json/plants.json");
+	links = loadJSON("./json/links.json");
+	mail = loadJSON("./json/fortunes.json");
 
 	playerImage = loadImage("./images/player.png");
 
@@ -95,12 +101,20 @@ function preload() {
 	weatherEmojis.push(loadImage("./images/snowflake.png"));
 
 	pawPrintsEmoji = loadImage("./images/paw-prints.png");
+
+	mailboxEmojis.push(loadImage("./images/closed-mailbox-with-raised-flag.png"));
+	mailboxEmojis.push(loadImage("./images/open-mailbox-with-raised-flag.png"));
+	mailboxEmojis.push(loadImage("./images/open-mailbox-with-lowered-flag.png"));
 }
 
 function setup() {
 
 	createCanvas(windowWidth, windowHeight);
 	markov = RiTa.markov(3);
+
+	for (let i = 0; i < manualPlants.plants.length; i++) {
+		markov.addText(manualPlants.plants[i]);
+	}
 
 	cloudCanvas = createGraphics(windowWidth, windowHeight);
 	weatherCanvas = createGraphics(windowWidth, windowHeight);
@@ -237,7 +251,7 @@ function displayUI() {
 
 	let noCharacter = false;
 
-	if (uiText == "") {
+	if (uiText == "" && currentCell instanceof EmptyCell) {
 
 		noCharacter = true;
 
