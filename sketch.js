@@ -123,6 +123,10 @@ function setup() {
 
     noLoop();
     draw();
+
+	let resetButton = createButton("Reset");
+    resetButton.position(10, 10);
+    resetButton.mousePressed(reset);
 }
 
 function draw() {
@@ -433,4 +437,25 @@ function drawFog() {
 	cloudCanvas.ellipse(-cellSize/random(4, 8), cellSize/random(4, 8), cellSize * random(.6, 1.4), cellSize * random(.6, 1.4));
 	cloudCanvas.ellipse(cellSize/random(4, 8), -cellSize/random(4, 8), cellSize * random(.6, 1.4), cellSize * random(.6, 1.4));
 	cloudCanvas.pop();
+}
+
+function reset() {
+
+	animals = [];
+	weather = [];
+
+	moved = false;
+	typed = false;
+	typedSentence = false;
+
+
+	grid = new Grid(worldWidth, worldHeight);
+	createAnimals();
+	createWeather();
+	player = new Player();
+
+	// createNoise();
+
+    noLoop();
+    draw();
 }
