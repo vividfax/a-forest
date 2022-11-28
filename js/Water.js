@@ -22,32 +22,32 @@ class Water {
         translate(this.x, this.y);
         cloudCanvas.translate(this.x, this.y);
 
+        let corners = [1,1,1,1];
+        let cornerRadius = 15;
+
+        if (grid.grid[this.gridX + 1][this.gridY] instanceof Water) {
+            corners[1] = 0;
+            corners[2] = 0;
+        }
+        if (grid.grid[this.gridX - 1][this.gridY] instanceof Water) {
+            corners[0] = 0;
+            corners[3] = 0;
+        }
+        if (grid.grid[this.gridX][this.gridY + 1] instanceof Water) {
+            corners[2] = 0;
+            corners[3] = 0;
+        }
+        if (grid.grid[this.gridX][this.gridY - 1] instanceof Water) {
+            corners[0] = 0;
+            corners[1] = 0;
+        }
+
+        fill("#57A9CB");
+        rect(0, 0, cellSize, cellSize, corners[0]*cornerRadius, corners[1]*cornerRadius, corners[2]*cornerRadius, corners[3]*cornerRadius);
+
         if (this.fog) {
             drawFog();
         } else {
-
-            let corners = [1,1,1,1];
-            let cornerRadius = 15;
-
-            if (grid.grid[this.gridX + 1][this.gridY] instanceof Water) {
-                corners[1] = 0;
-                corners[2] = 0;
-            }
-            if (grid.grid[this.gridX - 1][this.gridY] instanceof Water) {
-                corners[0] = 0;
-                corners[3] = 0;
-            }
-            if (grid.grid[this.gridX][this.gridY + 1] instanceof Water) {
-                corners[2] = 0;
-                corners[3] = 0;
-            }
-            if (grid.grid[this.gridX][this.gridY - 1] instanceof Water) {
-                corners[0] = 0;
-                corners[1] = 0;
-            }
-
-            fill("#57A9CB");
-            rect(0, 0, cellSize, cellSize, corners[0]*cornerRadius, corners[1]*cornerRadius, corners[2]*cornerRadius, corners[3]*cornerRadius);
 
             let lefthandCell = grid.grid[this.gridX - 1][this.gridY];
             let rightHandCell = grid.grid[this.gridX + 1][this.gridY];

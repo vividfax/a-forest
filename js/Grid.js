@@ -38,6 +38,8 @@ class Grid {
         this.growWater();
         this.growWater();
         this.growWater();
+        this.removeWaterStragglers();
+        this.removeWaterStragglers();
         this.clearCentre();
         this.placeEmptyCells();
     }
@@ -48,7 +50,7 @@ class Grid {
             for (let j = 0; j < this.height; j++) {
 
                 if (this.grid[i][j] == false) {
-                    if (random() < 0.1) {
+                    if (random() < 0.085) {
                         this.grid[i][j] = new Flower(i, j, true);
                     }
                 }
@@ -140,7 +142,7 @@ class Grid {
         for (let i = 0; i < this.width; i++) {
             for (let j = 0; j < this.height; j++) {
 
-                if (random() < 0.1) {
+                if (random() < 0.08) {
                     this.grid[i][j] = new Water(i, j, true);
                 }
             }
@@ -195,6 +197,57 @@ class Grid {
                     this.grid[i][j] = false;
                 } else if (!isAlive && numberOfNeighbours > 2) {
                     this.grid[i][j] = new Water(i, j, true);
+                }
+            }
+        }
+    }
+
+    removeWaterStragglers() {
+
+        let cache = this.new2dArray();
+
+        for (let i = 0; i < this.width; i++) {
+            for (let j = 0; j < this.height; j++) {
+
+                cache[i][j] = this.grid[i][j];
+            }
+        }
+
+        for (let i = 0; i < this.width; i++) {
+            for (let j = 0; j < this.height; j++) {
+
+                let numberOfNeighbours = 0;
+
+                for (let k = -1; k <= 1; k++) {
+                    for (let l = -1; l <= 1; l++) {
+
+                        if (k == 0 && l == 0) continue;
+
+                        let x = i + k;
+                        let y = j + l;
+
+                        if (x < 0) {
+                            x = this.width - 1;
+                        } else if (x >= this.width) {
+                            x = 0;
+                        }
+
+                        if (y < 0) {
+                            y = this.height - 1;
+                        } else if (y >= this.height) {
+                            y = 0;
+                        }
+
+                        if (cache[x][y] instanceof Water) {
+                            numberOfNeighbours++;
+                        }
+                    }
+                }
+
+                let isAlive = cache[i][j] instanceof Water == true;
+
+                if (isAlive && numberOfNeighbours <= 2) {
+                    this.grid[i][j] = false;
                 }
             }
         }
@@ -342,22 +395,3 @@ class Grid {
         weatherCanvas.pop();
     }
 }
-
-// function createNoise() {
-
-//  for (let y = 0; y < height; y++) {
-//      for (let x = 0; x < width; x++) {
-
-//             let colour;
-
-//          if (random() < 0.5) {
-//              colour = color("#97C791");
-//          } else {
-//                 colour = color("#98C192")
-//             }
-//             set(x, y, colour);
-//      }
-//  }
-
-//     updatePixels();
-// }
