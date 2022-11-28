@@ -31,19 +31,19 @@ class Water {
         let corners = [1,1,1,1];
         let cornerRadius = 15;
 
-        if (grid.grid[this.gridX + 1][this.gridY] instanceof Water) {
+        if (grid.grid[mod(this.gridX + 1, worldWidth)][mod(this.gridY, worldHeight)] instanceof Water) {
             corners[1] = 0;
             corners[2] = 0;
         }
-        if (grid.grid[this.gridX - 1][this.gridY] instanceof Water) {
+        if (grid.grid[mod(this.gridX - 1, worldWidth)][mod(this.gridY, worldHeight)] instanceof Water) {
             corners[0] = 0;
             corners[3] = 0;
         }
-        if (grid.grid[this.gridX][this.gridY + 1] instanceof Water) {
+        if (grid.grid[mod(this.gridX, worldWidth)][mod(this.gridY + 1, worldHeight)] instanceof Water) {
             corners[2] = 0;
             corners[3] = 0;
         }
-        if (grid.grid[this.gridX][this.gridY - 1] instanceof Water) {
+        if (grid.grid[mod(this.gridX, worldWidth)][mod(this.gridY - 1, worldHeight)] instanceof Water) {
             corners[0] = 0;
             corners[1] = 0;
         }

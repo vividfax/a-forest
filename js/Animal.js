@@ -51,7 +51,7 @@ class Animal {
 
             let x = this.previousPositions[i][0];
             let y = this.previousPositions[i][1];
-            let currentCell = grid.grid[x][y];
+            let currentCell = grid.grid[mod(x, worldWidth)][mod(y, worldHeight)];
 
             if (x == this.x && y == this.y) {
                 continue;
@@ -63,7 +63,7 @@ class Animal {
                 continue;
             }
 
-            let cellBelow = grid.grid[x][y+1];
+            let cellBelow = mod(grid.grid[x][y+1], worldHeight);
 
             if (cellBelow instanceof House || cellBelow instanceof Tree) continue;
 
