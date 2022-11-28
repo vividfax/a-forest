@@ -311,7 +311,7 @@ function keyPressed() {
     }
 
     move();
-    tend();
+    write();
     enterHouse();
 
     draw();
@@ -361,13 +361,19 @@ function move() {
     }
 }
 
-function tend() {
+function write() {
 
     let currentCell = grid.grid[player.x][player.y];
 
-    let bannedKeys = [BACKSPACE, DELETE, ENTER, RETURN, TAB, ESCAPE, SHIFT, CONTROL, OPTION, ALT, UP_ARROW, DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW];
-
-    if (!bannedKeys.includes(keyCode) && keyCode != 91 && keyCode != 20) {
+    if (keyCode == DELETE || keyCode == BACKSPACE) {
+        if (currentCell instanceof Tree || currentCell instanceof Leaf) {
+            if (currentCell.phrase.length == 1) {
+                grid.grid[player.x][player.y] = new EmptyCell(player.x, player.y);
+            } else {
+                grid.grid[player.x][player.y].phrase = currentCell.phrase.slice(0, -1);
+            }
+        }
+    } else if (key.length == 1) {
         if (currentCell instanceof EmptyCell && keyCode != 32) {
             grid.grid[player.x][player.y] = new Tree(player.x, player.y);
             grid.grid[player.x][player.y].symbol = seedlingEmoji;
@@ -377,16 +383,8 @@ function tend() {
         if (currentCell instanceof Tree || currentCell instanceof Leaf) {
             grid.grid[player.x][player.y].addChar(key);
         }
-    } else if (keyCode == DELETE || keyCode == BACKSPACE) {
-
-        if (currentCell instanceof Tree || currentCell instanceof Leaf) {
-            if (currentCell.phrase.length == 1) {
-                grid.grid[player.x][player.y] = new EmptyCell(player.x, player.y);
-            } else {
-                grid.grid[player.x][player.y].phrase = currentCell.phrase.slice(0, -1);
-            }
-        }
     }
+
 }
 
 function enterHouse() {
