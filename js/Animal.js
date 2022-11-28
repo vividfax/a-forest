@@ -62,6 +62,10 @@ class Animal {
                 continue;
             }
 
+            let cellBelow = grid.grid[x][y+1];
+
+            if (cellBelow instanceof House || cellBelow instanceof Tree) continue;
+
             push();
 
             translate(this.previousPositions[i][0] *cellSize, this.previousPositions[i][1] * cellSize);
