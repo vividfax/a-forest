@@ -10,6 +10,9 @@ class Water {
         this.fog = fog;
         this.wave = false;
         this.waveNextFrame = false;
+        this.animal = false;
+        this.animalAge = 0;
+        this.animalSymbol;
     }
 
     update() {
@@ -64,11 +67,30 @@ class Water {
                 if (rightHandCell instanceof Water) {
                     grid.grid[this.gridX + 1][this.gridY].waveNextFrame = true;
                 }
+
+                this.animal = false;
+                this.animalAge = 0;
+            }
+            else if (this.animal) {
+                translate(cellSize/2, cellSize/2);
+                image(this.symbol, 0, 0, cellSize/3, cellSize/3);
             }
 
             if (this.waveNextFrame) {
                 this.wave = true;
                 this.waveNextFrame = false;
+            }
+
+            if (this.animal) {
+                this.animalAge++;
+
+                if (this.animalAge > random(12, 20)) {
+                    this.animal = false;
+                    this.animalAge = 0;
+                }
+            } else if (random() < 0.001) {
+                this.animal = true;
+                this.symbol = random(waterAnimals);
             }
         }
 

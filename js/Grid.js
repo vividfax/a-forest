@@ -264,7 +264,6 @@ class Grid {
                 this.grid[x+i][y+j] = false;
             }
         }
-
     }
 
     placeEmptyCells() {
@@ -317,7 +316,6 @@ class Grid {
     display() {
 
         background("#97C791");
-        // updatePixels();
 
         push();
         cloudCanvas.push();

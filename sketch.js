@@ -24,6 +24,7 @@ let weatherEmojis = [];
 let pawPrintsEmoji;
 let mailboxEmojis = [];
 let waterEmoji;
+let waterAnimals = [];
 
 let markov;
 
@@ -108,6 +109,12 @@ function preload() {
     mailboxEmojis.push(loadImage("./images/open-mailbox-with-lowered-flag.png"));
 
     waterEmoji = loadImage("./images/water-wave.png");
+
+    waterAnimals.push(loadImage("./images/dolphin.png"));
+    waterAnimals.push(loadImage("./images/otter.png"));
+    waterAnimals.push(loadImage("./images/fish.png"));
+    waterAnimals.push(loadImage("./images/fish.png"));
+    waterAnimals.push(loadImage("./images/fish.png"));
 }
 
 function setup() {
