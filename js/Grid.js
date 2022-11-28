@@ -257,9 +257,10 @@ class Grid {
 
         let x = int(worldWidth/2);
         let y = int(worldHeight/2);
+        let radius = 3;
 
-        for (let i = -1; i <= 1; i++) {
-            for (let j = -1; j <= 1; j++) {
+        for (let i = -radius; i <= radius; i++) {
+            for (let j = -radius; j <= radius; j++) {
                 this.grid[x+i][y+j] = false;
             }
         }
