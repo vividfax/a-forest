@@ -21,14 +21,18 @@ class Animal {
 
             let directions = [[0,1],[1,0],[-1,0],[0,-1]];
             let direction = random(directions);
+            let x = direction[0];
+            let y = direction[1];
 
-            this.x += direction[0];
-            this.y += direction[1];
+            let targetCell = grid.grid[mod(this.x+x, worldWidth)][mod(this.y+y, worldHeight)];
 
-            if (this.x < 0) this.x = grid.width-1;
-            else if (this.x >= grid.width) this.x = 0;
-            if (this.y < 0) this.y = grid.height-1;
-            else if (this.y >= grid.height) this.y = 0;
+            if (targetCell instanceof Water) return;
+
+            this.x += x;
+            this.y += y;
+
+            this.x = mod(this.x, worldWidth);
+            this.y = mod(this.y, worldHeight);
         }
     }
 

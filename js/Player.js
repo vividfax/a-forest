@@ -25,6 +25,8 @@ class Player {
 
         let targetCell = grid.grid[mod(this.x+x, worldWidth)][mod(this.y+y, worldHeight)];
 
+        if (targetCell instanceof Water) return;
+
         this.x += x;
         this.y += y;
 

@@ -2,93 +2,94 @@
 <html>
 
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>a forest</title>
+    <title>a forest</title>
 
- 	<link rel="preconnect" href="https://fonts.gstatic.com">
-	<link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
-	<link href="styles.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
 
-	<script src="libraries/p5.min.js"></script>
-	<script src="libraries/rita.js"></script>
+    <script src="libraries/p5.min.js"></script>
+    <script src="libraries/rita.js"></script>
 
-	<script src="sketch.js"></script>
-	<script src="js/Player.js"></script>
-	<script src="js/Grid.js"></script>
-	<script src="js/EmptyCell.js"></script>
-	<script src="js/Tree.js"></script>
-	<script src="js/Leaf.js"></script>
-	<script src="js/Flower.js"></script>
-	<script src="js/House.js"></script>
-	<script src="js/Animal.js"></script>
-	<script src="js/Weather.js"></script>
-	<script src="js/Mailbox.js"></script>
+    <script src="sketch.js"></script>
+    <script src="js/Player.js"></script>
+    <script src="js/Grid.js"></script>
+    <script src="js/EmptyCell.js"></script>
+    <script src="js/Tree.js"></script>
+    <script src="js/Leaf.js"></script>
+    <script src="js/Flower.js"></script>
+    <script src="js/House.js"></script>
+    <script src="js/Animal.js"></script>
+    <script src="js/Weather.js"></script>
+    <script src="js/Mailbox.js"></script>
+    <script src="js/Water.js"></script>
 
-	<style>
-		body {
-			margin: 0;
-			padding: 0;
-			overflow: hidden;
-			font-family: 'Fira Code', monospace;
-		}
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: 'Fira Code', monospace;
+        }
 
-		canvas {
-			margin: auto;
-			position: absolute;
-			left: 50%;
-			top: 50%;
-			transform: translate(-50%, -50%);
-			mix-blend-mode: hard-light;
-		}
+        canvas {
+            margin: auto;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            mix-blend-mode: hard-light;
+        }
 
-		body::before, body::after {
-			position: absolute;
-			left: 0;
-			top: 0;
-			content: '';
-			width: 100%;
-			height: 100%;
-			z-index: -1;
-		}
+        body::before, body::after {
+            position: absolute;
+            left: 0;
+            top: 0;
+            content: '';
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
 
-		body::before {
-			filter: url(#noiseFilter);
-		}
+        body::before {
+            filter: url(#noiseFilter);
+        }
 
-		button {
-			font-family: "Fira Code", serif;
-			width: 200px;
-			height: 40px;
-			border-radius: 5px;
-			border-style: none;
-			font-size: large;
-			color: #888;
-			background-color: #fff;
-			user-select: none;
-			-moz-user-select: none;
-		}
+        button {
+            font-family: "Fira Code", serif;
+            width: 200px;
+            height: 40px;
+            border-radius: 5px;
+            border-style: none;
+            font-size: large;
+            color: #888;
+            background-color: #fff;
+            user-select: none;
+            -moz-user-select: none;
+        }
 
-		button:hover {
-			color: #fff;
-			background-color: #888;
-		}
-	</style>
+        button:hover {
+            color: #fff;
+            background-color: #888;
+        }
+    </style>
 </head>
 
 <body>
 
-	<svg>
-		<filter id='noiseFilter'>
-		  <feTurbulence
-			type='fractalNoise'
-			baseFrequency='1'
-			numOctaves='10'
-			stitchTiles='stitch'/>
-		</filter>
-	  </svg>
+    <svg>
+        <filter id='noiseFilter'>
+          <feTurbulence
+            type='fractalNoise'
+            baseFrequency='1'
+            numOctaves='10'
+            stitchTiles='stitch'/>
+        </filter>
+      </svg>
 
 </body>
 
