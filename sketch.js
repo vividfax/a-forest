@@ -46,6 +46,8 @@ let typedSentence = false;
 let cloudCanvas;
 let weatherCanvas;
 
+let frameDrawn = false;
+
 function preload() {
 
     manualPlants = loadJSON("./json/plants.json");
@@ -137,6 +139,7 @@ function setup() {
     imageMode(CENTER);
     textFont("Fira Code");
     noStroke();
+    frameRate(2);
 
     grid = new Grid(worldWidth, worldHeight);
     createAnimals();
@@ -151,6 +154,17 @@ function setup() {
     let resetButton = createButton("Reset");
     resetButton.position(10, 10);
     resetButton.mousePressed(reset);
+}
+
+function update() {
+
+    for (let i = 0; i < animals.length; i++) {
+        animals[i].move();
+    }
+    for (let i = 0; i < weathers.length; i++) {
+        weathers[i].move();
+        weathers[i].update();
+    }
 }
 
 function draw() {
@@ -177,6 +191,8 @@ function draw() {
     image(weatherCanvas, width/2, height/2);
 
     displayUI();
+
+    noLoop();
 }
 
 function createAnimals() {
@@ -313,8 +329,9 @@ function keyPressed() {
     move();
     write();
     enterHouse();
+    update();
 
-    draw();
+    loop();
 }
 
 function move() {
@@ -355,10 +372,6 @@ function move() {
     if (!moved) moved = true;
 
     grid.update();
-
-    for (let i = 0; i < animals.length; i++) {
-        animals[i].move();
-    }
 }
 
 function write() {
@@ -384,7 +397,6 @@ function write() {
             grid.grid[player.x][player.y].addChar(key);
         }
     }
-
 }
 
 function enterHouse() {
@@ -482,4 +494,9 @@ function reset() {
 
     noLoop();
     draw();
+}
+
+function keyReleased() {
+
+    noLoop();
 }

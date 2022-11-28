@@ -371,8 +371,6 @@ class Grid {
                 else if (this.grid[targetX][targetY].fog) {
                     for (let k = 0; k < weathers.length; k++) {
                         if (weathers[k].x == targetX && weathers[k].y == targetY) {
-                            weathers[k].move();
-                            weathers[k].update();
                             weathers[k].display();
                             break;
                         }

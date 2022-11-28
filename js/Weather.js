@@ -9,9 +9,6 @@ class Weather {
         this.dead = false;
 
         this.scale = random(0.8, 1.2);
-        this.offsetX = int(random(-cellSize/7, cellSize/7));
-        this.offsetY = int(random(-cellSize/7, cellSize/7));
-
     }
 
     update() {
@@ -46,11 +43,14 @@ class Weather {
 
         if (this.dead) return;
 
+        let offsetX = int(random(-cellSize/7, cellSize/7));
+        let offsetY = int(random(-cellSize/7, cellSize/7));
+
         weatherCanvas.push();
 
         weatherCanvas.translate(this.x *cellSize, this.y * cellSize);
         weatherCanvas.translate(cellSize/2, cellSize/2);
-        weatherCanvas.translate(this.offsetX, this.offsetY);
+        weatherCanvas.translate(offsetX, offsetY);
 
         weatherCanvas.image(this.symbol, 0, cellSize/3, cellSize*.3*this.scale, cellSize*.3*this.scale);
 
