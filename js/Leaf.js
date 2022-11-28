@@ -14,6 +14,9 @@ class Leaf {
         this.offsetX = int(random(-cellSize/4, cellSize/4));
         this.offsetY = int(random(-cellSize/4, cellSize/4));
         this.scale = random(0.6, 0.8);
+
+        this.snowflakeOffsetX = int(random(-cellSize*.3, cellSize*.3));
+        this.snowflakeOffsetY = int(random(-cellSize*.3, cellSize*.3));
     }
 
     addChar(c) {
@@ -44,6 +47,7 @@ class Leaf {
         translate(this.x, this.y);
 
         if (this.fog) {
+            translate(this.snowflakeOffsetX, this.snowflakeOffsetY);
             drawFog();
         } else {
             // fill("#97C791");

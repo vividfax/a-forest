@@ -9,6 +9,8 @@ class EmptyCell {
 
         this.pawOffsetX = int(random(-cellSize*.1, cellSize*.1));
         this.pawOffsetY = int(random(-cellSize*.1, cellSize*.1));
+        this.snowflakeOffsetX = int(random(-cellSize*.3, cellSize*.3));
+        this.snowflakeOffsetY = int(random(-cellSize*.3, cellSize*.3));
     }
 
     update() {
@@ -22,6 +24,7 @@ class EmptyCell {
         cloudCanvas.translate(this.x, this.y);
 
         if (this.fog) {
+            translate(this.snowflakeOffsetX, this.snowflakeOffsetY);
             drawFog();
         }
 

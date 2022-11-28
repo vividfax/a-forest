@@ -21,6 +21,9 @@ class Mailbox {
         this.greetings = ["Dearest friend", "Friend", "My dear", "My dearest friend", "My friend", "Dear friend"];
         this.goodbyes = ["Yours", "Yours always", "Much love", "Best wishes", "Remember this"];
         this.sender = ["Alys", "A"];
+
+        this.snowflakeOffsetX = int(random(-cellSize*.3, cellSize*.3));
+        this.snowflakeOffsetY = int(random(-cellSize*.3, cellSize*.3));
     }
 
     addChar(c) {
@@ -31,7 +34,7 @@ class Mailbox {
             this.symbol = random(treeEmojis);
             this.mature = true;
             this.scale = random(1.8, 2.3);
-			if (!typedSentence) typedSentence = true;
+            if (!typedSentence) typedSentence = true;
         }
     }
 
@@ -69,6 +72,7 @@ class Mailbox {
         cloudCanvas.translate(this.x, this.y);
 
         if (this.fog) {
+            translate(this.snowflakeOffsetX, this.snowflakeOffsetY);
             drawFog();
         } else {
 

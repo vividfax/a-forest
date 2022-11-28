@@ -16,6 +16,9 @@ class House {
         this.scale = 1.6;
 
         this.visited = false;
+
+        this.snowflakeOffsetX = int(random(-cellSize*.3, cellSize*.3));
+        this.snowflakeOffsetY = int(random(-cellSize*.3, cellSize*.3));
     }
 
     update() {
@@ -29,6 +32,7 @@ class House {
         cloudCanvas.translate(this.x, this.y);
 
         if (this.fog) {
+            translate(this.snowflakeOffsetX, this.snowflakeOffsetY);
             drawFog();
         } else {
             translate(cellSize/2, cellSize/2-cellSize/3);

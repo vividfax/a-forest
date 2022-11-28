@@ -13,6 +13,9 @@ class Water {
         this.animal = false;
         this.animalAge = 0;
         this.animalSymbol;
+
+        this.snowflakeOffsetX = int(random(-cellSize*.3, cellSize*.3));
+        this.snowflakeOffsetY = int(random(-cellSize*.3, cellSize*.3));
     }
 
     update() {
@@ -49,6 +52,7 @@ class Water {
         rect(0, 0, cellSize, cellSize, corners[0]*cornerRadius, corners[1]*cornerRadius, corners[2]*cornerRadius, corners[3]*cornerRadius);
 
         if (this.fog) {
+            translate(this.snowflakeOffsetX, this.snowflakeOffsetY);
             drawFog();
         } else {
 
@@ -73,6 +77,7 @@ class Water {
             }
             else if (this.animal) {
                 translate(cellSize/2, cellSize/2);
+                translate(random(-3, 3), random(-3, 3));
                 image(this.symbol, 0, 0, cellSize/3, cellSize/3);
             }
 

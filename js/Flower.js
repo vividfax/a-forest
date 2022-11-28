@@ -12,6 +12,9 @@ class Flower {
         this.offsetX = int(random(-cellSize/7, cellSize/7));
         this.offsetY = int(random(-cellSize/7, cellSize/7));
         this.scale = random(0.4, 0.6);
+
+        this.snowflakeOffsetX = int(random(-cellSize*.3, cellSize*.3));
+        this.snowflakeOffsetY = int(random(-cellSize*.3, cellSize*.3));
     }
 
     update() {
@@ -25,6 +28,7 @@ class Flower {
         cloudCanvas.translate(this.x, this.y);
 
         if (this.fog) {
+            translate(this.snowflakeOffsetX, this.snowflakeOffsetY);
             drawFog();
         } else {
             translate(cellSize/2, cellSize/2);

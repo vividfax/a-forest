@@ -25,6 +25,9 @@ class Tree {
         if (!this.mature) {
             this.scale = 0.6;
         }
+
+        this.snowflakeOffsetX = int(random(-cellSize*.3, cellSize*.3));
+        this.snowflakeOffsetY = int(random(-cellSize*.3, cellSize*.3));
     }
 
     addChar(c) {
@@ -35,7 +38,7 @@ class Tree {
             this.symbol = random(treeEmojis);
             this.mature = true;
             this.scale = random(1.8, 2.3);
-			if (!typedSentence) typedSentence = true;
+            if (!typedSentence) typedSentence = true;
         }
     }
 
@@ -108,6 +111,7 @@ class Tree {
         cloudCanvas.translate(this.x, this.y);
 
         if (this.fog) {
+            translate(this.snowflakeOffsetX, this.snowflakeOffsetY);
             drawFog();
         } else {
             // fill("#97C791");
