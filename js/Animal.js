@@ -51,14 +51,15 @@ class Animal {
 
             let x = this.previousPositions[i][0];
             let y = this.previousPositions[i][1];
+            let currentCell = grid.grid[x][y];
 
             if (x == this.x && y == this.y) {
                 continue;
             }
 
-            if (grid.grid[x][y].fog) continue;
+            if (currentCell.fog) continue;
 
-            if (grid.grid[x][y] instanceof EmptyCell == false) {
+            if (currentCell instanceof EmptyCell == false) {
                 continue;
             }
 
@@ -70,6 +71,7 @@ class Animal {
 
             translate(this.previousPositions[i][0] *cellSize, this.previousPositions[i][1] * cellSize);
             translate(cellSize/2, cellSize/2);
+            translate(currentCell.pawOffsetX, currentCell.pawOffsetY);
 
             tint(255, (i+1)*30);
             image(pawPrintsEmoji, 0, cellSize*.3, cellSize/3, cellSize/3);

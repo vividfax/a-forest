@@ -6,6 +6,9 @@ class EmptyCell {
         this.y = y * cellSize;
         this.symbol = "";
         this.fog = fog;
+
+        this.pawOffsetX = int(random(-cellSize*.1, cellSize*.1));
+        this.pawOffsetY = int(random(-cellSize*.1, cellSize*.1));
     }
 
     update() {
