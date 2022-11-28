@@ -43,7 +43,7 @@ class Animal {
         translate(this.x *cellSize, this.y * cellSize);
         translate(cellSize/2, cellSize/2);
 
-        image(this.symbol, 0, cellSize/3, cellSize/2, cellSize/2);
+        image(this.symbol, 0, cellSize*.3, cellSize/2, cellSize/2);
 
         pop();
 
@@ -72,7 +72,7 @@ class Animal {
             translate(cellSize/2, cellSize/2);
 
             tint(255, (i+1)*30);
-            image(pawPrintsEmoji, 0, cellSize/3, cellSize/3, cellSize/3);
+            image(pawPrintsEmoji, 0, cellSize*.3, cellSize/3, cellSize/3);
 
             pop();
         }

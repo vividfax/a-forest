@@ -62,7 +62,7 @@ class Player {
         // fill(0);
         // textSize(cellSize);
         // text(this.symbol, 0, 0);
-        image(playerImage, 0, cellSize/10, cellSize, cellSize);
+        image(playerImage, 0, -cellSize*.1, cellSize, cellSize);
 
         pop();
     }
