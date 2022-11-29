@@ -188,7 +188,7 @@ function draw() {
 
     displayUI();
 
-    if (keyIsPressed) {
+    if (keyIsPressed && !(keyIsDown(ENTER) || keyIsDown(RETURN))) {
         frameRate(timeHolding+3);
         timeHolding++;
         if (timeHolding > 1) {
@@ -440,7 +440,7 @@ function enterHouse() {
     }
 
     update();
-    loop();
+    draw();
 }
 
 function copyText() {
