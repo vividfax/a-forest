@@ -55,8 +55,6 @@ class Tree {
             words = words.replace(/\)/g, " )")
             words = words.trim().split(/ /g);
 
-            console.log(words);
-
             let completions = markov.completions(words);
 
             while (completions.length <= 0 && words.length > 1) {
