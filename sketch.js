@@ -8,7 +8,6 @@ let renderScale = 0.5;
 
 let lastMoveWasDiagonal = false;
 let hasMoved = false;
-let hasMovedDiagonally = false;
 
 let playerImage;
 
@@ -46,7 +45,7 @@ let typedSentence = false;
 let cloudCanvas;
 let weatherCanvas;
 
-let frameDrawn = false;
+let timeHolding = 0;
 
 function preload() {
 
@@ -146,10 +145,7 @@ function setup() {
     createWeather();
     player = new Player();
 
-    // createNoise();
-
     noLoop();
-    draw();
 
     let resetButton = createButton("Reset");
     resetButton.position(10, 10);
@@ -192,7 +188,17 @@ function draw() {
 
     displayUI();
 
-    noLoop();
+    if (keyIsPressed) {
+        frameRate(timeHolding+3);
+        timeHolding++;
+        if (timeHolding > 1) {
+            keyPressed();
+        }
+        if (timeHolding > 2) timeHolding = 2;
+    } else {
+        noLoop();
+        timeHolding = 0;
+    }
 }
 
 function createAnimals() {
@@ -316,10 +322,8 @@ function displayUI() {
 function keyPressed() {
 
     if (!player) return;
-
-    if (keyIsDown(CONTROL)) {
-        return;
-    }
+    if (!keyIsPressed) return;
+    if (keyIsDown(CONTROL)) return;
 
     if (justCopyPaste) {
         justCopyPaste = false;
@@ -329,9 +333,6 @@ function keyPressed() {
     move();
     write();
     enterHouse();
-    update();
-
-    loop();
 }
 
 function move() {
@@ -341,29 +342,25 @@ function move() {
         return;
     }
 
-    if ((keyCode == UP_ARROW && keyIsDown(LEFT_ARROW)) || (keyCode == LEFT_ARROW && keyIsDown(UP_ARROW))) {
+    if (keyIsDown(LEFT_ARROW) && keyIsDown(UP_ARROW)) {
         player.move(-1, -1);
         lastMoveWasDiagonal = true;
-        hasMovedDiagonally = true;
-    } else if ((keyCode == DOWN_ARROW && keyIsDown(LEFT_ARROW)) || (keyCode == LEFT_ARROW && keyIsDown(DOWN_ARROW))) {
+    } else if (keyIsDown(LEFT_ARROW) && keyIsDown(DOWN_ARROW)) {
         player.move(-1, 1);
         lastMoveWasDiagonal = true;
-        hasMovedDiagonally = true;
-    } else if ((keyCode == UP_ARROW && keyIsDown(RIGHT_ARROW)) || (keyCode == RIGHT_ARROW && keyIsDown(UP_ARROW))) {
+    } else if (keyIsDown(RIGHT_ARROW) && keyIsDown(UP_ARROW)) {
         player.move(1, -1);
         lastMoveWasDiagonal = true;
-        hasMovedDiagonally = true;
-    } else if ((keyCode == DOWN_ARROW && keyIsDown(RIGHT_ARROW)) || (keyCode == RIGHT_ARROW && keyIsDown(DOWN_ARROW))) {
+    } else if (keyIsDown(RIGHT_ARROW) && keyIsDown(DOWN_ARROW)) {
         player.move(1, 1);
         lastMoveWasDiagonal = true;
-        hasMovedDiagonally = true;
-    } else if (keyCode == UP_ARROW) {
+    } else if (keyIsDown(UP_ARROW)) {
         player.move(0, -1);
-    } else if (keyCode == DOWN_ARROW) {
+    } else if (keyIsDown(DOWN_ARROW)) {
         player.move(0, 1);
-    } else if (keyCode == LEFT_ARROW) {
+    } else if (keyIsDown(LEFT_ARROW)) {
         player.move(-1, 0);
-    } else if (keyCode == RIGHT_ARROW) {
+    } else if (keyIsDown(RIGHT_ARROW)) {
         player.move(1, 0);
     } else {
         return;
@@ -372,13 +369,16 @@ function move() {
     if (!moved) moved = true;
 
     grid.update();
+
+    update();
+    loop();
 }
 
 function write() {
 
     let currentCell = grid.grid[player.x][player.y];
 
-    if (keyCode == DELETE || keyCode == BACKSPACE) {
+    if (keyIsDown(DELETE) || keyIsDown(BACKSPACE)) {
         if (currentCell instanceof Tree || currentCell instanceof Leaf) {
             if (currentCell.phrase.length == 1) {
                 grid.grid[player.x][player.y] = new EmptyCell(player.x, player.y);
@@ -386,17 +386,26 @@ function write() {
                 grid.grid[player.x][player.y].phrase = currentCell.phrase.slice(0, -1);
             }
         }
-    } else if (key.length == 1) {
-        if (currentCell instanceof EmptyCell && keyCode != 32) {
+    } else if (key.length == 1 || (keyIsDown(ENTER) || keyIsDown(RETURN))) {
+        if (currentCell instanceof EmptyCell && !keyIsDown(32) && !(keyIsDown(ENTER) || keyIsDown(RETURN))) {
             grid.grid[player.x][player.y] = new Tree(player.x, player.y);
             grid.grid[player.x][player.y].symbol = seedlingEmoji;
             currentCell = grid.grid[player.x][player.y];
             if (!typed) typed = true;
         }
         if (currentCell instanceof Tree || currentCell instanceof Leaf) {
-            grid.grid[player.x][player.y].addChar(key);
+            if (keyIsDown(ENTER) || keyIsDown(RETURN)) {
+                grid.grid[player.x][player.y].addChar("\n");
+            } else {
+                grid.grid[player.x][player.y].addChar(key);
+            }
         }
+    } else {
+        return;
     }
+
+    update();
+    loop();
 }
 
 function enterHouse() {
@@ -420,7 +429,12 @@ function enterHouse() {
                 }
             }
         }
+    } else {
+        return;
     }
+
+    update();
+    loop();
 }
 
 function copyText() {
@@ -498,5 +512,8 @@ function reset() {
 
 function keyReleased() {
 
-    noLoop();
+    if (!keyIsPressed) {
+        noLoop();
+        timeHolding = 0;
+    }
 }

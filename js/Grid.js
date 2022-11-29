@@ -38,9 +38,9 @@ class Grid {
         this.growWater();
         this.growWater();
         this.growWater();
-        this.removeWaterStragglers();
-        this.removeWaterStragglers();
         this.clearCentre();
+        this.removeWaterStragglers();
+        this.removeWaterStragglers();
         this.placeEmptyCells();
     }
 
