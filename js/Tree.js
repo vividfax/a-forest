@@ -46,11 +46,17 @@ class Tree {
 
         if (random() < 0.1) {
 
-            // if (this.mature) {
-            //     markov.addText(this.phrase);
-            // }
+            let words = this.phrase;
+            words = words.replace(/,/g, " ,")
+            words = words.replace(/\./g, " .")
+            words = words.replace(/\[/g, "[ ")
+            words = words.replace(/\]/g, " ]")
+            words = words.replace(/\(/g, "( ")
+            words = words.replace(/\)/g, " )")
+            words = words.trim().split(/ /g);
 
-            let words = this.phrase.trim().split(" ");
+            console.log(words);
+
             let completions = markov.completions(words);
 
             while (completions.length <= 0 && words.length > 1) {
@@ -90,7 +96,10 @@ class Tree {
                     if (grid.grid[x][y] instanceof EmptyCell) {
                         if (random(tries) < 0.1) {
 
-                            let phrase = this.phrase.trim().replace(/[ ]+/g, " ");
+                            let phrase = this.phrase;
+                            phrase = phrase.replace(/[^a-zA-Z]/g, " ");
+                            phrase = phrase.replace(/[ ]+/g, " ");
+                            phrase = phrase.trim();
                             let words = phrase.split(" ");
                             let word = random(words);
                             grid.grid[x][y] = new Leaf(x, y, grid.grid[x][y].fog, word);

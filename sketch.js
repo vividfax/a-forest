@@ -274,6 +274,12 @@ function displayUI() {
 
     if (currentCell instanceof EmptyCell == false) {
         uiText = currentCell.phrase;
+        uiText = uiText.replace(/ ,/g, ",")
+        uiText = uiText.replace(/ \./g, ".")
+        uiText = uiText.replace(/\[ /g, "[")
+        uiText = uiText.replace(/ \]/g, "]")
+        uiText = uiText.replace(/\( /g, "(")
+        uiText = uiText.replace(/ \)/g, ")")
     } else {
         for (let i = 0; i < animals.length; i++) {
             if (animals[i].x == player.x && animals[i].y == player.y) {
