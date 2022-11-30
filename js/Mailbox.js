@@ -29,6 +29,7 @@ class Mailbox {
         this.w = 960;
         this.h = 600;
         this.postcardWritingImage = random(postcardWritingImages);
+        this.postcardPhotoImage = random(postcardPhotoImages);
     }
 
     addChar(c) {
@@ -98,6 +99,9 @@ class Mailbox {
         translate(width/2, height/2);
 
         if (this.side == 1) {
+            rectMode(CENTER);
+            fill("#F2F2F2");
+            rect(0, 0, this.w+20, this.h+20);
             image(this.postcardWritingImage, 0, 0);
 
             textAlign(LEFT, TOP);
@@ -109,13 +113,9 @@ class Mailbox {
         } else if (this.side == -1) {
 
             rectMode(CENTER);
-            textAlign(LEFT, TOP);
-            textSize(cellSize/2);
-            textFont(postcardFont);
-
-            fill("#a0a0a0");
-            rect(0, 0, this.w, this.h, 4);
-
+            fill("#F2F2F2");
+            rect(0, 0, this.w+20, this.h+20);
+            image(this.postcardPhotoImage, 0, 0);
         }
 
         pop();

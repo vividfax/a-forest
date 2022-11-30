@@ -26,6 +26,7 @@ let waterEmoji;
 let waterAnimals = [];
 
 let postcardWritingImages = [];
+let postcardPhotoImages = [];
 
 let markov;
 
@@ -129,6 +130,8 @@ function preload() {
     postcardFont = loadFont("./fonts/VT323-Regular.ttf");
 
     postcardWritingImages.push(loadImage("./images/postcard-writing.png"));
+
+    postcardPhotoImages.push(loadImage("./images/postcard-photo.png"));
 }
 
 function setup() {
@@ -328,7 +331,7 @@ function displayUI() {
     if (uiText != "") {
         push();
         stroke("#F2F2F2");
-        strokeWeight(6); // 17?
+        strokeWeight(17); // 6 or 17?
         strokeJoin(ROUND);
         fill("#0A0A0A");
         text(uiText, leftEdge+280, 20, uiWidth-300, height-40);
