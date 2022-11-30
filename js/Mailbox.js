@@ -100,7 +100,7 @@ class Mailbox {
 
         if (this.side == 1) {
             rectMode(CENTER);
-            fill("#F2F2F2");
+            fill("#eee");
             rect(0, 0, this.w+20, this.h+20);
             image(this.postcardWritingImage, 0, 0);
 

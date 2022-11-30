@@ -330,7 +330,7 @@ function displayUI() {
 
     if (uiText != "") {
         push();
-        stroke("#F2F2F2");
+        stroke("#eee");
         strokeWeight(17); // 6 or 17?
         strokeJoin(ROUND);
         fill("#0A0A0A");
