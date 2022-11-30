@@ -305,17 +305,13 @@ function displayUI() {
     }
 
     if (uiText != "") {
-        fill("#F2F2F2");
-        text(uiText, leftEdge+280+2, 20+2, uiWidth-300, height-40);
-        text(uiText, leftEdge+280-2, 20+2, uiWidth-300, height-40);
-        text(uiText, leftEdge+280-2, 20-2, uiWidth-300, height-40);
-        text(uiText, leftEdge+280+2, 20-2, uiWidth-300, height-40);
-        text(uiText, leftEdge+280+2, 20, uiWidth-300, height-40);
-        text(uiText, leftEdge+280-2, 20, uiWidth-300, height-40);
-        text(uiText, leftEdge+280, 20-2, uiWidth-300, height-40);
-        text(uiText, leftEdge+280, 20+2, uiWidth-300, height-40);
+        push();
+        stroke("#F2F2F2");
+        strokeWeight(15);
+        strokeJoin(ROUND);
         fill("#0A0A0A");
         text(uiText, leftEdge+280, 20, uiWidth-300, height-40);
+        pop();
 
         if (!noCharacter) {
             image(playerImage, leftEdge+150, height-70, 500, 500);
