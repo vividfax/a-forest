@@ -297,7 +297,7 @@ function displayUI() {
     } else {
         for (let i = 0; i < animals.length; i++) {
             if (animals[i].x == player.x && animals[i].y == player.y) {
-                uiText = "^_^";
+                uiText = animals[i].phrase;
                 break;
             }
         }
@@ -328,7 +328,7 @@ function displayUI() {
     if (uiText != "") {
         push();
         stroke("#F2F2F2");
-        strokeWeight(17);
+        strokeWeight(6); // 17?
         strokeJoin(ROUND);
         fill("#0A0A0A");
         text(uiText, leftEdge+280, 20, uiWidth-300, height-40);

@@ -6,6 +6,8 @@ class Animal {
         this.y = y;
         this.symbol = random(animalEmojis);
 
+        this.phrase = random(kaomojis.kaomoji);
+
         this.previousPositions = [];
     }
 

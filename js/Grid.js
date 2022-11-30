@@ -360,6 +360,10 @@ class Grid {
 
                 this.grid[targetX][targetY].display();
 
+                if (player.x == targetX && player.y == targetY) {
+                    player.display();
+                }
+
                 if (!this.grid[targetX][targetY].fog) {
                     for (let k = 0; k < animals.length; k++) {
                         if (animals[k].x == targetX && animals[k].y == targetY) {
@@ -375,10 +379,6 @@ class Grid {
                             break;
                         }
                     }
-                }
-
-                if (player.x == targetX && player.y == targetY) {
-                    player.display();
                 }
 
                 pop();
