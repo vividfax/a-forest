@@ -25,6 +25,8 @@ let mailboxEmojis = [];
 let waterEmoji;
 let waterAnimals = [];
 
+let postcardWritingImages = [];
+
 let markov;
 
 let justCopyPaste = false;
@@ -47,11 +49,14 @@ let weatherCanvas;
 
 let timeHolding = 0;
 
+let regularFont;
+let postcardFont;
+
 function preload() {
 
     manualPlants = loadJSON("./json/plants.json");
     links = loadJSON("./json/links.json");
-    mail = loadJSON("./json/fortunes.json");
+    mail = loadJSON("./json/mail.json");
 
     playerImage = loadImage("./images/player.png");
 
@@ -116,6 +121,12 @@ function preload() {
     waterAnimals.push(loadImage("./images/fish.png"));
     waterAnimals.push(loadImage("./images/fish.png"));
     waterAnimals.push(loadImage("./images/fish.png"));
+
+    regularFont = loadFont("./fonts/FiraCode-Regular.ttf");
+    // postcardFont = loadFont("./fonts/Caveat-Regular.ttf");
+    postcardFont = loadFont("./fonts/VT323-Regular.ttf");
+
+    postcardWritingImages.push(loadImage("./images/postcard-writing.png"));
 }
 
 function setup() {
@@ -136,7 +147,7 @@ function setup() {
     angleMode(DEGREES);
     textAlign(CENTER, CENTER);
     imageMode(CENTER);
-    textFont("Fira Code");
+    textFont(postcardFont);
     noStroke();
     frameRate(2);
 
@@ -187,6 +198,7 @@ function draw() {
     image(weatherCanvas, width/2, height/2);
 
     displayUI();
+    displayPostcard();
 
     if (keyIsPressed && !(keyIsDown(ENTER) || keyIsDown(RETURN))) {
         frameRate(timeHolding+3);
@@ -264,7 +276,7 @@ function displayUI() {
     push();
 
     textAlign(LEFT, BOTTOM);
-    textSize(cellSize/2);
+    textSize(cellSize*.6);
 
     let uiWidth = width > 2048 ? 2048 : width;
     let leftEdge = width/2-uiWidth/2;
@@ -272,7 +284,7 @@ function displayUI() {
     let currentCell = grid.grid[player.x][player.y];
     let uiText = "";
 
-    if (currentCell instanceof EmptyCell == false) {
+    if (currentCell instanceof EmptyCell == false && currentCell instanceof Mailbox == false) {
         uiText = currentCell.phrase;
         uiText = uiText.replace(/ ,/g, ",")
         uiText = uiText.replace(/ \./g, ".")
@@ -304,10 +316,17 @@ function displayUI() {
         }
     }
 
+    if (currentCell instanceof Mailbox) {
+
+        noCharacter = true;
+
+        uiText = "Press R to see reverse side";
+    }
+
     if (uiText != "") {
         push();
         stroke("#F2F2F2");
-        strokeWeight(15);
+        strokeWeight(30);
         strokeJoin(ROUND);
         fill("#0A0A0A");
         text(uiText, leftEdge+280, 20, uiWidth-300, height-40);
@@ -319,6 +338,16 @@ function displayUI() {
     }
 
     pop();
+}
+
+function displayPostcard() {
+
+    let currentCell = grid.grid[player.x][player.y];
+
+    if (currentCell instanceof Mailbox) {
+
+        currentCell.displayPostcard();
+    }
 }
 
 function keyPressed() {
@@ -335,6 +364,7 @@ function keyPressed() {
     move();
     write();
     enterHouse();
+    reversePostcard();
 }
 
 function move() {
@@ -379,6 +409,8 @@ function move() {
 function write() {
 
     let currentCell = grid.grid[player.x][player.y];
+
+    if (currentCell instanceof Mailbox) return;
 
     if (keyIsDown(DELETE) || keyIsDown(BACKSPACE)) {
         if (currentCell instanceof Tree || currentCell instanceof Leaf) {
@@ -431,6 +463,20 @@ function enterHouse() {
                 }
             }
         }
+    } else {
+        return;
+    }
+
+    update();
+    draw();
+}
+
+function reversePostcard() {
+
+    let currentCell = grid.grid[player.x][player.y];
+
+    if (currentCell instanceof Mailbox && keyCode == 82) {
+        grid.grid[player.x][player.y].side *= -1;
     } else {
         return;
     }

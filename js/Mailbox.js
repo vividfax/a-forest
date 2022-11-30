@@ -24,6 +24,11 @@ class Mailbox {
 
         this.snowflakeOffsetX = int(random(-cellSize*.3, cellSize*.3));
         this.snowflakeOffsetY = int(random(-cellSize*.3, cellSize*.3));
+
+        this.side = 1;
+        this.w = 960;
+        this.h = 600;
+        this.postcardWritingImage = random(postcardWritingImages);
     }
 
     addChar(c) {
@@ -56,7 +61,8 @@ class Mailbox {
                     this.symbol = mailboxEmojis[1];
                 }
                 else {
-                    this.phrase = "looks like it's just a blank piece of paper";
+                    // this.phrase = "looks like it's just a blank piece of paper";
+                    this.phrase = "";
                     this.visiting = true;
                     this.symbol = mailboxEmojis[1];
                 }
@@ -81,6 +87,35 @@ class Mailbox {
             translate(this.offsetX, this.offsetY);
 
             image(this.symbol, 0, cellSize/3, cellSize*.8*this.scale, cellSize*.8*this.scale);
+        }
+
+        pop();
+    }
+
+    displayPostcard() {
+
+        push();
+        translate(width/2, height/2);
+
+        if (this.side == 1) {
+            image(this.postcardWritingImage, 0, 0);
+
+            textAlign(LEFT, TOP);
+            textSize(cellSize*.6);
+            textFont(postcardFont);
+            rectMode(CORNER);
+            fill("#404040");
+            text(this.phrase, -this.w/2+40, -this.h/2+20, this.w/2-130, this.h-40);
+        } else if (this.side == -1) {
+
+            rectMode(CENTER);
+            textAlign(LEFT, TOP);
+            textSize(cellSize/2);
+            textFont(postcardFont);
+
+            fill("#a0a0a0");
+            rect(0, 0, this.w, this.h, 4);
+
         }
 
         pop();
