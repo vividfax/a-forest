@@ -7,7 +7,7 @@ class Flower {
         this.symbol = random(flowerEmojis);
         this.fog = fog;
 
-        this.phrase = ":)";
+        this.phrase = random(kaomojis.kaomoji);
 
         this.offsetX = int(random(-cellSize/7, cellSize/7));
         this.offsetY = int(random(-cellSize/7, cellSize/7));

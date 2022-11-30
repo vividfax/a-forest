@@ -34,6 +34,7 @@ let justCopyPaste = false;
 let manualPlants;
 let links;
 let mail;
+let kaomojis;
 
 let mailCount = 0;
 
@@ -57,6 +58,7 @@ function preload() {
     manualPlants = loadJSON("./json/plants.json");
     links = loadJSON("./json/links.json");
     mail = loadJSON("./json/mail.json");
+    kaomojis = loadJSON("./json/kaomoji.json");
 
     playerImage = loadImage("./images/player.png");
 
@@ -147,7 +149,7 @@ function setup() {
     angleMode(DEGREES);
     textAlign(CENTER, CENTER);
     imageMode(CENTER);
-    textFont(postcardFont);
+    textFont("monospace");
     noStroke();
     frameRate(2);
 
@@ -276,7 +278,7 @@ function displayUI() {
     push();
 
     textAlign(LEFT, BOTTOM);
-    textSize(cellSize*.6);
+    textSize(cellSize*.5);
 
     let uiWidth = width > 2048 ? 2048 : width;
     let leftEdge = width/2-uiWidth/2;
@@ -326,7 +328,7 @@ function displayUI() {
     if (uiText != "") {
         push();
         stroke("#F2F2F2");
-        strokeWeight(30);
+        strokeWeight(17);
         strokeJoin(ROUND);
         fill("#0A0A0A");
         text(uiText, leftEdge+280, 20, uiWidth-300, height-40);
