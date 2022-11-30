@@ -19,7 +19,7 @@ class Mailbox {
         this.visited = false;
 
         this.greetings = ["Dearest friend", "Friend", "My dear", "My dearest friend", "My friend", "Dear friend"];
-        this.goodbyes = ["Yours", "Yours always", "Much love", "Best wishes", "Remember this"];
+        this.goodbyes = ["Yours", "Yours always", "Much love", "Best wishes"];
         this.sender = ["Alys", "A"];
 
         this.snowflakeOffsetX = int(random(-cellSize*.3, cellSize*.3));
