@@ -45,6 +45,7 @@ class Leaf {
 
         push();
         translate(this.x, this.y);
+        cloudCanvas.translate(this.x, this.y);
 
         if (this.fog) {
             translate(this.snowflakeOffsetX, this.snowflakeOffsetY);

@@ -56,8 +56,10 @@ class Water {
             drawFog();
         } else {
 
-            let lefthandCell = grid.grid[this.gridX - 1][this.gridY];
-            let rightHandCell = grid.grid[this.gridX + 1][this.gridY];
+            let lefthandCell = grid.grid[mod(this.gridX - 1, worldWidth)][this.gridY];
+            let rightHandCell = grid.grid[mod(this.gridX + 1, worldWidth)][this.gridY];
+
+
 
             if (!this.wave && lefthandCell instanceof Water == false && rightHandCell instanceof Water && random() < 0.02) {
                 this.wave = true;
