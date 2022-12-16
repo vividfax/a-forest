@@ -27,6 +27,8 @@ let waterAnimals = [];
 
 let walkLeftImgs = [];
 let walkRightImgs = [];
+let walkUpImgs = [];
+let walkDownImgs = [];
 
 let postcardWritingImages = [];
 let postcardPhotoImages = [];
@@ -143,6 +145,10 @@ function preload() {
     walkLeftImgs.push(loadImage("./images/walkLeft2.png"));
     walkRightImgs.push(loadImage("./images/walkRight1.png"));
     walkRightImgs.push(loadImage("./images/walkRight2.png"));
+    walkUpImgs.push(loadImage("./images/walk-up-1.png"));
+    walkUpImgs.push(loadImage("./images/walk-up-2.png"));
+    walkDownImgs.push(loadImage("./images/walk-down-1.png"));
+    walkDownImgs.push(loadImage("./images/walk-down-2.png"));
 }
 
 function setup() {
@@ -415,8 +421,10 @@ function move() {
         lastMoveWasDiagonal = true;
     } else if (keyIsDown(UP_ARROW)) {
         player.move(0, -1);
+        player.symbol = walkUpImgs[walkNumber];
     } else if (keyIsDown(DOWN_ARROW)) {
         player.move(0, 1);
+        player.symbol = walkDownImgs[walkNumber];
     } else if (keyIsDown(LEFT_ARROW)) {
         player.move(-1, 0);
         player.symbol = walkLeftImgs[walkNumber];

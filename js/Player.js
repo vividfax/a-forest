@@ -7,7 +7,7 @@ class Player {
         this.cameraX = 0;
         this.cameraY = 0;
         this.reset();
-        this.symbol = playerImage;
+        this.symbol = walkDownImgs[1];
 
         grid.grid[this.x][this.y].fog = false;
     }
