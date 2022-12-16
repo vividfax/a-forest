@@ -16,7 +16,7 @@ let plantEmojis = [];
 let treeEmojis = [];
 let leafEmojis = [];
 let flowerEmojis = [];
-let abandonedHouseEmoji;
+let abandonedHouseEmojis = [];
 let houseEmojis = [];
 let animalEmojis = [];
 let weatherEmojis = [];
@@ -70,8 +70,9 @@ function preload() {
     plantEmojis.push(loadImage("./images/shamrock.png"));
     plantEmojis.push(loadImage("./images/sheaf-of-rice.png"));
 
-    treeEmojis.push(loadImage("./images/deciduous-tree.png"));
-    treeEmojis.push(loadImage("./images/evergreen-tree.png"));
+    treeEmojis.push(loadImage("./images/tree1.png"));
+    treeEmojis.push(loadImage("./images/tree2.png"));
+    treeEmojis.push(loadImage("./images/tree3.png"));
 
     leafEmojis.push(loadImage("./images/fallen-leaf.png"));
     leafEmojis.push(loadImage("./images/leaf-fluttering-in-wind.png"));
@@ -85,9 +86,10 @@ function preload() {
     flowerEmojis.push(loadImage("./images/sunflower.png"));
     flowerEmojis.push(loadImage("./images/tulip.png"));
 
-    abandonedHouseEmoji = loadImage("./images/derelict-house.png");
-    houseEmojis.push(loadImage("./images/house-with-garden.png"));
-    houseEmojis.push(loadImage("./images/house.png"));
+    abandonedHouseEmojis.push(loadImage("./images/brokenHouse1.png"));
+    abandonedHouseEmojis.push(loadImage("./images/brokenHouse2.png"));
+    houseEmojis.push(loadImage("./images/house1.png"));
+    houseEmojis.push(loadImage("./images/house2.png"));
     // houseEmojis.push(loadImage("./images/hut.png"));
 
     animalEmojis.push(loadImage("./images/deer.png"));
@@ -463,7 +465,8 @@ function enterHouse() {
 
                     if (grid.grid[i][j] instanceof House && !grid.grid[i][j].visited && grid.grid[i][j].data.label === grid.grid[player.x][player.y].data.label) {
                         grid.grid[i][j].visited = true;
-                        grid.grid[i][j].symbol = random(houseEmojis);
+                        // console.log()
+                        grid.grid[i][j].symbol = houseEmojis[currentCell.houseType];
                     }
                 }
             }
@@ -521,7 +524,6 @@ function pasteMyText(text) {
 
     draw();
 }
-
 
 function mod(n, m) {
     return ((n % m) + m) % m;

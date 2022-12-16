@@ -53,10 +53,10 @@ class Mailbox {
         if (!this.visiting) {
             if (player.x == this.gridX && player.y == this.gridY) {
                 if (mailCount < mail.mail.length) {
-                    this.phrase += random(this.greetings) + ",";
-                    this.phrase += "\n\n" + mail.mail[mailCount] + "\n\n";
-                    this.phrase += random(this.goodbyes) + ",\n";
-                    this.phrase += random(this.sender);
+                    // this.phrase += random(this.greetings) + ",";
+                    this.phrase += mail.mail[mailCount];
+                    // this.phrase += random(this.goodbyes) + ",\n";
+                    // this.phrase += random(this.sender);
                     mailCount++;
                     this.visiting = true;
                     this.symbol = mailboxEmojis[1];
@@ -105,11 +105,12 @@ class Mailbox {
             image(this.postcardWritingImage, 0, 0);
 
             textAlign(LEFT, TOP);
-            textSize(cellSize*.6);
+            textSize(cellSize*.45);
+            textLeading(cellSize*.45);
             textFont(postcardFont);
             rectMode(CORNER);
             fill("#404040");
-            text(this.phrase, -this.w/2+40, -this.h/2+20, this.w/2-130, this.h-40);
+            text(this.phrase, -this.w/2+40, -this.h/2+30, this.w/2-60, this.h-0);
         } else if (this.side == -1) {
 
             rectMode(CENTER);

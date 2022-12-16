@@ -4,7 +4,8 @@ class House {
 
         this.x = x * cellSize;
         this.y = y * cellSize;
-        this.symbol = abandonedHouseEmoji;
+        this.houseType = random([0, 1]);
+        this.symbol = abandonedHouseEmojis[this.houseType];
         this.fog = fog;
 
         this.data = random(links.links)
