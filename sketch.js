@@ -25,6 +25,9 @@ let mailboxEmojis = [];
 let waterEmoji;
 let waterAnimals = [];
 
+let walkLeftImgs = [];
+let walkRightImgs = [];
+
 let postcardWritingImages = [];
 let postcardPhotoImages = [];
 
@@ -53,6 +56,8 @@ let timeHolding = 0;
 
 let regularFont;
 let postcardFont;
+
+let walkCycle = -1;
 
 function preload() {
 
@@ -132,8 +137,12 @@ function preload() {
     postcardFont = loadFont("./fonts/VT323-Regular.ttf");
 
     postcardWritingImages.push(loadImage("./images/postcard-writing.png"));
-
     postcardPhotoImages.push(loadImage("./images/postcard-photo.png"));
+
+    walkLeftImgs.push(loadImage("./images/walkLeft1.png"));
+    walkLeftImgs.push(loadImage("./images/walkLeft2.png"));
+    walkRightImgs.push(loadImage("./images/walkRight1.png"));
+    walkRightImgs.push(loadImage("./images/walkRight2.png"));
 }
 
 function setup() {
@@ -378,6 +387,11 @@ function keyPressed() {
 
 function move() {
 
+    let walkNumber;
+
+    if (walkCycle == -1) walkNumber = 0;
+    else walkNumber = 1;
+
     if (lastMoveWasDiagonal) {
         lastMoveWasDiagonal = false;
         return;
@@ -385,15 +399,19 @@ function move() {
 
     if (keyIsDown(LEFT_ARROW) && keyIsDown(UP_ARROW)) {
         player.move(-1, -1);
+        player.symbol = walkLeftImgs[walkNumber];
         lastMoveWasDiagonal = true;
     } else if (keyIsDown(LEFT_ARROW) && keyIsDown(DOWN_ARROW)) {
         player.move(-1, 1);
+        player.symbol = walkLeftImgs[walkNumber];
         lastMoveWasDiagonal = true;
     } else if (keyIsDown(RIGHT_ARROW) && keyIsDown(UP_ARROW)) {
         player.move(1, -1);
+        player.symbol = walkRightImgs[walkNumber];
         lastMoveWasDiagonal = true;
     } else if (keyIsDown(RIGHT_ARROW) && keyIsDown(DOWN_ARROW)) {
         player.move(1, 1);
+        player.symbol = walkRightImgs[walkNumber];
         lastMoveWasDiagonal = true;
     } else if (keyIsDown(UP_ARROW)) {
         player.move(0, -1);
@@ -401,13 +419,16 @@ function move() {
         player.move(0, 1);
     } else if (keyIsDown(LEFT_ARROW)) {
         player.move(-1, 0);
+        player.symbol = walkLeftImgs[walkNumber];
     } else if (keyIsDown(RIGHT_ARROW)) {
         player.move(1, 0);
+        player.symbol = walkRightImgs[walkNumber];
     } else {
         return;
     }
 
     if (!moved) moved = true;
+    walkCycle *= -1;
 
     grid.update();
 

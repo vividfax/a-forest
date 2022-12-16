@@ -7,7 +7,7 @@ class Player {
         this.cameraX = 0;
         this.cameraY = 0;
         this.reset();
-        this.symbol = "𓀔";
+        this.symbol = playerImage;
 
         grid.grid[this.x][this.y].fog = false;
     }
@@ -62,7 +62,7 @@ class Player {
         // fill(0);
         // textSize(cellSize);
         // text(this.symbol, 0, 0);
-        image(playerImage, 0, -cellSize*.1, cellSize, cellSize);
+        image(this.symbol, 0, -cellSize*.1, cellSize, cellSize);
 
         pop();
     }
