@@ -299,6 +299,8 @@ function displayUI() {
         uiText = uiText.replace(/ \]/g, "]")
         uiText = uiText.replace(/\( /g, "(")
         uiText = uiText.replace(/ \)/g, ")")
+    } else if (currentCell instanceof Mailbox) {
+
     } else {
         for (let i = 0; i < animals.length; i++) {
             if (animals[i].x == player.x && animals[i].y == player.y) {
@@ -327,7 +329,7 @@ function displayUI() {
 
         noCharacter = true;
 
-        uiText = "Press R to see reverse side";
+        uiText = "Press ENTER to see reverse side";
     }
 
     if (uiText != "") {
@@ -417,7 +419,7 @@ function write() {
 
     let currentCell = grid.grid[player.x][player.y];
 
-    if (currentCell instanceof Mailbox) return;
+    // if (currentCell instanceof Mailbox) return;
 
     if (keyIsDown(DELETE) || keyIsDown(BACKSPACE)) {
         if (currentCell instanceof Tree || currentCell instanceof Leaf) {
@@ -434,7 +436,7 @@ function write() {
             currentCell = grid.grid[player.x][player.y];
             if (!typed) typed = true;
         }
-        if (currentCell instanceof Tree || currentCell instanceof Leaf) {
+        if (currentCell instanceof Tree || currentCell instanceof Leaf || currentCell instanceof Mailbox) {
             if (keyIsDown(ENTER) || keyIsDown(RETURN)) {
                 grid.grid[player.x][player.y].addChar("\n");
             } else {
@@ -483,7 +485,7 @@ function reversePostcard() {
 
     let currentCell = grid.grid[player.x][player.y];
 
-    if (currentCell instanceof Mailbox && keyCode == 82) {
+    if (currentCell instanceof Mailbox && (keyCode == ENTER || keyCode == RETURN)) {
         grid.grid[player.x][player.y].side *= -1;
     } else {
         return;

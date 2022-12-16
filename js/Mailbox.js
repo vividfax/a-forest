@@ -10,6 +10,7 @@ class Mailbox {
         this.fog = fog;
 
         this.phrase = "";
+        this.empty = false;
 
         this.offsetX = 0;
         this.offsetY = 0;
@@ -34,14 +35,9 @@ class Mailbox {
 
     addChar(c) {
 
-        this.phrase += c;
+        if (!this.empty) return;
 
-        if (this.phrase.length > 15 && !this.mature) {
-            this.symbol = random(treeEmojis);
-            this.mature = true;
-            this.scale = random(1.8, 2.3);
-            if (!typedSentence) typedSentence = true;
-        }
+        this.phrase += c;
     }
 
     update() {
@@ -53,17 +49,14 @@ class Mailbox {
         if (!this.visiting) {
             if (player.x == this.gridX && player.y == this.gridY) {
                 if (mailCount < mail.mail.length) {
-                    // this.phrase += random(this.greetings) + ",";
-                    this.phrase += mail.mail[mailCount];
-                    // this.phrase += random(this.goodbyes) + ",\n";
-                    // this.phrase += random(this.sender);
+                    this.phrase = mail.mail[mailCount];
                     mailCount++;
                     this.visiting = true;
                     this.symbol = mailboxEmojis[1];
                 }
                 else {
                     // this.phrase = "looks like it's just a blank piece of paper";
-                    this.phrase = "";
+                    this.empty = true;
                     this.visiting = true;
                     this.symbol = mailboxEmojis[1];
                 }
