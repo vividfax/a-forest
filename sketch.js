@@ -109,7 +109,6 @@ function preload() {
     animalEmojis.push(loadImage("./images/deer.png"));
     animalEmojis.push(loadImage("./images/ewe.png"));
     animalEmojis.push(loadImage("./images/turkey.png"));
-    animalEmojis.push(loadImage("./images/duck.png"));
     animalEmojis.push(loadImage("./images/cat.png"));
     animalEmojis.push(loadImage("./images/horse.png"));
     animalEmojis.push(loadImage("./images/ram.png"));
@@ -140,6 +139,9 @@ function preload() {
     waterAnimals.push(loadImage("./images/fish.png"));
     waterAnimals.push(loadImage("./images/fish.png"));
     waterAnimals.push(loadImage("./images/fish.png"));
+    waterAnimals.push(loadImage("./images/duck.png"));
+    waterAnimals.push(loadImage("./images/duck.png"));
+    waterAnimals.push(loadImage("./images/duck.png"));
 
     regularFont = loadFont("./fonts/FiraCode-Regular.ttf");
     // postcardFont = loadFont("./fonts/Caveat-Regular.ttf");
