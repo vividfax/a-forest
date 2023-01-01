@@ -77,13 +77,18 @@ function preload() {
     plantEmojis.push(loadImage("./images/shamrock.png"));
     plantEmojis.push(loadImage("./images/sheaf-of-rice.png"));
 
-    treeEmojis.push(loadImage("./images/tree1.png"));
-    treeEmojis.push(loadImage("./images/tree2.png"));
-    treeEmojis.push(loadImage("./images/tree3.png"));
+    treeEmojis.push(loadImage("./images/red-tree.png"));
+    treeEmojis.push(loadImage("./images/pine-tree.png"));
+    treeEmojis.push(loadImage("./images/lemon-tree.png"));
+    treeEmojis.push(loadImage("./images/weird-tree.png"));
+    treeEmojis.push(loadImage("./images/conifer-tree-2.png"));
+    treeEmojis.push(loadImage("./images/conifer-tree.png"));
+    treeEmojis.push(loadImage("./images/deciduous-tree-2.png"));
+    treeEmojis.push(loadImage("./images/deciduous-tree-3.png"));
+    treeEmojis.push(loadImage("./images/deciduous-tree.png"));
 
     leafEmojis.push(loadImage("./images/fallen-leaf.png"));
-    leafEmojis.push(loadImage("./images/leaf-fluttering-in-wind.png"));
-    leafEmojis.push(loadImage("./images/maple-leaf.png"));
+    leafEmojis.push(loadImage("./images/fallen-leaf-green.png"));
 
     flowerEmojis.push(loadImage("./images/blossom.png"));
     flowerEmojis.push(loadImage("./images/cherry-blossom.png"));
@@ -139,7 +144,10 @@ function preload() {
     postcardFont = loadFont("./fonts/VT323-Regular.ttf");
 
     postcardWritingImages.push(loadImage("./images/postcard-writing.png"));
-    postcardPhotoImages.push(loadImage("./images/postcard-photo.png"));
+    postcardPhotoImages.push(loadImage("./images/postcard-back-1.png"));
+    postcardPhotoImages.push(loadImage("./images/postcard-back-3.png"));
+    postcardPhotoImages.push(loadImage("./images/postcard-back-4.png"));
+    postcardPhotoImages.push(loadImage("./images/postcard-back-5.png"));
 
     walkLeftImgs.push(loadImage("./images/walkLeft1.png"));
     walkLeftImgs.push(loadImage("./images/walkLeft2.png"));
