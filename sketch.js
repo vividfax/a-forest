@@ -501,7 +501,7 @@ function enterHouse() {
 
         if (!currentCell.visited) {
             grid.grid[player.x][player.y].visited = true;
-            grid.grid[player.x][player.y].symbol = random(houseEmojis);
+            grid.grid[player.x][player.y].symbol = houseEmojis[currentCell.houseType];
 
             for (let i = 0; i < grid.width; i++) {
                 for (let j = 0; j < grid.height; j++) {
