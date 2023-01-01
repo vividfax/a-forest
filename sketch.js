@@ -47,6 +47,7 @@ let mailCount = 0;
 let animals = [];
 let weathers = [];
 
+let interacted = false;
 let moved = false;
 let typed = false;
 let typedSentence = false;
@@ -62,6 +63,11 @@ let postcardFont;
 let walkCycle = -1;
 
 let treesOnScreen = 0;
+
+const music = new Tone.Player(
+    "./music/section2.mp3"
+).toDestination();
+music.loop = true;
 
 function preload() {
 
@@ -161,6 +167,8 @@ function preload() {
     walkUpImgs.push(loadImage("./images/walk-up-2.png"));
     walkDownImgs.push(loadImage("./images/walk-down-1.png"));
     walkDownImgs.push(loadImage("./images/walk-down-2.png"));
+
+    preloadSounds();
 }
 
 function setup() {
@@ -247,6 +255,8 @@ function draw() {
         noLoop();
         timeHolding = 0;
     }
+
+    flushQueue();
 }
 
 function createAnimals() {
@@ -390,6 +400,11 @@ function displayPostcard() {
 
 function keyPressed() {
 
+    if (!interacted) {
+        interacted = true;
+        music.start();
+    }
+
     if (!player) return;
     if (!keyIsPressed) return;
     if (keyIsDown(CONTROL)) return;
@@ -456,6 +471,15 @@ function move() {
 
     update();
     loop();
+
+    let currentCell = grid.grid[player.x][player.y];
+
+    if (currentCell instanceof Flower) {
+        addRandomSound(footStepsFlowers, footStepsFlowersLength);
+    } else {
+        addRandomSound(footStepsGrass, footStepsGrassLength);
+    }
+
 }
 
 function write() {
