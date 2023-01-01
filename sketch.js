@@ -61,6 +61,8 @@ let postcardFont;
 
 let walkCycle = -1;
 
+let treesOnScreen = 0;
+
 function preload() {
 
     manualPlants = loadJSON("./json/plants.json");
@@ -208,6 +210,8 @@ function draw() {
 
     cloudCanvas.clear();
     weatherCanvas.clear();
+
+    treesOnScreen = 0;
 
     push();
     cloudCanvas.push();

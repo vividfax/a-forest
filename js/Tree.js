@@ -121,6 +121,8 @@ class Tree {
             translate(this.snowflakeOffsetX, this.snowflakeOffsetY);
             drawFog();
         } else {
+
+
             // fill("#97C791");
             // rect(0, 0, cellSize);
 
@@ -133,7 +135,10 @@ class Tree {
             translate(cellSize/2, cellSize/2);
             translate(this.offsetX, this.offsetY);
 
-            if (this.mature) translate(0, -cellSize/3);
+            if (this.mature) {
+                translate(0, -cellSize/3);
+                treesOnScreen++;
+            }
             // scale(this.scale);
 
             // fill(255);

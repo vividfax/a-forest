@@ -330,8 +330,8 @@ class Grid {
         let visibleGridWidth = int(width/cellSize/2) * 1/renderScale;
         let visibleGridHeight = int(height/cellSize/2) * 1/renderScale;
 
-        for (let j = player.y+player.cameraY - visibleGridHeight; j < player.y+player.cameraY + visibleGridHeight+1; j++) {
-            for (let i = player.x+player.cameraX - visibleGridWidth; i < player.x+player.cameraX + visibleGridWidth+1; i++) {
+        for (let j = player.y+player.cameraY - visibleGridHeight/2 -1; j <= player.y+player.cameraY + visibleGridHeight/2+1; j++) {
+            for (let i = player.x+player.cameraX - visibleGridWidth/2 -1; i <= player.x+player.cameraX + visibleGridWidth/2+1; i++) {
 
                 let targetX = i;
                 let targetY = j;
