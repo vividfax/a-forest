@@ -82,7 +82,6 @@ function preload() {
 
     plantEmojis.push(loadImage("./images/herb.png"));
     plantEmojis.push(loadImage("./images/four-leaf-clover.png"));
-    plantEmojis.push(loadImage("./images/shamrock.png"));
     plantEmojis.push(loadImage("./images/sheaf-of-rice.png"));
 
     treeEmojis.push(loadImage("./images/red-tree.png"));
@@ -99,12 +98,13 @@ function preload() {
     leafEmojis.push(loadImage("./images/fallen-leaf-green.png"));
 
     flowerEmojis.push(loadImage("./images/blossom.png"));
-    flowerEmojis.push(loadImage("./images/cherry-blossom.png"));
     flowerEmojis.push(loadImage("./images/hibiscus.png"));
     flowerEmojis.push(loadImage("./images/rose.png"));
-    flowerEmojis.push(loadImage("./images/rosette.png"));
     flowerEmojis.push(loadImage("./images/sunflower.png"));
     flowerEmojis.push(loadImage("./images/tulip.png"));
+    flowerEmojis.push(loadImage("./images/violet.png"));
+    flowerEmojis.push(loadImage("./images/blue-flower.png"));
+    flowerEmojis.push(loadImage("./images/dandelion.png"));
 
     abandonedHouseEmojis.push(loadImage("./images/brokenHouse1.png"));
     abandonedHouseEmojis.push(loadImage("./images/brokenHouse2.png"));
@@ -113,24 +113,22 @@ function preload() {
     // houseEmojis.push(loadImage("./images/hut.png"));
 
     animalEmojis.push(loadImage("./images/deer.png"));
-    animalEmojis.push(loadImage("./images/ewe.png"));
-    animalEmojis.push(loadImage("./images/turkey.png"));
     animalEmojis.push(loadImage("./images/cat.png"));
     animalEmojis.push(loadImage("./images/horse.png"));
-    animalEmojis.push(loadImage("./images/ram.png"));
     animalEmojis.push(loadImage("./images/goat.png"));
     animalEmojis.push(loadImage("./images/llama.png"));
     animalEmojis.push(loadImage("./images/dog.png"));
     animalEmojis.push(loadImage("./images/cow.png"));
     animalEmojis.push(loadImage("./images/badger.png"));
-    animalEmojis.push(loadImage("./images/hedgehog.png"));
-    animalEmojis.push(loadImage("./images/rabbit.png"));
+    animalEmojis.push(loadImage("./images/bunny.png"));
     animalEmojis.push(loadImage("./images/rooster.png"));
-    animalEmojis.push(loadImage("./images/swan.png"));
     animalEmojis.push(loadImage("./images/turtle.png"));
     animalEmojis.push(loadImage("./images/zebra.png"));
+    animalEmojis.push(loadImage("./images/sheep.png"));
+    animalEmojis.push(loadImage("./images/porcupine.png"));
 
     weatherEmojis.push(loadImage("./images/snowflake.png"));
+    weatherEmojis.push(loadImage("./images/snowflake-2.png"));
 
     pawPrintsEmoji = loadImage("./images/paw-prints.png");
 
