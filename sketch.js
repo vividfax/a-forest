@@ -148,7 +148,6 @@ function preload() {
     waterAnimals.push(loadImage("./images/duck.png"));
 
     regularFont = loadFont("./fonts/FiraCode-Regular.ttf");
-    // postcardFont = loadFont("./fonts/Caveat-Regular.ttf");
     postcardFont = loadFont("./fonts/VT323-Regular.ttf");
 
     postcardWritingImages.push(loadImage("./images/postcard-writing.png"));
