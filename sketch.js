@@ -477,7 +477,6 @@ function move() {
     } else {
         addRandomSound(footStepsGrass, footStepsGrassLength);
     }
-
 }
 
 function write() {
@@ -543,7 +542,7 @@ function enterHouse() {
     }
 
     update();
-    draw();
+    redraw();
 }
 
 function reversePostcard() {
@@ -557,7 +556,7 @@ function reversePostcard() {
     }
 
     update();
-    draw();
+    redraw();
 }
 
 function copyText() {
@@ -589,7 +588,7 @@ function pasteMyText(text) {
         grid.grid[player.x][player.y].phrase += text;
     }
 
-    draw();
+    redraw();
 }
 
 function mod(n, m) {
@@ -629,7 +628,7 @@ function reset() {
     // createNoise();
 
     noLoop();
-    draw();
+    redraw();
 }
 
 function keyReleased() {
