@@ -12,8 +12,47 @@ const leaves = {};
 const leavesLength = 5;
 const leavesPriority = 10;
 
+const plantingSound = {};
+const plantingSoundLength = 4;
+const plantingSoundPriority = 8;
+
+const letterOpenSound = {};
+const letterOpenSoundLength = 4;
+const letterOpenSoundPriority = 20;
+
+const turnLetterSound = {};
+const turnLetterSoundLength = 4;
+const turnLetterSoundPriority = 20;
+
 const typingSound = new SoundObj();
 const typingSoundPriority = 15;
+
+const bumpSound = new SoundObj();
+const bumpSoundPriority = 7;
+
+const resetSound = new SoundObj();
+const resetSoundPriority = 20;
+
+const windSound = new SoundObj();
+const windSoundPriority = 7;
+
+const houseBrokenSound = new SoundObj();
+const houseBrokenSoundPriority = 12;
+
+const houseFixedSound = new SoundObj();
+const houseFixedSoundPriority = 12;
+
+const animalSound = new SoundObj();
+const animalSoundPriority = 8;
+
+const seaLoop = new SoundObj();
+const seaLoopPriority = 20;
+
+const seagull = new SoundObj();
+const seagullPriority = 10;
+
+const splash = new SoundObj();
+const splashPriority = 6;
 
 const maxSounds = 5;
 
@@ -81,17 +120,46 @@ function preloadSounds() {
     `SFX/Leaves/Leaves`,
     leavesPriority
   );
-  loadSound(typingSound,`typing`, `SFX/Typing`, typingSoundPriority);
+  loadSounds(
+    plantingSound,
+    plantingSoundLength,
+    `plantingSound`,
+    `SFX/PlantingSounds/Planting`,
+    plantingSoundPriority
+  );
+  loadSounds(
+    letterOpenSound,
+    letterOpenSoundLength,
+    `letterOpenSound`,
+    `SFX/Letters/OpenLetter/OpenLetter`,
+    letterOpenSoundPriority
+  );
+  
+  loadSounds(
+    turnLetterSound,
+    turnLetterSoundLength,
+    `turnLetterSound`,
+    `SFX/Letters/TurnLetter/TurnLetter`,
+    turnLetterSoundPriority
+  );
+  
+  loadSound(typingSound, `typing`, `SFX/Typing`, typingSoundPriority);
   typingSound.player.loop = true;
   typingSound.player.fadeOut = 1;
+  
+  loadSound(seaLoop, `seaLoop`, `SFX/sealoop`, seaLoopPriority);
+  seaLoop.player.loop = true;
+  seaLoop.player.fadeOut = 1;
+  
+  loadSound(windSound, `wind`, `SFX/wind`, windSoundPriority);
+  loadSound(bumpSound, `bump`, `SFX/bump`, bumpSoundPriority);
+  loadSound(resetSound, `reset`, `SFX/ResetButton`, resetSoundPriority); 
+  loadSound(houseBrokenSound, `houseBroken`, `SFX/houseBroken`, houseBrokenSoundPriority);
+  loadSound(houseFixedSound, `houseFixed`, `SFX/houseFixed`, houseFixedSoundPriority);
+  loadSound(animalSound, `animal`, `SFX/animal`, animalSoundPriority);
+  loadSound(seagull, `seagull`, `SFX/seagull`, seagullPriority);
+  loadSound(splash, `splash`, `SFX/splash`, splashPriority);
 }
-
-// function setup() {
-//   createButtons();
-//   createCanvas(windowWidth, windowHeight);
-//   background(220);
-//   // frameRate(5);
-// }
 
 // ---- TEMPLATE FOR LOADING SOUNDS ---- //
 function loadSounds(sound, noOfSounds, name, path, priority) {
@@ -115,17 +183,8 @@ function loadSound(sound, name, path, priority) {
   sound.priority = priority;
   sound.player.onstop = () => {
     onStopped(sound.player);
-    // UI version
-    // onStopped(sound.player, name);
   }
 }
-
-// UI version of onStopped
-// function onStopped(player, soundName) {
-//     const row = document.getElementById(`ID${soundName}`);
-//     row.remove();
-//     soundManager.removeCurrentSound(player);
-// }
 
 function onStopped(player) {
     soundManager.removeCurrentSound(player);
@@ -144,7 +203,6 @@ function addSound(soundObj) {
     return;
   }
   soundManager.addSoundToQueue(soundObj);
-  // generateTableFromArray(soundsQueueTable, soundManager.soundsQueue);
 }
 
 function randomBag(length) {
@@ -189,7 +247,6 @@ function addRandomSound(soundTypeArray, soundArraySize) {
     return;
   }
   soundManager.addSoundToQueue(soundTypeArray[x[0]]);
-  // generateTableFromArray(soundsQueueTable, soundManager.soundsQueue);
 }
 
 function flushQueue() {
@@ -204,8 +261,6 @@ function flushQueue() {
         soundManager.soundsQueue[0].player,
         soundManager.soundsQueue[0]
       );
-      // generateTable(currentlyPlayingSoundsTable, soundManager.currentSounds);
-      // removeTableRow();
       soundManager.removeSoundFromQueue();
     }
     return;
@@ -222,8 +277,6 @@ function flushQueue() {
         soundManager.soundsQueue[0].player,
         soundManager.soundsQueue[0]
       );
-      // generateTable(currentlyPlayingSoundsTable, soundManager.currentSounds);
-      // removeTableRow();
       soundManager.removeSoundFromQueue();
       continue;
     }
@@ -238,14 +291,11 @@ function flushQueue() {
         soundManager.soundsQueue[0].player,
         soundManager.soundsQueue[0]
       );
-      // generateTable(currentlyPlayingSoundsTable, soundManager.currentSounds);
-      // removeTableRow();
       soundManager.removeSoundFromQueue();
       continue;
     }
     // if execution reaches here it means that there are no sounds left in the queue that are of higher priority than the currently playing sounds, this means they can be discarded.
     while(soundManager.soundsQueue.length > 0) {
-      // removeTableRow();
       soundManager.removeSoundFromQueue();
     }
     return;
