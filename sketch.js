@@ -191,21 +191,21 @@ function setup() {
     sadMarkov = RiTa.markov(3);
 
     for (let i = 0; i < poemsJson.plants.length; i++) {
-        happyMarkov.addText(poemsJson.plants[i]);
-        sadMarkov.addText(poemsJson.plants[i]);
+        happyMarkov.addText(poemsJson.plants[i], 4);
+        sadMarkov.addText(poemsJson.plants[i], 4);
     }
 
     for (let i = 0; i < plantsJson.plants.length; i++) {
-        happyMarkov.addText(plantsJson.plants[i]);
-        sadMarkov.addText(plantsJson.plants[i]);
+        happyMarkov.addText(plantsJson.plants[i], 1);
+        sadMarkov.addText(plantsJson.plants[i], 1);
     }
 
     for (let i = 0; i < happyJson.happy.length; i++) {
-        happyMarkov.addText(happyJson.happy[i]);
+        happyMarkov.addText(happyJson.happy[i], 4);
     }
 
     for (let i = 0; i < sadJson.sad.length; i++) {
-        sadMarkov.addText(sadJson.sad[i]);
+        sadMarkov.addText(sadJson.sad[i], 4);
     }
 
     markov = happyMarkov;
