@@ -78,6 +78,8 @@ let markovIsHappy = true;
 let happyMarkov;
 let sadMarkov;
 
+let showFog = true;
+
 function preload() {
 
     plantsJson = loadJSON("./json/plants.json");

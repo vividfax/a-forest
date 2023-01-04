@@ -16,7 +16,6 @@ class Mailbox {
         this.offsetY = 0;
         this.scale = 0.6;
 
-        this.visiting = false;
         this.visited = false;
 
         this.greetings = ["Dearest friend", "Friend", "My dear", "My dearest friend", "My friend", "Dear friend"];
@@ -46,27 +45,22 @@ class Mailbox {
 
     display() {
 
-        if (!this.visiting) {
+        if (!this.visited) {
             if (player.x == this.gridX && player.y == this.gridY) {
                 if (mailCount < mail.mail.length) {
                     this.phrase = mail.mail[mailCount];
                     mailCount++;
-                    this.visiting = true;
+                    this.visited = true;
                     this.symbol = mailboxEmojis[1];
-                    addRandomSound(letterOpenSound, letterOpenSoundLength);
                 }
                 else {
                     // this.phrase = "looks like it's just a blank piece of paper";
                     this.empty = true;
-                    this.visiting = true;
+                    this.visited = true;
                     this.symbol = mailboxEmojis[1];
                 }
             }
         }
-        // else if (this.visiting && !this.visited) {
-        //     this.visited = true;
-        //     this.symbol = mailboxEmojis[2];
-        // }
 
         push();
         translate(this.x, this.y);

@@ -307,7 +307,11 @@ class Grid {
         for (let i = 0; i < this.width; i++) {
             for (let j = 0; j < this.height; j++) {
 
+                if (!showFog) {
+                    this.grid[i][j].fog = false;
+                }
                 // this.grid[i][j].fog = false; // off by default
+
                 this.grid[i][j].update();
             }
         }
