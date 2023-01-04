@@ -84,7 +84,7 @@ class Water {
             else if (this.animal) {
                 translate(cellSize/2, cellSize/2);
                 translate(random(-3, 3), random(-3, 3));
-                image(this.symbol, 0, 0, cellSize/3, cellSize/3);
+                image(this.symbol, 0, 0, cellSize/2, cellSize/2);
             }
 
             if (this.waveNextFrame) {
