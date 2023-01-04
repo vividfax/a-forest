@@ -78,7 +78,7 @@ class Water {
                 if (this.animal) {
                     this.animal = false;
                     this.animalAge = 0;
-                    addSound(seagull);
+                    // addSound(seagull);
                 }
             }
             else if (this.animal) {
@@ -98,9 +98,10 @@ class Water {
                 if (this.animalAge > random(12, 20)) {
                     this.animal = false;
                     this.animalAge = 0;
-                    addSound(seagull);
+                    // addSound(seagull);
             }
-            } else if (random() < 0.001) {
+            } else if (!this.animal && random() < 0.001) {
+
                 this.animal = true;
                 this.symbol = random(waterAnimals);
                 addSound(seagull);
