@@ -137,7 +137,7 @@ class Tree {
             translate(this.offsetX, this.offsetY);
 
             if (this.mature) {
-                translate(0, -cellSize/3);
+                translate(0, -cellSize/2);
                 treesOnScreen++;
             }
             // scale(this.scale);

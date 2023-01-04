@@ -329,12 +329,17 @@ function displayUI() {
 
     if (currentCell instanceof EmptyCell == false && currentCell instanceof Mailbox == false) {
         uiText = currentCell.phrase;
-        uiText = uiText.replace(/ ,/g, ",")
-        uiText = uiText.replace(/ \./g, ".")
-        uiText = uiText.replace(/\[ /g, "[")
-        uiText = uiText.replace(/ \]/g, "]")
-        uiText = uiText.replace(/\( /g, "(")
-        uiText = uiText.replace(/ \)/g, ")")
+        uiText = uiText.replace(/ ,/g, ",\n");
+        uiText = uiText.replace(/ \./g, ".\n");
+        uiText = uiText.replace(/ \?/g, "?\n");
+        uiText = uiText.replace(/ \!/g, "!\n");
+        uiText = uiText.replace(/ ;/g, ";\n");
+        uiText = uiText.replace(/ :/g, ":\n");
+        uiText = uiText.replace(/\[ /g, "[");
+        uiText = uiText.replace(/ \]/g, "]");
+        uiText = uiText.replace(/\( /g, "(");
+        uiText = uiText.replace(/ \)/g, ")");
+        uiText = uiText.trim();
     } else if (currentCell instanceof Mailbox) {
 
     } else {
