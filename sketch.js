@@ -37,6 +37,7 @@ let markov;
 
 let justCopyPaste = false;
 
+let plantsJson;
 let poemsJson;
 let happyJson;
 let sadJson;
@@ -78,6 +79,7 @@ let sadMarkov;
 
 function preload() {
 
+    plantsJson = loadJSON("./json/plants.json");
     poemsJson = loadJSON("./json/poems.json");
     happyJson = loadJSON("./json/happy.json");
     sadJson = loadJSON("./json/sad.json");
@@ -188,6 +190,11 @@ function setup() {
     for (let i = 0; i < poemsJson.plants.length; i++) {
         happyMarkov.addText(poemsJson.plants[i]);
         sadMarkov.addText(poemsJson.plants[i]);
+    }
+
+    for (let i = 0; i < plantsJson.plants.length; i++) {
+        happyMarkov.addText(plantsJson.plants[i]);
+        sadMarkov.addText(plantsJson.plants[i]);
     }
 
     for (let i = 0; i < happyJson.happy.length; i++) {
@@ -641,7 +648,7 @@ function drawFog() {
 function reset() {
 
     animals = [];
-    weather = [];
+    weathers = [];
 
     moved = false;
     typed = false;
