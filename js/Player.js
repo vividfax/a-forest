@@ -36,6 +36,10 @@ class Player {
             addRandomSound(footStepsGrass, footStepsGrassLength);
         }
 
+        if (targetCell instanceof House) {
+            addSound(houseBrokenSound);
+        }
+
         this.x += x;
         this.y += y;
 
