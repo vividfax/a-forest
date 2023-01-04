@@ -77,6 +77,14 @@
             color: #fff;
             background-color: #888;
         }
+
+        .loadingclass{
+            margin: auto;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
     </style>
 </head>
 
@@ -90,7 +98,11 @@
             numOctaves='10'
             stitchTiles='stitch'/>
         </filter>
-      </svg>
+    </svg>
+
+    <div id="p5_loading" class="loadingclass">
+        <img src="./images/loading.gif">
+    </div>
 
 </body>
 
