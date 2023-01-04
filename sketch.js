@@ -37,7 +37,9 @@ let markov;
 
 let justCopyPaste = false;
 
-let manualPlants;
+let poemsJson;
+let happyJson;
+let sadJson;
 let links;
 let mail;
 let kaomojis;
@@ -69,9 +71,17 @@ const music = new Tone.Player(
 ).toDestination();
 music.loop = true;
 
+let plantIsHappy = true;
+let markovIsHappy = true;
+let happyMarkov;
+let sadMarkov;
+
 function preload() {
 
-    manualPlants = loadJSON("./json/plants.json");
+    poemsJson = loadJSON("./json/poems.json");
+    happyJson = loadJSON("./json/happy.json");
+    sadJson = loadJSON("./json/sad.json");
+
     links = loadJSON("./json/links.json");
     mail = loadJSON("./json/mail.json");
     kaomojis = loadJSON("./json/kaomoji.json");
@@ -171,11 +181,24 @@ function preload() {
 function setup() {
 
     createCanvas(windowWidth, windowHeight);
-    markov = RiTa.markov(3);
 
-    for (let i = 0; i < manualPlants.plants.length; i++) {
-        markov.addText(manualPlants.plants[i]);
+    happyMarkov = RiTa.markov(3);
+    sadMarkov = RiTa.markov(3);
+
+    for (let i = 0; i < poemsJson.plants.length; i++) {
+        happyMarkov.addText(poemsJson.plants[i]);
+        sadMarkov.addText(poemsJson.plants[i]);
     }
+
+    for (let i = 0; i < happyJson.happy.length; i++) {
+        happyMarkov.addText(happyJson.happy[i]);
+    }
+
+    for (let i = 0; i < sadJson.sad.length; i++) {
+        sadMarkov.addText(sadJson.sad[i]);
+    }
+
+    markov = happyMarkov;
 
     cloudCanvas = createGraphics(windowWidth, windowHeight);
     weatherCanvas = createGraphics(windowWidth, windowHeight);
@@ -254,6 +277,7 @@ function draw() {
     }
 
     flushQueue();
+    updateMarkov();
 }
 
 function createAnimals() {
@@ -640,5 +664,16 @@ function keyReleased() {
     if (!keyIsPressed) {
         noLoop();
         timeHolding = 0;
+    }
+}
+
+function updateMarkov() {
+
+    if (plantIsHappy && !markovIsHappy) {
+        markovIsHappy = true;
+        markov = happyMarkov;
+    } else if (!plantIsHappy && markovIsHappy) {
+        markovIsHappy = false;
+        markov = sadMarkov;
     }
 }
