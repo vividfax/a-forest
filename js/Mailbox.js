@@ -95,7 +95,7 @@ class Mailbox {
             rectMode(CENTER);
             fill("#eee");
             rect(0, 0, this.w+20, this.h+20);
-            image(this.postcardWritingImage, 0, 0);
+            image(this.postcardWritingImage, 0, 0, 960, 600);
 
             textAlign(LEFT, TOP);
             textSize(cellSize*.45);
@@ -109,7 +109,7 @@ class Mailbox {
             rectMode(CENTER);
             fill("#eee");
             rect(0, 0, this.w+20, this.h+20);
-            image(this.postcardPhotoImage, 0, 0);
+            image(this.postcardPhotoImage, 0, 0, 960, 600);
         }
 
         pop();

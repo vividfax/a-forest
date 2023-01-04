@@ -167,6 +167,9 @@ function preload() {
     postcardPhotoImages.push(loadImage("./images/postcard-back-3.png"));
     postcardPhotoImages.push(loadImage("./images/postcard-back-4.png"));
     postcardPhotoImages.push(loadImage("./images/postcard-back-5.png"));
+    postcardPhotoImages.push(loadImage("./images/postcard-flower.png"));
+    postcardPhotoImages.push(loadImage("./images/postcard-snow.png"));
+    postcardPhotoImages.push(loadImage("./images/postcard-water.png"));
 
     walkLeftImgs.push(loadImage("./images/walkLeft1.png"));
     walkLeftImgs.push(loadImage("./images/walkLeft2.png"));
