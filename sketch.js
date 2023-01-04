@@ -66,6 +66,7 @@ let postcardFont;
 let walkCycle = -1;
 
 let treesOnScreen = 0;
+let waveCrashNextFrame = false;
 
 const music = new Tone.Player(
     "./music/section2.mp3"
@@ -287,6 +288,12 @@ function draw() {
     }
 
     flushQueue();
+    if (waveCrashNextFrame) {
+        waveCrashNextFrame = false;
+        addSound(splash);
+    }
+
+
     updateMarkov();
 }
 
@@ -380,6 +387,7 @@ function displayUI() {
         for (let i = 0; i < animals.length; i++) {
             if (animals[i].x == player.x && animals[i].y == player.y) {
                 uiText = animals[i].phrase;
+                addSound(animalSound);
                 break;
             }
         }
@@ -507,14 +515,6 @@ function move() {
 
     update();
     loop();
-
-    let currentCell = grid.grid[player.x][player.y];
-
-    if (currentCell instanceof Flower) {
-        addRandomSound(footStepsFlowers, footStepsFlowersLength);
-    } else {
-        addRandomSound(footStepsGrass, footStepsGrassLength);
-    }
 }
 
 function write() {
@@ -537,6 +537,7 @@ function write() {
             grid.grid[player.x][player.y].symbol = seedlingEmoji;
             currentCell = grid.grid[player.x][player.y];
             if (!typed) typed = true;
+            addRandomSound(plantingSound, plantingSoundLength);
         }
         if (currentCell instanceof Tree || currentCell instanceof Leaf || currentCell instanceof Mailbox) {
             if (keyIsDown(ENTER) || keyIsDown(RETURN)) {
@@ -563,6 +564,7 @@ function enterHouse() {
         if (!currentCell.visited) {
             grid.grid[player.x][player.y].visited = true;
             grid.grid[player.x][player.y].symbol = houseEmojis[currentCell.houseType];
+            addSound(houseFixedSound);
 
             for (let i = 0; i < grid.width; i++) {
                 for (let j = 0; j < grid.height; j++) {
@@ -589,6 +591,7 @@ function reversePostcard() {
 
     if (currentCell instanceof Mailbox && (keyCode == ENTER || keyCode == RETURN)) {
         grid.grid[player.x][player.y].side *= -1;
+        addRandomSound(turnLetterSound, turnLetterSoundLength);
     } else {
         return;
     }
@@ -622,6 +625,7 @@ function pasteMyText(text) {
 
     if (currentCell instanceof EmptyCell) {
         grid.grid[player.x][player.y] = new Tree(player.x, player.y, false, text);
+        addRandomSound(plantingSound, plantingSoundLength);
     } else {
         grid.grid[player.x][player.y].phrase += text;
     }
@@ -649,6 +653,8 @@ function drawFog() {
 }
 
 function reset() {
+
+    addSound(resetSound);
 
     animals = [];
     weathers = [];

@@ -60,7 +60,6 @@ class Water {
             let rightHandCell = grid.grid[mod(this.gridX + 1, worldWidth)][this.gridY];
 
 
-
             if (!this.wave && lefthandCell instanceof Water == false && rightHandCell instanceof Water && random() < 0.02) {
                 this.wave = true;
             }
@@ -72,10 +71,15 @@ class Water {
 
                 if (rightHandCell instanceof Water) {
                     grid.grid[this.gridX + 1][this.gridY].waveNextFrame = true;
+                } else {
+                    waveCrashNextFrame = true;
                 }
 
-                this.animal = false;
-                this.animalAge = 0;
+                if (this.animal) {
+                    this.animal = false;
+                    this.animalAge = 0;
+                    addSound(seagull);
+                }
             }
             else if (this.animal) {
                 translate(cellSize/2, cellSize/2);
@@ -94,10 +98,12 @@ class Water {
                 if (this.animalAge > random(12, 20)) {
                     this.animal = false;
                     this.animalAge = 0;
-                }
+                    addSound(seagull);
+            }
             } else if (random() < 0.001) {
                 this.animal = true;
                 this.symbol = random(waterAnimals);
+                addSound(seagull);
             }
         }
 

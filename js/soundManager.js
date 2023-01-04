@@ -124,7 +124,7 @@ function preloadSounds() {
     plantingSound,
     plantingSoundLength,
     `plantingSound`,
-    `SFX/PlantingSounds/Planting`,
+    `SFX/PlantingTrees/Planting`,
     plantingSoundPriority
   );
   loadSounds(
@@ -134,7 +134,7 @@ function preloadSounds() {
     `SFX/Letters/OpenLetter/OpenLetter`,
     letterOpenSoundPriority
   );
-  
+
   loadSounds(
     turnLetterSound,
     turnLetterSoundLength,
@@ -142,18 +142,18 @@ function preloadSounds() {
     `SFX/Letters/TurnLetter/TurnLetter`,
     turnLetterSoundPriority
   );
-  
+
   loadSound(typingSound, `typing`, `SFX/Typing`, typingSoundPriority);
   typingSound.player.loop = true;
   typingSound.player.fadeOut = 1;
-  
+
   loadSound(seaLoop, `seaLoop`, `SFX/sealoop`, seaLoopPriority);
   seaLoop.player.loop = true;
   seaLoop.player.fadeOut = 1;
-  
+
   loadSound(windSound, `wind`, `SFX/wind`, windSoundPriority);
   loadSound(bumpSound, `bump`, `SFX/bump`, bumpSoundPriority);
-  loadSound(resetSound, `reset`, `SFX/ResetButton`, resetSoundPriority); 
+  loadSound(resetSound, `reset`, `SFX/ResetButton`, resetSoundPriority);
   loadSound(houseBrokenSound, `houseBroken`, `SFX/houseBroken`, houseBrokenSoundPriority);
   loadSound(houseFixedSound, `houseFixed`, `SFX/houseFixed`, houseFixedSoundPriority);
   loadSound(animalSound, `animal`, `SFX/animal`, animalSoundPriority);

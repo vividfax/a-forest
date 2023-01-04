@@ -53,6 +53,7 @@ class Mailbox {
                     mailCount++;
                     this.visiting = true;
                     this.symbol = mailboxEmojis[1];
+                    addRandomSound(letterOpenSound, letterOpenSoundLength);
                 }
                 else {
                     // this.phrase = "looks like it's just a blank piece of paper";

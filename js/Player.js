@@ -25,7 +25,16 @@ class Player {
 
         let targetCell = grid.grid[mod(this.x+x, worldWidth)][mod(this.y+y, worldHeight)];
 
-        if (targetCell instanceof Water) return;
+        if (targetCell instanceof Water) {
+            addSound(bumpSound);
+            return;
+        }
+
+        if (targetCell instanceof Flower) {
+            addRandomSound(footStepsFlowers, footStepsFlowersLength);
+        } else {
+            addRandomSound(footStepsGrass, footStepsGrassLength);
+        }
 
         this.x += x;
         this.y += y;
