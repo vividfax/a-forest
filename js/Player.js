@@ -37,7 +37,11 @@ class Player {
         }
 
         if (targetCell instanceof House) {
-            addSound(houseBrokenSound);
+            if (targetCell.visited) {
+                addSound(houseFixedSound);
+            } else {
+                addSound(houseBrokenSound);
+            }
         } else if (targetCell instanceof Mailbox) {
             if (!targetCell.visited) {
                 if (mailCount < mail.mail.length) {
