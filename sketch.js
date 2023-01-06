@@ -548,7 +548,7 @@ function write() {
             grid.grid[player.x][player.y].symbol = seedlingEmoji;
             currentCell = grid.grid[player.x][player.y];
             if (!typed) typed = true;
-            addRandomSound(plantingSound, plantingSoundLength);
+            addRandomSound(plantingSound, plantingSoundLength); // planting sapling
         }
         if (currentCell instanceof Tree || currentCell instanceof Leaf || currentCell instanceof Mailbox) {
             if (keyIsDown(ENTER) || keyIsDown(RETURN)) {
@@ -636,7 +636,7 @@ function pasteMyText(text) {
 
     if (currentCell instanceof EmptyCell) {
         grid.grid[player.x][player.y] = new Tree(player.x, player.y, false, text);
-        addRandomSound(plantingSound, plantingSoundLength);
+        addRandomSound(plantingSound, plantingSoundLength); // planting sapling
     } else {
         grid.grid[player.x][player.y].phrase += text;
     }

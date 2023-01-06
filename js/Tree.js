@@ -41,7 +41,7 @@ class Tree {
             this.mature = true;
             this.scale = random(1.8, 2.3);
             if (!typedSentence) typedSentence = true;
-            addRandomSound(plantingSound, plantingSoundLength);
+            addRandomSound(plantingSound, plantingSoundLength); // plant to tree
         }
     }
 
@@ -75,7 +75,7 @@ class Tree {
             this.symbol = random(treeEmojis);
             this.mature = true;
             this.scale = random(1.8, 2.3);
-            addRandomSound(plantingSound, plantingSoundLength);
+            addRandomSound(plantingSound, plantingSoundLength); // plant to tree
         }
 
         if (this.mature) {
