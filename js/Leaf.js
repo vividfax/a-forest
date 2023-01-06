@@ -17,6 +17,8 @@ class Leaf {
 
         this.snowflakeOffsetX = int(random(-cellSize*.3, cellSize*.3));
         this.snowflakeOffsetY = int(random(-cellSize*.3, cellSize*.3));
+
+        this.onScreen = false;
     }
 
     addChar(c) {
@@ -36,9 +38,11 @@ class Leaf {
                 this.phrase += " " + completion;
 
                 grid.grid[this.gridX][this.gridY] = new Tree(this.gridX, this.gridY, this.fog, this.phrase);
-                addRandomSound(plantingSound, plantingSoundLength); // leaf to plant
+                if (this.onScreen) addRandomSound(plantingSound, plantingSoundLength); // leaf to plant
             }
         }
+
+        this.onScreen = false;
     }
 
     display() {
@@ -51,6 +55,8 @@ class Leaf {
             translate(this.snowflakeOffsetX, this.snowflakeOffsetY);
             drawFog();
         } else {
+
+            this.onScreen = true;
             // fill("#97C791");
             // rect(0, 0, cellSize);
 
