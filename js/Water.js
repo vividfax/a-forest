@@ -56,6 +56,8 @@ class Water {
             drawFog();
         } else {
 
+            if (!waterOnScreen) waterOnScreen = true;
+
             let lefthandCell = grid.grid[mod(this.gridX - 1, worldWidth)][this.gridY];
             let rightHandCell = grid.grid[mod(this.gridX + 1, worldWidth)][this.gridY];
 

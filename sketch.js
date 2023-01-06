@@ -66,6 +66,7 @@ let postcardFont;
 let walkCycle = -1;
 
 let treesOnScreen = 0;
+let waterOnScreen = false;
 let waveCrashNextFrame = false;
 
 const music = new Tone.Player(
@@ -255,6 +256,7 @@ function draw() {
     weatherCanvas.clear();
 
     treesOnScreen = 0;
+    waterOnScreen = false;
 
     push();
     cloudCanvas.push();
@@ -289,12 +291,19 @@ function draw() {
         timeHolding = 0;
     }
 
+    if (treesOnScreen > 5) {
+        // Mikey
+    }
+
+    if (waterOnScreen) {
+        // Mikey
+    }
+
     flushQueue();
     if (waveCrashNextFrame) {
         waveCrashNextFrame = false;
         addSound(splash);
     }
-
 
     updateMarkov();
 }

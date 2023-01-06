@@ -22,6 +22,7 @@ class Leaf {
     addChar(c) {
 
         grid.grid[this.gridX][this.gridY] = new Tree(this.gridX, this.gridY, false, this.phrase + c);
+        addRandomSound(plantingSound, plantingSoundLength);
     }
 
     update() {
@@ -35,10 +36,9 @@ class Leaf {
                 this.phrase += " " + completion;
 
                 grid.grid[this.gridX][this.gridY] = new Tree(this.gridX, this.gridY, this.fog, this.phrase);
+                addRandomSound(plantingSound, plantingSoundLength);
             }
-
         }
-
     }
 
     display() {
