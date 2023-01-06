@@ -117,7 +117,7 @@ function preloadSounds() {
     leaves,
     leavesLength,
     `leaves`,
-    `SFX/Leaves/Leaves`,
+    `SFX/Leaves/Leaves1/Leaves`,
     leavesPriority
   );
   loadSounds(
