@@ -291,7 +291,9 @@ function draw() {
         timeHolding = 0;
     }
 
-    if (treesOnScreen > 5) {
+    if (treesOnScreen > 15) {
+        // Mikey
+    } else if (treesOnScreen > 5) {
         // Mikey
     }
 
