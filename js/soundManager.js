@@ -258,7 +258,7 @@ function flushQueue() {
    // console.log(`Sound: ${soundManager.soundsQueue[0].player.status}`);
     // play sounds and add to current sounds map
     while (soundManager.soundsQueue.length > 0) {
-      if(soundManager.soundsQueue[0].player.status === "stopped") {
+      if(soundManager.soundsQueue[0].player.state === "stopped") {
         soundManager.soundsQueue[0].player.start();
         soundManager.addCurrentSound(
           soundManager.soundsQueue[0].player,
