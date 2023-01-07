@@ -146,7 +146,6 @@ class Tree {
             if (this.mature) {
                 translate(0, -cellSize/2);
                 treesOnScreen++;
-                checkMusicTransition();
             }
             // scale(this.scale);
 
