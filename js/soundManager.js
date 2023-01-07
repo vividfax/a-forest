@@ -263,8 +263,8 @@ function flushQueue() {
           soundManager.soundsQueue[0].player,
           soundManager.soundsQueue[0]
         );
-        soundManager.removeSoundFromQueue();
       }
+        soundManager.removeSoundFromQueue();
     }
     return;
   }
