@@ -254,6 +254,8 @@ function flushQueue() {
     soundManager.currentSounds.size + soundManager.soundsQueue.length <=
     maxSounds
   ) {
+    console.log(`Sound: --------`);
+    console.log(`queue + current = ${soundManager.currentSounds.size + soundManager.soundsQueue.length}`);
     // play sounds and add to current sounds map
     while (soundManager.soundsQueue.length > 0) {
       soundManager.soundsQueue[0].player.start();
