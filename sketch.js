@@ -74,11 +74,6 @@ let treesOnScreen = 0;
 let waterOnScreen = false;
 let waveCrashNextFrame = false;
 
-const music = new Tone.Player(
-    "./music/section2.mp3"
-).toDestination();
-music.loop = true;
-
 let plantIsHappy = Math.random() < 0.5;
 let markovIsHappy = Math.random() < 0.5;
 let happyMarkov;
@@ -189,6 +184,7 @@ function preload() {
     walkDownImgs.push(loadImage("./images/walk-down-1.png"));
     walkDownImgs.push(loadImage("./images/walk-down-2.png"));
 
+    musicLoadSounds();
     preloadSounds();
 }
 
@@ -517,7 +513,8 @@ function keyPressed() {
 
     if (!interacted) {
         interacted = true;
-        music.start();
+        // Starts music
+        Tone.Transport.start();
     }
 
     if (!player) return;
