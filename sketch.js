@@ -79,8 +79,8 @@ const music = new Tone.Player(
 ).toDestination();
 music.loop = true;
 
-let plantIsHappy = true;
-let markovIsHappy = true;
+let plantIsHappy = Math.random() < 0.5;
+let markovIsHappy = Math.random() < 0.5;
 let happyMarkov;
 let sadMarkov;
 
