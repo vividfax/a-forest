@@ -172,7 +172,7 @@ function loadSounds(sound, noOfSounds, name, path, priority) {
       priority
     );
     sound[i].player.onstop = () => {
-      onStopped(sound[i].player, soundName);
+      onStopped(sound[i].player);
     };
   }
 }
