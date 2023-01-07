@@ -17,12 +17,8 @@ let currentLoopIndex = 0;
 // --------------------------------------------------
 
 // -------- INITIALISATION --------
-// @TODO transfer loadSounds to main preload call
-function preload() {
-  loadSounds();
-}
 
-function loadSounds() {
+function musicLoadSounds() {
   //Populates piano melodies array
   for (let i = 0; i < pianoMelodiesLength; i++) {
     pianoMelodies.push(
