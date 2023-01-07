@@ -258,6 +258,11 @@ function flushQueue() {
     console.log(`Sound: queue(${soundManager.soundsQueue.length}) + current(${soundManager.currentSounds.size}) = ${soundManager.currentSounds.size + soundManager.soundsQueue.length}`);
     // play sounds and add to current sounds map
     while (soundManager.soundsQueue.length > 0) {
+      if(soundManager.soundsQueue[0].player.status === "started") {
+        console.log(`Sound: is already playing`);
+        soundManager.removeSoundFromQueue();
+        continue;
+      }
       soundManager.soundsQueue[0].player.start();
       soundManager.addCurrentSound(
         soundManager.soundsQueue[0].player,
