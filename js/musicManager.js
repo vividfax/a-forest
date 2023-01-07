@@ -7,12 +7,10 @@ const synthLoops = [],
 // --------------------------------------------------
 
 // -------- VARIABLES --------
-let noOfTrees;
 let substr;
 let pianoIds = [];
 let currentLoopIndex = 0;
-// @TODO add a control for starting the music at beginning of game
-// let musicHasStarted = false;
+
 // --------------------------------------------------
 // --------------------------------------------------
 
@@ -75,20 +73,6 @@ function initMusicSettings() {
   // --------------------------------------------------
 }
 
-// @TODO move into main set up call. Also connect noOfTrees to actual number of trees
-function setup() {
-  noOfTrees = 0;
-  initMusicSettings();
-}
-
-// @TODO implement trigger for starting the music. I used mousePressed with a bool in the P5 editor. We need to make sure that the transport isn't started until the audio files have loaded. I'm not sure of the best way to do this as you can easily check if audio files have loaded individually, but not as a whole. That being said we only need to wait for synthloop1 to load so we could just do a check on that?
-// function mousePressed() {
-//   if (!musicHasStarted) {
-//     musicHasStarted = true;
-//     console.log(`music started`);
-//     Tone.Transport.start();
-//   }
-// }
 // --------------------------------------------------
 // --------------------------------------------------
 
@@ -156,43 +140,32 @@ function scheduleFade(player, startTime, fadeType, fadeTime) {
   return eventId;
 }
 
-function addTree() {
-  noOfTrees++;
-  checkMusicTransition();
-}
-
-function removeTree() {
-  if (noOfTrees < 1) return;
-  noOfTrees--;
-  checkMusicTransition();
-}
-
 function checkMusicTransition() {
   // call changeMusicIntensityLevel(currentLoopIndex,nextLoopIndex,pianoMelodies)
   // currentLoopIndex is set automatically
   // section 1 = 0, section 2 = 2, section 3 = 4, section 4 = 6, section 5 = 8
 
   // -------- transition to section 1 --------
-  if (noOfTrees < 5 && currentLoopIndex !== 0) {
+  if (treesOnScreen < 5 && currentLoopIndex !== 0) {
     changeMusicIntensityLevel(currentLoopIndex, 0, 0);
   }
 
   // -------- transition to section 2 --------
-  if (noOfTrees >= 5 && noOfTrees < 10 && currentLoopIndex !== 2) {
+  if (treesOnScreen >= 5 && treesOnScreen < 10 && currentLoopIndex !== 2) {
     changeMusicIntensityLevel(currentLoopIndex, 2, 3);
   }
 
   // -------- transition to section 3 --------
-  if (noOfTrees >= 10 && noOfTrees < 15 && currentLoopIndex !== 4) {
+  if (treesOnScreen >= 10 && treesOnScreen < 15 && currentLoopIndex !== 4) {
     changeMusicIntensityLevel(currentLoopIndex, 4, 5);
   }
 
   // -------- transition to section 4 --------
-  if (noOfTrees >= 15 && noOfTrees < 20 && currentLoopIndex !== 6) {
+  if (treesOnScreen >= 15 && treesOnScreen < 20 && currentLoopIndex !== 6) {
     changeMusicIntensityLevel(currentLoopIndex, 6, 7);
   }
   // -------- transition to section 5 --------
-  if (noOfTrees >= 20 && currentLoopIndex !== 8) {
+  if (treesOnScreen >= 20 && currentLoopIndex !== 8) {
     changeMusicIntensityLevel(currentLoopIndex, 8, 0);
   }
 }
