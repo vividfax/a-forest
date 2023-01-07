@@ -185,6 +185,7 @@ function preload() {
     walkDownImgs.push(loadImage("./images/walk-down-2.png"));
 
     musicLoadSounds();
+    initMusicSettings();
     preloadSounds();
 }
 
