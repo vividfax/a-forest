@@ -1,5 +1,6 @@
 let grid;
 let player;
+let mode;
 
 let worldWidth = 500;
 let worldHeight = 500;
@@ -249,6 +250,21 @@ function setup() {
     let resetButton = createButton("Reset");
     resetButton.position(10, 10);
     resetButton.mousePressed(reset);
+    
+    
+    let aboutButton = createButton("About");
+    aboutButton.position(windowWidth - 210, 10);
+    aboutButton.mousePressed(about);
+
+
+    if (mode == 0) {
+        let img = document.getElementById("titleCard")
+        img.src = '/images/titlecard.gif';
+        img.style.display = "block"
+
+
+
+    }
 }
 
 function printList(portList) {
@@ -513,7 +529,11 @@ function keyPressed() {
         // Starts music
         Tone.Transport.start();
     }
-
+ if (keyCode === ENTER) {
+        mode = 1;
+        document.getElementById("titleCard").style.display = "none"
+        document.getElementById("title-container").style.display = "none"
+    }
     if (!player) return;
     if (!keyIsPressed) return;
     if (keyIsDown(CONTROL)) return;
@@ -738,6 +758,16 @@ function reset() {
 
     noLoop();
     redraw();
+}
+
+function about() {
+    let about = document.getElementById("aboutModal")
+
+    if (window.getComputedStyle(about, null).getPropertyValue("display") === 'none') {
+        about.style.display = 'block';
+    } else {
+        about.style.display = 'none';
+    }
 }
 
 function keyReleased() {
