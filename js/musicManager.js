@@ -20,7 +20,7 @@ function musicLoadSounds() {
   //Populates piano melodies array
   for (let i = 0; i < pianoMelodiesLength; i++) {
     pianoMelodies.push(
-      new Tone.Player(`Music/Piano/PianoMelody${i + 1}.mp3`).toDestination()
+      new Tone.Player(`music/PianoMelody/PianoMelody${i + 1}.mp3`).toDestination()
     );
     pianoMelodies[i].name = `Piano${i}`;
   }
@@ -32,12 +32,12 @@ function musicLoadSounds() {
     synthLoops[i + 1] = new Tone.Player().toDestination();
     initPlayer(
       synthLoops[i],
-      `Music/SynthLoops/synthloop${index}.mp3`,
+      `music/synthloops/synthloop${index}.mp3`,
       `synthloop${index}`
     );
     initPlayer(
       synthLoops[i + 1],
-      `Music/SynthLoops/synthloop${index}.mp3`,
+      `music/synthloops/synthloop${index}.mp3`,
       `synthloop${index}Crossfade`,
       "2m"
     );
