@@ -259,7 +259,7 @@ function setup() {
 
     if (mode == 0) {
         let img = document.getElementById("titleCard");
-        document.getElementById("titleCard").src="./images/titlecard.gif";
+//         document.getElementById("titleCard").src="./images/titlecard.gif";
         document.getElementById("titleCard").style.display = "block"
     }
 }
