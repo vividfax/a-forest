@@ -68,6 +68,7 @@ const soundManager = {
     this.currentSounds.set(player, soundObject);
   },
   removeCurrentSound: function (player) {
+    console.log(`Sound: removed sound from current`);
     this.currentSounds.delete(player);
   },
   getCurrentSounds: function () {
