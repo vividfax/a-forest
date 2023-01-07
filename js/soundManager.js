@@ -68,7 +68,6 @@ const soundManager = {
     this.currentSounds.set(player, soundObject);
   },
   removeCurrentSound: function (player) {
-    console.log(`Sound: removed sound from current`);
     this.currentSounds.delete(player);
   },
   getCurrentSounds: function () {
@@ -188,6 +187,7 @@ function loadSound(sound, name, path, priority) {
 }
 
 function onStopped(player) {
+    console.log(`Sound: removed sound from current`);
     soundManager.removeCurrentSound(player);
 }
 
