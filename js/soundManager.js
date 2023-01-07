@@ -251,6 +251,7 @@ function addRandomSound(soundTypeArray, soundArraySize) {
 }
 
 function flushQueue() {
+  console.log(`-------- TOTAL SOUNDS = ${soundManager.currentSounds.size + soundManager.soundsQueue.length}`);
   if (
     soundManager.currentSounds.size + soundManager.soundsQueue.length <=
     maxSounds
