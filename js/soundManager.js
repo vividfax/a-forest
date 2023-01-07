@@ -187,7 +187,6 @@ function loadSound(sound, name, path, priority) {
 }
 
 function onStopped(player) {
-    console.log(`Sound: removed sound from current`);
     soundManager.removeCurrentSound(player);
 }
 
@@ -287,6 +286,7 @@ function flushQueue() {
     const lowestPrioritySound = getLowestPrioritySound();
     if (lowestPrioritySound.priority < soundManager.soundsQueue[0].priority) {
       // replace current sound with new sound
+      console.log(`Sound: forced sound to stop`);
       lowestPrioritySound.player.stop();
       soundManager.removeCurrentSound(lowestPrioritySound.player);
       soundManager.soundsQueue[0].player.start();
