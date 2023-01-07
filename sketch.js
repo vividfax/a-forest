@@ -340,7 +340,10 @@ function draw() {
         // Mikey
     }
 
-    if(soundManager.soundsQueue.length > 0) flushQueue();
+    if(soundManager.soundsQueue.length > 0) {
+        console.log(`sounds queue length = ${soundManager.soundsQueue.length}`);
+        flushQueue();
+    }
     
     if (waveCrashNextFrame) {
         waveCrashNextFrame = false;
