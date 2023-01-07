@@ -340,7 +340,8 @@ function draw() {
         // Mikey
     }
 
-    flushQueue();
+    if(soundManager.soundsQueue.length > 0) flushQueue();
+    
     if (waveCrashNextFrame) {
         waveCrashNextFrame = false;
         addSound(splash);
