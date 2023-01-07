@@ -764,7 +764,7 @@ function updateMarkov() {
         markov = sadMarkov;
     }
     
-    console.log(markovIsHappy)
+    console.log("are the plants happy? " + markovIsHappy)
 
 
 }
