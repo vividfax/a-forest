@@ -8,7 +8,12 @@ let renderScale = 0.5;
 
 let lastMoveWasDiagonal = false;
 let hasMoved = false;
-
+//serverport variables
+let serial; // variable to hold an instance of the serialport library
+let portName = 'COM6';
+let inData; // for incoming serial data
+let byteCount = 0;
+//
 let playerImage;
 
 let seedlingEmoji;
@@ -191,25 +196,35 @@ function setup() {
 
     createCanvas(windowWidth, windowHeight);
 
+    serial = new p5.SerialPort(); // make a new instance of the serialport library
+    serial.on('list', printList); // set a callback function for the serialport list event
+    serial.on('connected', serverConnected); // callback for connecting to the server
+    serial.on('open', portOpen); // callback for the port opening
+    serial.on('data', serialEvent); // callback for when new data arrives
+    serial.on('error', serialError); // callback for errors
+    serial.on('close', portClose); // callback for the port closing
+    serial.list(); // list the serial ports
+    serial.open(portName); // open a serial port
+
     happyMarkov = RiTa.markov(3);
     sadMarkov = RiTa.markov(3);
 
     for (let i = 0; i < poemsJson.plants.length; i++) {
-        happyMarkov.addText(poemsJson.plants[i], 4);
-        sadMarkov.addText(poemsJson.plants[i], 4);
+        happyMarkov.addText(poemsJson.plants[i], 2);
+        sadMarkov.addText(poemsJson.plants[i], 2);
     }
 
-    for (let i = 0; i < plantsJson.plants.length; i++) {
-        happyMarkov.addText(plantsJson.plants[i], 1);
-        sadMarkov.addText(plantsJson.plants[i], 1);
-    }
+    // for (let i = 0; i < plantsJson.plants.length; i++) {
+    //     happyMarkov.addText(plantsJson.plants[i], 1);
+    //     sadMarkov.addText(plantsJson.plants[i], 1);
+    // }
 
     for (let i = 0; i < happyJson.happy.length; i++) {
-        happyMarkov.addText(happyJson.happy[i], 4);
+        happyMarkov.addText(happyJson.happy[i],5);
     }
 
     for (let i = 0; i < sadJson.sad.length; i++) {
-        sadMarkov.addText(sadJson.sad[i], 4);
+        sadMarkov.addText(sadJson.sad[i],5);
     }
 
     markov = happyMarkov;
@@ -238,6 +253,23 @@ function setup() {
     resetButton.position(10, 10);
     resetButton.mousePressed(reset);
 }
+
+function printList(portList) {
+    // portList is an array of serial port names
+    for (var i = 0; i < portList.length; i++) {
+        // Display the list the console:
+        //   console.log(i + portList[i]);
+    }
+}
+
+function serverConnected() {
+    console.log('connected to server.');
+}
+
+function portOpen() {
+    console.log('the serial port opened.')
+}
+
 
 function update() {
 
@@ -308,7 +340,33 @@ function draw() {
     }
 
     updateMarkov();
+    serialEvent();
 }
+
+
+function serialEvent() {
+    inData = serial.readLine();
+
+    if (!inData) return;
+    byteCount++; 
+
+  //  console.log(inData)
+    if (inData <=600){
+        plantIsHappy = true;
+    }else {
+        plantIsHappy = false;
+    }
+}
+
+function serialError(err) {
+    console.log('Something went wrong with the serial port.' + err);
+}
+
+function portClose() {
+    console.log('The serial port closed.');
+}
+
+
 
 function createAnimals() {
 
@@ -434,7 +492,7 @@ function displayUI() {
         strokeWeight(17); // 6 or 17?
         strokeJoin(ROUND);
         fill("#0A0A0A");
-        text(uiText, leftEdge+280, 20, uiWidth-300, height-40);
+        text(uiText, leftEdge+280, 20, uiWidth/3, height-40);
         pop();
 
         if (!noCharacter) {
@@ -705,4 +763,8 @@ function updateMarkov() {
         markovIsHappy = false;
         markov = sadMarkov;
     }
+    
+    console.log(markovIsHappy)
+
+
 }
