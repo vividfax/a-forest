@@ -1,6 +1,6 @@
 let grid;
 let player;
-let mode;
+let mode = 0;
 
 let worldWidth = 500;
 let worldHeight = 500;
@@ -193,6 +193,7 @@ function preload() {
 function setup() {
 
     createCanvas(windowWidth, windowHeight);
+    mode = 0;
 
     serial = new p5.SerialPort(); // make a new instance of the serialport library
     serial.on('list', printList); // set a callback function for the serialport list event
