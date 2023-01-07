@@ -5,8 +5,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
 
-    <title>a forest</title>
+    <title>Wood Wide Web</title>
 
     <!-- <link href="styles.css" rel="stylesheet"> -->
 
@@ -86,6 +93,55 @@
             left: 50%;
             top: 50%;
             transform: translate(-50%, -50%);
+            #title-container {
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            display: grid;
+            align-items: center;
+            align-content: center;
+            z-index: 100;
+            top: 0;
+            background-color: #75cec8;
+            position: fixed;
+        }
+
+        #titleCard {
+            position: absolute;
+            width: 100vw;
+            height: auto;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            z-index: 1000;
+
+        }
+
+        #aboutModal {
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100vw;
+            /* Full width */
+            height: 100vh;
+            /* Full height */
+            /* Enable scroll if needed */
+            z-index: 100;
+            pointer-events: none;
+
+        }
+
+        .modal-content {
+            background-color: #ffffffa3;
+            color: rgb(34, 29, 29);
+            margin: 15% auto;
+            padding: 3%;
+            padding: 20px;
+            width: 70%;
+        }
         }
     </style>
 </head>
@@ -101,7 +157,11 @@
             stitchTiles='stitch'/>
         </filter>
     </svg>
-
+    
+   <div id="title-container">
+        <img id="titleCard" />
+    </div>
+    
     <div id="p5_loading" class="loadingclass">
         <img src="./images/loading.gif">
     </div>
