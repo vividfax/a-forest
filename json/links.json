@@ -61,10 +61,6 @@
             "link": "https://bookwyrm.social/"
         },
         {
-            "label": "Goodreads - Database of books, annotations, quotes, and reviews",
-            "link": "https://www.goodreads.com/"
-        },
-        {
             "label": "LibriVox - Free public domain audiobooks",
             "link": "https://librivox.org/"
         },
@@ -75,14 +71,6 @@
         {
             "label": "oulipo.social - Social network where you can't use the letter e",
             "link": "https://oulipo.social/public"
-        },
-        {
-            "label": "Bandcamp - Online record store and music community",
-            "link": "https://bandcamp.com/"
-        },
-        {
-            "label": "Soundcloud - Discover the top streamed music and songs",
-            "link": "https://soundcloud.com/discover"
         },
         {
             "label": "default filename tv - Youtube videos that were uploaded from the camera without edits to the filename",
@@ -101,20 +89,12 @@
             "link": "https://thoughtmaybe.com/"
         },
         {
-            "label": "Vimeo - Watch free videos",
-            "link": "https://vimeo.com/watch"
-        },
-        {
             "label": "Are.na - Platform for connecting ideas and building knowledge",
             "link": "https://www.are.na/"
         },
         {
             "label": "Art Corner - Educational art discord with a focus on learning",
             "link": "https://discord.gg/qD7twYM"
-        },
-        {
-            "label": "ArtStation - Showcase platform for games, film, media & entertainment artists",
-            "link": "https://www.artstation.com/"
         },
         {
             "label": "DeviantArt - Online art gallery and community",
@@ -149,12 +129,8 @@
             "link": "https://discord.gg/PFXSAGM"
         },
         {
-            "label": "Awwwards - Website design inspiration",
-            "link": "https://www.awwwards.com/websites/"
-        },
-        {
-            "label": "Dribbble - Discover the world’s top designers & creative professionals",
-            "link": "https://dribbble.com/"
+            "label": "HOVERSTAT.ES - The home of alternative design, code and content on the world wide web.",
+            "link": "https://www.hoverstat.es/"
         },
         {
             "label": "Lookbook.nu - Fashion inspiration from real people around the world",
@@ -193,10 +169,6 @@
             "link": "http://www.meditations.games/"
         },
         {
-            "label": "Newgrounds - Animated films and games",
-            "link": "https://www.newgrounds.com/games"
-        },
-        {
             "label": "Folksy - Buy and sell handmade gifts and craft supplies",
             "link": "https://folksy.com/"
         },
@@ -207,6 +179,78 @@
         {
             "label": "Metacritic - Aggregates music, game, tv, and movie reviews from the leading critics",
             "link": "https://www.metacritic.com/"
+        },
+        {
+            "label": "Damaged Earth Catalog - The DAMAGED EARTH CATALOG functions as an evaluation and access device.",
+            "link": "https://damaged.bleu255.com/"
+        },
+        {
+            "label": "Chaos Computer Club - This site offers a wide variety of video and audio material distributed by the Chaos Computer Club. ",
+            "link": "https://media.ccc.de/"
+        },
+        {
+            "label": "Cyberfeminism Index - Cyberfeminism Index is INCOMPLETE and ALWAYS IN PROGRESS. ",
+            "link": "https://cyberfeminismindex.com/"
+        },
+        {
+            "label": "NTS - NTS is a global family of music lovers.",
+            "link": "https://www.nts.live/"
+        },
+        {
+            "label": "The Public Domain Review - Dedicated to the exploration of curious and compelling works from the history of art, literature, and ideas.",
+            "link": "https://publicdomainreview.org/"
+        },
+        {
+            "label": "Here//&Now - An intimate, webspace for digital mediation through prompted daily reflections.",
+            "link": "https://here-and-now.glitch.me/"
+        },
+        {
+            "label": "Solar Protocol Library - This website is hosted across a network of solar powered servers.",
+            "link": "http://solarprotocol.net/library.html"
+        },
+        {
+            "label": "LURK - We host, facilitate and archive discussions around net- and computational culture and politics.",
+            "link": "https://lurk.org/"
+        },
+        {
+            "label": "Scuttlebutt - A decentralised secure gossip platform.",
+            "link": "https://scuttlebutt.nz/about/"
+        },
+        {
+            "label": "The Creative Independent - A growing resource of emotional and practical guidance for creative people.",
+            "link": "https://thecreativeindependent.com/"
+        },
+        {
+            "label": "Gossip’s Web - The directory of handmade webpages.",
+            "link": "https://gossipsweb.net/personal-websites"
+        },
+        {
+            "label": "ooh.directory - A place to find blogs that interest you.",
+            "link": "https://ooh.directory/"
+        },
+        {
+            "label": "Digital Garden - A public notebook / digital garden for The Bentway’s Digital and/as Public Space Micro-Residency.",
+            "link": "https://digitalgarden.hypha.coop/"
+        },
+        {
+            "label": "LOW TECH WEBRING DIRECTORY - This webring is for homepages of people who are interested in low tech, small game tools, and other forms of Web 1.0 inspired creativity.",
+            "link": "https://emreed.net/LowTech_Directory"
+        },
+        {
+            "label": "WEBRING xxiivv - The ring welcomes hand-crafted wikis and portfolios.",
+            "link": "https://webring.xxiivv.com/"
+        },
+        {
+            "label": "Your World of Text - An infinite grid of text editable by any visitor.",
+            "link": "https://www.yourworldoftext.com/"
+        },
+        {
+            "label": "UbuWeb - A pirate shadow library consisting of hundreds of thousands of freely downloadable avant-garde artifacts.",
+            "link": "https://www.ubu.com/"
+        },
+        {
+            "label": "Hackaday.io - Hackaday.io is the world's largest collaborative hardware development community.",
+            "link": "https://hackaday.io/"
         }
     ]
 }
