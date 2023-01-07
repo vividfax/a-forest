@@ -34,6 +34,7 @@ class Player {
             addRandomSound(footStepsFlowers, footStepsFlowersLength);
         } else {
             addRandomSound(footStepsGrass, footStepsGrassLength);
+            console.log(`(on footstep)sounds queue length = ${soundManager.soundsQueue.length}`);
         }
 
         if (targetCell instanceof House) {
