@@ -259,8 +259,8 @@ function setup() {
 
     if (mode == 0) {
         let img = document.getElementById("titleCard");
-        img.src = './images/titlecard.gif';
-        img.style.display = "block";
+        document.getElementById("titleCard").src="./images/titlecard.gif";
+        document.getElementById("titleCard").style.display = "block"
     }
 }
 
