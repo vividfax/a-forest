@@ -121,7 +121,6 @@ function scheduleStopEventOnTimeline(player, stopTime) {
 function scheduleStartEventOnTimeline(player, startTime) {
   let eventId = Tone.Transport.schedule((time) => {
     player.start(time);
-    currentLoopIndex = index;
     // console.log(`Name = ${player.name}, Position = ${Tone.Transport.position}`);
   }, startTime);
   return eventId;
