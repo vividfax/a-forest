@@ -258,12 +258,9 @@ function setup() {
 
 
     if (mode == 0) {
-        let img = document.getElementById("titleCard")
-        img.src = '/images/titlecard.gif';
-        img.style.display = "block"
-
-
-
+        let img = document.getElementById("titleCard");
+        img.src = './images/titlecard.gif';
+        img.style.display = "block";
     }
 }
 
