@@ -233,6 +233,7 @@ function shuffleArr(array) {
 }
 
 function addRandomSound(soundTypeArray, soundArraySize) {
+  console.log(`(add sound call)sounds queue length = ${soundManager.soundsQueue.length}`);
   let x = randomBag(soundArraySize);
   let isInArray = false;
 
