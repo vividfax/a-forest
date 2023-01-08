@@ -64,15 +64,15 @@ const soundManager = {
   // Queue of next sounds to be played
   soundsQueue: [],
 
-  addCurrentSound: function (player, soundObject) {
-    this.currentSounds.set(player, soundObject);
+  addCurrentSound: function (playerName, soundObj) {
+    this.currentSounds.set(playerName, soundObj);
   },
-  removeCurrentSound: function (player) {
-    this.currentSounds.delete(player);
+  removeCurrentSound: function (playerName) {
+    this.currentSounds.delete(playerName);
   },
   getCurrentSounds: function () {
-    for (let [key, value] of this.currentSounds) {
-      console.log(key + " = " + value.name + `, priority = ${value.priority}`);
+    for (let [name, soundObj] of this.currentSounds) {
+      console.log(name + " = " + `, priority = ${soundObj.priority}`);
     }
   },
   addSoundToQueue: function (soundObj) {
@@ -83,16 +83,15 @@ const soundManager = {
   },
   getSoundsQueue: function () {
     console.log(`START------------`);
-    for (let sound of this.soundsQueue) {
-      console.log(`${sound.name}, priority = ${sound.priority}`);
+    for (let soundObj of this.soundsQueue) {
+      console.log(`${soundObj.player.name}, priority = ${soundObj.priority}`);
     }
     console.log(`END------------`);
   },
 };
 
 // ---- SOUND OBJECT ---- //
-function SoundObj(name, player, priority) {
-  this.name = name;
+function SoundObj(player, priority) {
   this.player = player;
   this.priority = priority;
 }
@@ -166,28 +165,28 @@ function loadSounds(sound, noOfSounds, name, path, priority) {
   for (let i = 0; i < noOfSounds; i++) {
     const soundName = name + `${i + 1}`;
     sound[i] = new SoundObj(
-      soundName,
       // for path to work currently, all mp3 need a number suffix
       new Tone.Player(`${path}${i + 1}.mp3`).toDestination(),
       priority
     );
     sound[i].player.onstop = () => {
-      onStopped(sound[i].player);
+      onStopped(soundName);
     };
+    sound[i].player.name = soundName;
   }
 }
 
 function loadSound(sound, name, path, priority) {
-  sound.name = name;
   sound.player = new Tone.Player(`${path}.mp3`).toDestination();
+  sound.player.name = name;
   sound.priority = priority;
   sound.player.onstop = () => {
-    onStopped(sound.player);
-  }
+    onStopped(name);
+  };
 }
 
-function onStopped(player) {
-    soundManager.removeCurrentSound(player);
+function onStopped(soundName) {
+  soundManager.removeCurrentSound(soundName);
 }
 
 // ---- TRIGGERS ---- //
@@ -227,7 +226,7 @@ function shuffleArr(array, length) {
 
 function addRandomSound(soundArray, length) {
   shuffleArr(soundArray, length);
-  console.log(`sound in current? ${soundManager.currentSounds.has(soundArray[0].player)}`);
+  console.log(`sound in current? ${soundManager.currentSounds.has(soundArray[0].player.name)}`);
 /*
   for (let i = 0; i < length; i++) {
     if (
