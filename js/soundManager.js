@@ -227,7 +227,7 @@ function shuffleArr(array, length) {
 
 function addRandomSound(soundArray, length) {
  // shuffleArr(soundArray, length);
-
+/*
   for (let i = 0; i < length; i++) {
     if (
       soundManager.soundsQueue.includes(soundArray[i]) ||
@@ -238,6 +238,7 @@ function addRandomSound(soundArray, length) {
     soundManager.addSoundToQueue(soundArray[i]);
     return;
   }
+  */
 }
 
 function flushQueue() {
