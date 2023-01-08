@@ -213,41 +213,31 @@ function randomBag(length) {
   return shuffleArr(arr);
 }
 
-function shuffleArr(array) {
-  let currentIndex = array.length,
-    randomIndex;
-
-  // While there remain elements to shuffle.
-  while (currentIndex != 0) {
+function shuffleArr(array, length) {
+  let randomIndex;
+  for (let i = 0; i < length; i++) {
     // Pick a remaining element.
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex--;
+    randomIndex = Math.floor(Math.random() * i);
 
     // And swap it with the current element.
-    [array[currentIndex], array[randomIndex]] = [
-      array[randomIndex],
-      array[currentIndex],
-    ];
+    [array[i], array[randomIndex]] = [array[randomIndex], array[i]];
   }
   return array;
 }
 
 function addRandomSound(soundTypeArray, soundArraySize) {
-  console.log(`(add sound call)sounds queue length = ${soundManager.soundsQueue.length}`);
-  let x = randomBag(soundArraySize);
-  let isInArray = false;
+  shuffleArr(soundArray, length);
 
-  do {
-    if (soundManager.soundsQueue.includes(soundTypeArray[x[0]])) {
-      x.shift();
-      isInArray = true;
-    } else isInArray = false;
-  } while (isInArray && x.length > 0);
-  if (x.length == 0) {
-    console.log(`all potential sounds in queue`);
+  for (let i = 0; i < length; i++) {
+    if (
+      soundManager.soundsQueue.includes(soundArray[i]) ||
+      soundManager.currentSounds.has(soundArray[i].player)
+    )
+      continue;
+    console.log(`adding ${soundArray[i].name} to queue`);
+    soundManager.addSoundToQueue(soundArray[i]);
     return;
   }
-  soundManager.addSoundToQueue(soundTypeArray[x[0]]);
 }
 
 function flushQueue() {
