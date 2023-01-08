@@ -528,14 +528,13 @@ function keyPressed() {
 
     if (!interacted) {
         interacted = true;
-        // Starts music
-        Tone.Transport.start();
-    }
- if (keyCode === ENTER) {
         mode = 1;
         document.getElementById("titleCard").style.display = "none"
         document.getElementById("title-container").style.display = "none"
+        // Starts music
+        Tone.Transport.start();
     }
+
     if (!player) return;
     if (!keyIsPressed) return;
     if (keyIsDown(CONTROL)) return;
@@ -766,7 +765,7 @@ function about() {
     let about = document.getElementById("aboutModal")
 
     if (window.getComputedStyle(about, null).getPropertyValue("display") === 'none') {
-        about.style.display = 'block';
+      about.style.display = 'grid'; 
     } else {
         about.style.display = 'none';
     }
