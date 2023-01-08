@@ -225,7 +225,7 @@ function shuffleArr(array, length) {
   return array;
 }
 
-function addRandomSound(soundTypeArray, soundArraySize) {
+function addRandomSound(soundArray, soundArraySize) {
   shuffleArr(soundArray, length);
 
   for (let i = 0; i < length; i++) {
