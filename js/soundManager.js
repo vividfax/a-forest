@@ -225,10 +225,12 @@ function shuffleArr(array, length) {
 }
 
 function addRandomSound(soundArray, length) {
+  /*
   shuffleArr(soundArray, length);
   console.log(`sound name test = ${soundArray[0]}`);
   console.log(`sound name test = ${soundArray[0].player}`);
   console.log(`sound name test = ${soundArray[0].player.name}`);
+  */
 /*
   for (let i = 0; i < length; i++) {
     if (
