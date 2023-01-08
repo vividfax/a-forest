@@ -227,7 +227,7 @@ function shuffleArr(array, length) {
 
 function addRandomSound(soundArray, length) {
   shuffleArr(soundArray, length);
-  console.log(`sound in current? ${soundManager.currentSounds.has(soundArray[i].player)}`);
+  console.log(`sound in current? ${soundManager.currentSounds.has(soundArray[0].player)}`);
 /*
   for (let i = 0; i < length; i++) {
     if (
