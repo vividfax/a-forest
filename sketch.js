@@ -82,6 +82,8 @@ let sadMarkov;
 
 let showFog = true;
 
+let aboutDisplayed = false;
+
 function preload() {
 
     plantsJson = loadJSON("./json/plants.json");
@@ -251,8 +253,8 @@ function setup() {
     let resetButton = createButton("Reset");
     resetButton.position(10, 10);
     resetButton.mousePressed(reset);
-    
-    
+
+
     let aboutButton = createButton("About");
     aboutButton.position(windowWidth - 210, 10);
     aboutButton.mousePressed(about);
@@ -344,7 +346,7 @@ function draw() {
         console.log(`sounds queue length = ${soundManager.soundsQueue.length}`);
         flushQueue();
     }
-    
+
     if (waveCrashNextFrame) {
         waveCrashNextFrame = false;
         addSound(splash);
@@ -359,7 +361,7 @@ function serialEvent() {
     inData = serial.readLine();
 
     if (!inData) return;
-    byteCount++; 
+    byteCount++;
 
   //  console.log(inData)
     if (inData <=600){
@@ -497,6 +499,10 @@ function displayUI() {
         uiText = "Press ENTER to see reverse side";
     }
 
+    if (aboutDisplayed) {
+        uiText = "Press ESCAPE to close";
+    }
+
     if (uiText != "") {
         push();
         stroke("#eee");
@@ -533,6 +539,7 @@ function keyPressed() {
         document.getElementById("title-container").style.display = "none"
         // Starts music
         Tone.Transport.start();
+        return;
     }
 
     if (!player) return;
@@ -542,6 +549,14 @@ function keyPressed() {
     if (justCopyPaste) {
         justCopyPaste = false;
         return;
+    }
+
+    if (aboutDisplayed) {
+        if (keyIsDown(ESCAPE)) {
+            about();
+        } else {
+            return;
+        }
     }
 
     move();
@@ -762,13 +777,18 @@ function reset() {
 }
 
 function about() {
+
     let about = document.getElementById("aboutModal")
 
     if (window.getComputedStyle(about, null).getPropertyValue("display") === 'none') {
-      about.style.display = 'grid'; 
+        about.style.display = 'grid';
+        aboutDisplayed = true;
     } else {
         about.style.display = 'none';
+        aboutDisplayed = false;
     }
+
+    redraw();
 }
 
 function keyReleased() {
@@ -788,7 +808,7 @@ function updateMarkov() {
         markovIsHappy = false;
         markov = sadMarkov;
     }
-    
+
     console.log("are the plants happy? " + markovIsHappy)
 
 
