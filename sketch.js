@@ -343,7 +343,7 @@ function draw() {
     }
 
     if(soundManager.soundsQueue.length > 0) {
-        console.log(`sounds queue length = ${soundManager.soundsQueue.length}`);
+        // console.log(`sounds queue length = ${soundManager.soundsQueue.length}`);
         flushQueue();
     }
 
