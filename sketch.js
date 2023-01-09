@@ -324,16 +324,22 @@ function draw() {
 
     displayUI();
     displayPostcard();
+   
 
-    let currentCell = grid.grid[player.x][player.y];
+ let currentCell = grid.grid[player.x][player.y];
 
     if (!housePanelOpen && currentCell instanceof House) {
         housePanelOpen = true;
-        // Mari: open house panel
-    } else if (housePanelOpen && currentCell instanceof House == false) {
-        housePanelOpen = false;
-        // Mari: close house panel
+        ifrm = document.createElement("iframe");
+        ifrm.setAttribute("src", "/inside-house/house.html");
+        ifrm.style.width = "800px";
+        ifrm.style.height = "550px";
+        ifrm.style.zIndex = "10000"; 
+
+    } else if (housePanelOpen == true && currentCell instanceof House == false) {
+        ifrm.remove("iframe");
     }
+
 
     if (keyIsPressed && !(keyIsDown(ENTER) || keyIsDown(RETURN))) {
         frameRate(timeHolding+3);
@@ -670,17 +676,18 @@ function enterHouse() {
 
     let currentCell = grid.grid[player.x][player.y];
 
-    if ((keyCode == ENTER || keyCode == RETURN) && currentCell instanceof House) {
-        open(currentCell.data.link);
+    if ((keyCode == ENTER || keyCode == RETURN) &&  currentCell instanceof House) {
+       // open(currentCell.data.link);
 
+       housePanelOpen = true;
+
+       document.body.appendChild(ifrm);
         if (!currentCell.visited) {
             grid.grid[player.x][player.y].visited = true;
             grid.grid[player.x][player.y].symbol = houseEmojis[currentCell.houseType];
             addSound(houseFixedSound);
-
-            for (let i = 0; i < grid.width; i++) {
+            for (let i = 0; i < grid.width; i++) {  
                 for (let j = 0; j < grid.height; j++) {
-
                     if (grid.grid[i][j] instanceof House && !grid.grid[i][j].visited && grid.grid[i][j].data.label === grid.grid[player.x][player.y].data.label) {
                         grid.grid[i][j].visited = true;
                         // console.log()
@@ -690,9 +697,11 @@ function enterHouse() {
             }
         }
     } else {
+        if (currentCell.visited && housePanelOpen == true) { 
+            housePanelOpen = false
+        }
         return;
     }
-
     update();
     redraw();
 }
