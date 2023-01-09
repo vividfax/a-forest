@@ -331,7 +331,7 @@ function draw() {
     if (!housePanelOpen && currentCell instanceof House) {
         housePanelOpen = true;
         ifrm = document.createElement("iframe");
-        ifrm.setAttribute("src", "/inside-house/house.html");
+        ifrm.setAttribute("src", "/house/index.html");
         ifrm.style.width = "800px";
         ifrm.style.height = "550px";
         ifrm.style.zIndex = "10000"; 
