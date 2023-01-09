@@ -64,6 +64,7 @@ const soundManager = {
   // Queue of next sounds to be played
   soundsQueue: [],
 
+  
   addCurrentSound: function (playerName, soundObj) {
     this.currentSounds.set(playerName, soundObj);
   },
