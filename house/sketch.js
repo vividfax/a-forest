@@ -6,21 +6,21 @@ let abandonedHouse;
 let dirtimg= [];
 let score = 0;
 function preload(){
-    dirtimg.push( loadImage('lint1.png'));
-    dirtimg.push( loadImage('lint2.png'));
-    dirtimg.push( loadImage('lint3.png'));
-    dirtimg.push( loadImage('lint4.png'));
-      dirtimg.push( loadImage('lint1.png'));
-    dirtimg.push( loadImage('lint2.png'));
-    dirtimg.push( loadImage('lint3.png'));
-    dirtimg.push( loadImage('lint4.png'));
-      dirtimg.push( loadImage('lint1.png'));
-    dirtimg.push( loadImage('lint2.png'));
-    dirtimg.push( loadImage('lint3.png'));
-    dirtimg.push( loadImage('lint4.png'));
-  playerimg = loadImage('rake.png');
-    house = loadImage("house.png");
-      abandonedHouse = loadImage("broken-house.png");
+    dirtimg.push( loadImage('../images/lint1.png'));
+    dirtimg.push( loadImage('../images/lint2.png'));
+    dirtimg.push( loadImage('../images/lint3.png'));
+    dirtimg.push( loadImage('../images/lint4.png'));
+      dirtimg.push( loadImage('../images/lint1.png'));
+    dirtimg.push( loadImage('../images/lint2.png'));
+    dirtimg.push( loadImage('../images/lint3.png'));
+    dirtimg.push( loadImage('../images/lint4.png'));
+      dirtimg.push( loadImage('../images/lint1.png'));
+    dirtimg.push( loadImage('../images/lint2.png'));
+    dirtimg.push( loadImage('../images/lint3.png'));
+    dirtimg.push( loadImage('../images/lint4.png'));
+  playerimg = loadImage('../images/rake.png');
+    house = loadImage("../images/house.png");
+      abandonedHouse = loadImage("../images/broken-house.png");
 
 }
 
