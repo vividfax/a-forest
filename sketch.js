@@ -83,6 +83,7 @@ let sadMarkov;
 let showFog = true;
 
 let aboutDisplayed = false;
+let housePanelOpen = false;
 
 function preload() {
 
@@ -323,6 +324,16 @@ function draw() {
 
     displayUI();
     displayPostcard();
+
+    let currentCell = grid.grid[player.x][player.y];
+
+    if (!housePanelOpen && currentCell instanceof House) {
+        housePanelOpen = true;
+        // Mari: open house panel
+    } else if (housePanelOpen && currentCell instanceof House == false) {
+        housePanelOpen = false;
+        // Mari: close house panel
+    }
 
     if (keyIsPressed && !(keyIsDown(ENTER) || keyIsDown(RETURN))) {
         frameRate(timeHolding+3);
