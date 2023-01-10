@@ -93,6 +93,7 @@ let rand = Math.floor(Math.random() * 15);
         var ifrm = document.createElement("iframe");
         ifrm.setAttribute("src", links.links[rand].link);
         fill(0)
+        strokeCap(ROUND);
         strokeWeight(10)
         stroke(255)
         textSize(22)
