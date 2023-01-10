@@ -353,6 +353,8 @@ function draw() {
         timeHolding = 0;
     }
 
+    treesOnScreen = 100;
+
    checkMusicTransition();
 
     if (waterOnScreen) {
@@ -649,6 +651,9 @@ function write() {
         if (currentCell instanceof Tree || currentCell instanceof Leaf) {
             if (currentCell.phrase.length == 1) {
                 grid.grid[player.x][player.y] = new EmptyCell(player.x, player.y);
+
+                // Mikey: delete trees or leaves sound here
+
             } else {
                 grid.grid[player.x][player.y].phrase = currentCell.phrase.slice(0, -1);
             }

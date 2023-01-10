@@ -107,7 +107,7 @@ function SoundObj(player, priority) {
 // ---- LOAD SOUNDS HERE ---- //
 function preloadSounds() {
   // you can adjust volume levels from here
-  loadSounds(footStepsFlowers, footStepsFlowersLength, `footstepFlowers`, `SFX/FootstepsFlowers/Step`, footStepsFlowersPriority, -24 + volOffset, 1);
+  loadSounds(footStepsFlowers, footStepsFlowersLength, `footstepFlowers`, `SFX/FootstepsFlowers/Step`, footStepsFlowersPriority, -14 + volOffset, 1);
   loadSounds(footStepsGrass, footStepsGrassLength, `footstepGrass`, `SFX/FootstepsGrass/Step`, footStepsGrassPriority, -24 + volOffset, 1);
   loadSounds(leafTotree, leafTotreeLength, `leafToTree`, `SFX/LeafToTree/leafToTree`, leafTotreePriority, -24 + volOffset, 1);
   loadSounds(leaves, leavesLength, `leaves`, `SFX/Leaves/Leaves`, leavesPriority, -20 + volOffset, 1);
@@ -116,21 +116,21 @@ function preloadSounds() {
     leaves[i].player.connect(randomPanner);
   }
 
-  loadSounds(letterOpenSound, letterOpenSoundLength, `letterOpenSound`, `SFX/OpenLetter/OpenLetter`, letterOpenSoundPriority, -9 + volOffset, 1);
-  loadSounds(turnLetterSound, turnLetterSoundLength, `turnLetterSound`, `SFX/TurnLetter/TurnLetter`, turnLetterSoundPriority, -9 + volOffset, 1);
+  loadSounds(letterOpenSound, letterOpenSoundLength, `letterOpenSound`, `SFX/OpenLetter/OpenLetter`, letterOpenSoundPriority, -14 + volOffset, 1);
+  loadSounds(turnLetterSound, turnLetterSoundLength, `turnLetterSound`, `SFX/TurnLetter/TurnLetter`, turnLetterSoundPriority, -14 + volOffset, 1);
 
   loadSound(animalSound, `animal`, `SFX/animal`, animalSoundPriority, -12 + volOffset);
   loadSound(bumpSound, `bump`, `SFX/bump`, bumpSoundPriority, -24 + volOffset);
   bumpSound.player.fadeOut = 1;
   loadSound(houseBrokenSound, `houseBroken`, `SFX/houseBroken`, houseBrokenSoundPriority, -12 + volOffset);
-  loadSound(houseFixedSound, `houseFixed`, `SFX/houseFixed`, houseFixedSoundPriority, -24 + volOffset);
+  loadSound(houseFixedSound, `houseFixed`, `SFX/houseFixed`, houseFixedSoundPriority, -12 + volOffset);
   loadSound(plantingSound, `plantingSound`, `SFX/Planting1`, plantingSoundPriority, -24 + volOffset);
   loadSound(resetSound, `reset`, `SFX/ResetButton`, resetSoundPriority, -24 + volOffset);
   loadSound(seagull, `seagull`, `SFX/seagull`, seagullPriority, -24 + volOffset);
   loadSound(seaLoop, `seaLoop`, `SFX/sealoop`, seaLoopPriority, -24 + volOffset);
   seaLoop.player.loop = true;
   seaLoop.player.fadeOut = 1;
-  loadSound(splash, `splash`, `SFX/splash`, splashPriority, -15);
+  loadSound(splash, `splash`, `SFX/splash`, splashPriority, -20 + volOffset);
 }
 
 // ---- TEMPLATE FOR LOADING SOUNDS ---- //
@@ -220,7 +220,7 @@ function addRandomSound(soundArray, length) {
 }
 
 function flushQueue() {
-  
+
   if (
     soundManager.currentSounds.size + soundManager.soundsQueue.length <=
     maxSounds
@@ -228,7 +228,7 @@ function flushQueue() {
   //  console.log(`Sound: ${soundManager.soundsQueue[0].player.state}`);
     // play sounds and add to current sounds map
     while (soundManager.soundsQueue.length > 0) {
-      
+
       soundManager.soundsQueue[0].player.start();
       soundManager.addCurrentSound(
         soundManager.soundsQueue[0].player.name,
@@ -274,7 +274,7 @@ function flushQueue() {
 
 function getLowestPrioritySound() {
   let temp = { key: 42, soundObj: { priority: Number.MAX_SAFE_INTEGER } };
-  
+
 
   // iterate through current sounds map. key = player name, value = sound object
   for (const [soundName, soundObj] of soundManager.currentSounds) {
