@@ -2,27 +2,27 @@ let dirt ;
 let floor;
 let player;
 let house;
-let links;
 let abandonedHouse;
+let links;
 let dirtimg= [];
 let score = 0;
-
 function preload(){
-    dirtimg.push( loadImage('../images/lint1.png'));
-    dirtimg.push( loadImage('../images/lint2.png'));
-    dirtimg.push( loadImage('../images/lint3.png'));
-    dirtimg.push( loadImage('../images/lint4.png'));
-      dirtimg.push( loadImage('../images/lint1.png'));
-    dirtimg.push( loadImage('../images/lint2.png'));
-    dirtimg.push( loadImage('../images/lint3.png'));
-    dirtimg.push( loadImage('../images/lint4.png'));
-      dirtimg.push( loadImage('../images/lint1.png'));
-    dirtimg.push( loadImage('../images/lint2.png'));
-    dirtimg.push( loadImage('../images/lint3.png'));
-    dirtimg.push( loadImage('../images/lint4.png'));
-  playerimg = loadImage('../images/rake.png');
-    house = loadImage("../images/house.png");
-      abandonedHouse = loadImage("../images/broken-house.png");
+    dirtimg.push( loadImage('lint1.png'));
+    dirtimg.push( loadImage('lint2.png'));
+    dirtimg.push( loadImage('lint3.png'));
+    dirtimg.push( loadImage('lint4.png'));
+      dirtimg.push( loadImage('lint1.png'));
+    dirtimg.push( loadImage('lint2.png'));
+    dirtimg.push( loadImage('lint3.png'));
+    dirtimg.push( loadImage('lint4.png'));
+      dirtimg.push( loadImage('lint1.png'));
+    dirtimg.push( loadImage('lint2.png'));
+    dirtimg.push( loadImage('lint3.png'));
+    dirtimg.push( loadImage('lint4.png'));
+  playerimg = loadImage('rake.png');
+    house = loadImage("house.png");
+      abandonedHouse = loadImage("broken-house.png");
+      links = loadJSON("../json/links.json");
 
 }
 
@@ -89,8 +89,14 @@ function removeDirt(player, coin) {
 
        function prepareFrame() {
          setTimeout(() => {
+let rand = Math.floor(Math.random() * 15);
         var ifrm = document.createElement("iframe");
         ifrm.setAttribute("src", links.links[rand].link);
+        fill(0)
+        strokeWeight(10)
+        stroke(255)
+        textSize(22)
+        text( links.links[rand].label, width/2, 530)
         ifrm.style.width = "640px";
         ifrm.style.height = "480px";
         document.body.appendChild(ifrm);
