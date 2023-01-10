@@ -360,8 +360,6 @@ function draw() {
         timeHolding = 0;
     }
 
-    treesOnScreen = 100;
-
    checkMusicTransition();
 
     if (waterOnScreen) {
