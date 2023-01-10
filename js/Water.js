@@ -106,6 +106,8 @@ class Water {
 
                 this.animal = true;
                 this.symbol = random(waterAnimals);
+                seagull.player.playbackRate = random(0.5, 1.5);
+                seagull.player.stop();
                 addSound(seagull);
             }
         }

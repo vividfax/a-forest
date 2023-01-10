@@ -350,7 +350,11 @@ function draw() {
    checkMusicTransition();
 
     if (waterOnScreen) {
-        // Mikey
+        if (seaLoop.player.state === "stopped") {
+            addSound(seaLoop);
+        }
+    } else if (!waterOnScreen) {
+        seaLoop.player.stop();
     }
 
     if(soundManager.soundsQueue.length > 0) {
@@ -649,7 +653,9 @@ function write() {
             grid.grid[player.x][player.y].symbol = seedlingEmoji;
             currentCell = grid.grid[player.x][player.y];
             if (!typed) typed = true;
-            addRandomSound(plantingSound, plantingSoundLength); // planting sapling
+            plantingSound.player.playbackRate = random(0.5, 1.5);
+            plantingSound.player.stop();
+            addSound(plantingSound); // planting sapling
         }
         if (currentCell instanceof Tree || currentCell instanceof Leaf || currentCell instanceof Mailbox) {
             if (keyIsDown(ENTER) || keyIsDown(RETURN)) {
@@ -737,7 +743,9 @@ function pasteMyText(text) {
 
     if (currentCell instanceof EmptyCell) {
         grid.grid[player.x][player.y] = new Tree(player.x, player.y, false, text);
-        addRandomSound(plantingSound, plantingSoundLength); // planting sapling
+        plantingSound.player.playbackRate = random(0.5, 1.5);
+        plantingSound.player.stop();
+        addSound(plantingSound); // planting sapling
     } else {
         grid.grid[player.x][player.y].phrase += text;
     }

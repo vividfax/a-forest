@@ -24,7 +24,9 @@ class Leaf {
     addChar(c) {
 
         grid.grid[this.gridX][this.gridY] = new Tree(this.gridX, this.gridY, false, this.phrase + c);
-        addRandomSound(plantingSound, plantingSoundLength); // leaf to plant
+        plantingSound.player.playbackRate = random(0.5, 1.5);
+        plantingSound.player.stop();
+        addRandomSound(leafTotree, leafTotreeLength);
     }
 
     update() {
@@ -38,8 +40,10 @@ class Leaf {
                 this.phrase += " " + completion;
 
                 grid.grid[this.gridX][this.gridY] = new Tree(this.gridX, this.gridY, this.fog, this.phrase);
-                if (this.onScreen) addRandomSound(plantingSound, plantingSoundLength); // leaf to plant
-            }
+                if (this.onScreen) {
+                    addRandomSound(leafTotree, leafTotreeLength);
+                }
+            } // leaf to plant
         }
 
         this.onScreen = false;

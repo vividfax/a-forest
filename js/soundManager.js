@@ -8,13 +8,13 @@ let footStepsFlowers = {};
 let footStepsFlowersLength = 5;
 let footStepsFlowersPriority = 5;
 
-let leaves = {};
-let leavesLength = 5;
-let leavesPriority = 10;
+let leafTotree = {};
+let leafTotreeLength = 4;
+let leafTotreePriority = 11;
 
-let plantingSound = {};
-let plantingSoundLength = 4;
-let plantingSoundPriority = 8;
+let leaves = {};
+let leavesLength = 10;
+let leavesPriority = 10;
 
 let letterOpenSound = {};
 let letterOpenSoundLength = 4;
@@ -24,6 +24,9 @@ let turnLetterSound = {};
 let turnLetterSoundLength = 4;
 let turnLetterSoundPriority = 20;
 
+let plantingSound = new SoundObj();
+let plantingSoundPriority = 8;
+
 let typingSound = new SoundObj();
 let typingSoundPriority = 15;
 
@@ -31,7 +34,7 @@ let bumpSound = new SoundObj();
 let bumpSoundPriority = 7;
 
 let resetSound = new SoundObj();
-let resetSoundPriority = 20;
+let resetSoundPriority = 100;
 
 let windSound = new SoundObj();
 let windSoundPriority = 7;
@@ -55,6 +58,7 @@ let splash = new SoundObj();
 let splashPriority = 6;
 
 const maxSounds = 10;
+const volOffset = 6;
 
 // ---- SOUND MANAGER OBJECT ---- //
 const soundManager = {
@@ -98,70 +102,29 @@ function SoundObj(player, priority) {
 
 // ---- LOAD SOUNDS HERE ---- //
 function preloadSounds() {
-  loadSounds(
-    footStepsGrass,
-    footStepsGrassLength,
-    `footstepGrass`,
-    `SFX/FootstepsGrass/step`,
-    footStepsGrassPriority
-  );
-  loadSounds(
-    footStepsFlowers,
-    footStepsFlowersLength,
-    `footstepFlowers`,
-    `SFX/FootstepsFlowers/Step`,
-    footStepsFlowersPriority
-  );
-  loadSounds(
-    leaves,
-    leavesLength,
-    `leaves`,
-    `SFX/Leaves/Leaves1/Leaves`,
-    leavesPriority
-  );
-  loadSounds(
-    plantingSound,
-    plantingSoundLength,
-    `plantingSound`,
-    `SFX/PlantingTrees/Planting`,
-    plantingSoundPriority
-  );
-  loadSounds(
-    letterOpenSound,
-    letterOpenSoundLength,
-    `letterOpenSound`,
-    `SFX/Letters/OpenLetter/OpenLetter`,
-    letterOpenSoundPriority
-  );
+  loadSounds(footStepsFlowers, footStepsFlowersLength, `footstepFlowers`, `SFX/FootstepsFlowers/Step`, footStepsFlowersPriority, -24 + volOffset, 1);
+  loadSounds(footStepsGrass, footStepsGrassLength, `footstepGrass`, `SFX/FootstepsGrass/Step`, footStepsGrassPriority, -30 + volOffset, 1);
+  loadSounds(leafTotree, leafTotreeLength, `leafToTree`, `SFX/LeafToTree/leafToTree`, leafTotreePriority, -24 + volOffset, 1);
+  loadSounds(leaves, leavesLength, `leaves`, `SFX/Leaves/Leaves`, leavesPriority, -24 + volOffset, 1);
+  loadSounds(letterOpenSound, letterOpenSoundLength, `letterOpenSound`, `SFX/OpenLetter/OpenLetter`, letterOpenSoundPriority, -24 + volOffset, 1);
+  loadSounds(turnLetterSound, turnLetterSoundLength, `turnLetterSound`, `SFX/TurnLetter/TurnLetter`, turnLetterSoundPriority, -24 + volOffset, 1);
 
-  loadSounds(
-    turnLetterSound,
-    turnLetterSoundLength,
-    `turnLetterSound`,
-    `SFX/Letters/TurnLetter/TurnLetter`,
-    turnLetterSoundPriority
-  );
-
-  loadSound(typingSound, `typing`, `SFX/Typing`, typingSoundPriority);
-  typingSound.player.loop = true;
-  typingSound.player.fadeOut = 1;
-
-  loadSound(seaLoop, `seaLoop`, `SFX/sealoop`, seaLoopPriority);
+  loadSound(animalSound, `animal`, `SFX/animal`, animalSoundPriority, -12 + volOffset);
+  loadSound(bumpSound, `bump`, `SFX/bump`, bumpSoundPriority, -24 + volOffset);
+  bumpSound.player.fadeOut = 1;
+  loadSound(houseBrokenSound, `houseBroken`, `SFX/houseBroken`, houseBrokenSoundPriority, -12 + volOffset);
+  loadSound(houseFixedSound, `houseFixed`, `SFX/houseFixed`, houseFixedSoundPriority, -24 + volOffset);
+  loadSound(plantingSound, `plantingSound`, `SFX/Planting1`, plantingSoundPriority, -24 + volOffset);
+  loadSound(resetSound, `reset`, `SFX/ResetButton`, resetSoundPriority, -24 + volOffset);
+  loadSound(seagull, `seagull`, `SFX/seagull`, seagullPriority, -24 + volOffset);
+  loadSound(seaLoop, `seaLoop`, `SFX/sealoop`, seaLoopPriority, -24 + volOffset);
   seaLoop.player.loop = true;
   seaLoop.player.fadeOut = 1;
-
-  loadSound(windSound, `wind`, `SFX/wind`, windSoundPriority);
-  loadSound(bumpSound, `bump`, `SFX/bump`, bumpSoundPriority);
-  loadSound(resetSound, `reset`, `SFX/ResetButton`, resetSoundPriority);
-  loadSound(houseBrokenSound, `houseBroken`, `SFX/houseBroken`, houseBrokenSoundPriority);
-  loadSound(houseFixedSound, `houseFixed`, `SFX/houseFixed`, houseFixedSoundPriority);
-  loadSound(animalSound, `animal`, `SFX/animal`, animalSoundPriority);
-  loadSound(seagull, `seagull`, `SFX/seagull`, seagullPriority);
-  loadSound(splash, `splash`, `SFX/splash`, splashPriority);
+  loadSound(splash, `splash`, `SFX/splash`, splashPriority, -30);
 }
 
 // ---- TEMPLATE FOR LOADING SOUNDS ---- //
-function loadSounds(sound, noOfSounds, name, path, priority) {
+function loadSounds(sound, noOfSounds, name, path, priority, volume = 0, fadeOut = 0) {
   for (let i = 0; i < noOfSounds; i++) {
     const soundName = name + `${i + 1}`;
     sound[i] = new SoundObj(
@@ -173,16 +136,19 @@ function loadSounds(sound, noOfSounds, name, path, priority) {
       onStopped(soundName);
     };
     sound[i].player.name = soundName;
+    sound[i].player.volume.value = volume;
+    sound[i].player.fadeOut = fadeOut;
   }
 }
 
-function loadSound(sound, name, path, priority) {
+function loadSound(sound, name, path, priority, volume = 0) {
   sound.player = new Tone.Player(`${path}.mp3`).toDestination();
   sound.player.name = name;
   sound.priority = priority;
   sound.player.onstop = () => {
     onStopped(name);
   };
+  sound.player.volume.value = volume;
 }
 
 function onStopped(soundName) {
