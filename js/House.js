@@ -8,8 +8,8 @@ class House {
         this.symbol = abandonedHouseEmojis[this.houseType];
         this.fog = fog;
 
-//         this.data = random(links.links)
-//         this.phrase = this.data.label + "\n" + this.data.link;
+         this.data = random(links.links)
+         this.phrase = this.data.label + "\n" + this.data.link;
 //         this.phrase += "\n\nPress ENTER to visit website";
            this.phrase = "\n\nPress ENTER to visit";
 
