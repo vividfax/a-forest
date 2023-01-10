@@ -3,6 +3,7 @@ let floor;
 let player;
 let house;
 let abandonedHouse;
+let links;
 let dirtimg= [];
 let score = 0;
 function preload(){
@@ -21,6 +22,7 @@ function preload(){
   playerimg = loadImage('../images/rake.png');
     house = loadImage("../images/house.png");
       abandonedHouse = loadImage("../images/broken-house.png");
+      links = loadJSON("../json/links.json");
 
 }
 
@@ -87,9 +89,15 @@ function removeDirt(player, coin) {
 
        function prepareFrame() {
          setTimeout(() => {
-
+let rand = Math.floor(Math.random() * 15);
         var ifrm = document.createElement("iframe");
-        ifrm.setAttribute("src", "https://art.teleportacia.org/observation/vernacular/");
+        ifrm.setAttribute("src", links.links[rand].link);
+        fill(0)
+        strokeCap(ROUND);
+        strokeWeight(10)
+        stroke(255)
+        textSize(22)
+        text( links.links[rand].label, width/2, 530)
         ifrm.style.width = "640px";
         ifrm.style.height = "480px";
         document.body.appendChild(ifrm);
