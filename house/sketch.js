@@ -136,7 +136,12 @@ function reset() {
 
     ifrm.style.visibility = "hidden";
 
+    if (dirt.length > 0) {
+        dirt.removeAll();
+    }
+
     dirt = new Group();
+
     for (let i = 0; i < 10; i++) {
       let c = createSprite(dirtimg[i],
         random(100, width-100),
