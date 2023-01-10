@@ -1,7 +1,7 @@
 let grid;
 let player;
 let mode = 0;
-
+var ifrm; 
 let worldWidth = 500;
 let worldHeight = 500;
 let cellSize = 50;
