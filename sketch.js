@@ -1,7 +1,7 @@
 let grid;
 let player;
 let mode = 0;
-var ifrm; 
+var ifrm;
 let worldWidth = 500;
 let worldHeight = 500;
 let cellSize = 50;
@@ -324,17 +324,17 @@ function draw() {
 
     displayUI();
     displayPostcard();
-   
+
 
  let currentCell = grid.grid[player.x][player.y];
 
     if (!housePanelOpen && currentCell instanceof House) {
         housePanelOpen = true;
         ifrm = document.createElement("iframe");
-        ifrm.setAttribute("src", "/a-forest/house/index.html");
+        ifrm.setAttribute("src", "./house/index.html");
         ifrm.style.width = "800px";
         ifrm.style.height = "550px";
-        ifrm.style.zIndex = "10000"; 
+        ifrm.style.zIndex = "10000";
 
     } else if (housePanelOpen == true && currentCell instanceof House == false) {
         ifrm.remove("iframe");
@@ -692,7 +692,7 @@ function enterHouse() {
             grid.grid[player.x][player.y].visited = true;
             grid.grid[player.x][player.y].symbol = houseEmojis[currentCell.houseType];
             addSound(houseFixedSound);
-            for (let i = 0; i < grid.width; i++) {  
+            for (let i = 0; i < grid.width; i++) {
                 for (let j = 0; j < grid.height; j++) {
                     if (grid.grid[i][j] instanceof House && !grid.grid[i][j].visited && grid.grid[i][j].data.label === grid.grid[player.x][player.y].data.label) {
                         grid.grid[i][j].visited = true;
@@ -703,7 +703,7 @@ function enterHouse() {
             }
         }
     } else {
-        if (currentCell.visited && housePanelOpen == true) { 
+        if (currentCell.visited && housePanelOpen == true) {
             housePanelOpen = false
         }
         return;
