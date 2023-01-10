@@ -52,7 +52,7 @@ class Player {
                     addRandomSound(turnLetterSound, turnLetterSoundLength);
                 }
             } else {
-                addRandomSound(letterOpenSound, turnLetterSoundLength);
+                addRandomSound(turnLetterSound, turnLetterSoundLength);
             }
         }
 

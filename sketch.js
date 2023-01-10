@@ -266,6 +266,8 @@ function setup() {
 //         document.getElementById("titleCard").src="./images/titlecard.gif";
         document.getElementById("titleCard").style.display = "block"
     }
+
+    createIframe();
 }
 
 function printList(portList) {
@@ -326,18 +328,23 @@ function draw() {
     displayPostcard();
 
 
- let currentCell = grid.grid[player.x][player.y];
+    let currentCell = grid.grid[player.x][player.y];
 
     if (!housePanelOpen && currentCell instanceof House) {
         housePanelOpen = true;
-        ifrm = document.createElement("iframe");
-        ifrm.setAttribute("src", "./house/index.html");
-        ifrm.style.width = "800px";
-        ifrm.style.height = "550px";
-        ifrm.style.zIndex = "10000";
+        ifrm.contentWindow.reset();
+        ifrm.style.visibility = "visible";
+        ifrm.contentWindow.addLink(currentCell.data);
+
+        if (currentCell.maintained) {
+            ifrm.contentWindow.load();
+        }
 
     } else if (housePanelOpen == true && currentCell instanceof House == false) {
-        ifrm.remove("iframe");
+        housePanelOpen = false;
+        ifrm.style.visibility = "hidden";
+        ifrm.contentWindow.reset();
+        // ifrm.remove("iframe");
     }
 
 
@@ -520,6 +527,14 @@ function displayUI() {
         uiText = "Press ENTER to see reverse side";
     }
 
+    if (currentCell instanceof House) {
+        if (currentCell.maintained) {
+            uiText = currentCell.phrase;
+        } else {
+            uiText = "";
+        }
+    }
+
     if (aboutDisplayed) {
         uiText = "Press ESCAPE to close";
     }
@@ -649,6 +664,9 @@ function write() {
         if (currentCell instanceof Tree || currentCell instanceof Leaf) {
             if (currentCell.phrase.length == 1) {
                 grid.grid[player.x][player.y] = new EmptyCell(player.x, player.y);
+
+                // Mikey: delete trees or leaves sound here
+
             } else {
                 grid.grid[player.x][player.y].phrase = currentCell.phrase.slice(0, -1);
             }
@@ -687,25 +705,25 @@ function enterHouse() {
 
        housePanelOpen = true;
 
-       document.body.appendChild(ifrm);
+
         if (!currentCell.visited) {
             grid.grid[player.x][player.y].visited = true;
             grid.grid[player.x][player.y].symbol = houseEmojis[currentCell.houseType];
-            addSound(houseFixedSound);
+            // addSound(houseFixedSound);
             for (let i = 0; i < grid.width; i++) {
                 for (let j = 0; j < grid.height; j++) {
                     if (grid.grid[i][j] instanceof House && !grid.grid[i][j].visited && grid.grid[i][j].data.label === grid.grid[player.x][player.y].data.label) {
                         grid.grid[i][j].visited = true;
                         // console.log()
-                        grid.grid[i][j].symbol = houseEmojis[currentCell.houseType];
+                        // grid.grid[i][j].symbol = houseEmojis[currentCell.houseType];
                     }
                 }
             }
         }
     } else {
-        if (currentCell.visited && housePanelOpen == true) {
-            housePanelOpen = false
-        }
+        // if (currentCell.visited && housePanelOpen == true) {
+        //     housePanelOpen = false
+        // }
         return;
     }
     update();
@@ -838,6 +856,26 @@ function updateMarkov() {
     }
 
     console.log("are the plants happy? " + markovIsHappy)
+}
 
+function createIframe() {
 
+    ifrm = document.createElement("iframe");
+    ifrm.setAttribute("src", "./house/index.html");
+    ifrm.style.width = "800px";
+    ifrm.style.height = "550px";
+    ifrm.style.zIndex = "10000";
+    ifrm.style.visibility = "hidden";
+    document.body.appendChild(ifrm);
+}
+
+function houseMaintained() {
+
+    let currentCell = grid.grid[player.x][player.y];
+
+    if (currentCell instanceof House && !currentCell.maintained) {
+        currentCell.maintained = true;
+        grid.grid[player.x][player.y].symbol = houseEmojis[currentCell.houseType];
+        redraw();
+    }
 }

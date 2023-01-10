@@ -2,13 +2,20 @@ html, body {
     margin: 0;
     padding: 0;
     overflow: hidden;
+    color: #00000000;
   }
 
+  canvas {
+    margin: auto;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
 
-
-  #sketch-holder {
+  /* #sketch-holder {
     width: 800px;
-    height: 550px;    
+    height: 550px;
     position: absolute;
     top:0;
     bottom: 0;
@@ -16,8 +23,8 @@ html, body {
     right: 0;
     margin: auto;
     background: transparent;
-  }
-  
+  } */
+
   iframe{
           margin: auto;
               position: absolute;
