@@ -9,9 +9,9 @@ class House {
         this.fog = fog;
 
          this.data = random(links.links)
-//          this.phrase = this.data.label + "\n" + this.data.link;
-         this.phrase = this.data.link;
-         this.phrase += "\n\nPress ENTER to visit website";
+         this.phrase = this.data.label + "\n\n" + this.data.link;
+        //  this.phrase = this.data.link;
+        //  this.phrase += "\n\nPress ENTER to visit website";
 
 
         this.offsetX = 0;
@@ -19,6 +19,7 @@ class House {
         this.scale = 1.6;
 
         this.visited = false;
+        this.maintained = false;
 
         this.snowflakeOffsetX = int(random(-cellSize*.3, cellSize*.3));
         this.snowflakeOffsetY = int(random(-cellSize*.3, cellSize*.3));
