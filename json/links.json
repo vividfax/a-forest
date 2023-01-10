@@ -1,10 +1,6 @@
 {
     "links": [
         {
-            "label": "botsin.space - Community for bots and bot allies",
-            "link": "https://botsin.space/public"
-        },
-        {
             "label": "Botwiki - Interesting and creative online bots",
             "link": "https://botwiki.org/"
         },
@@ -13,20 +9,12 @@
             "link": "https://runyourown.social/"
         },
         {
-            "label": "That Creative Code Page - Illustrated catalog of useful creative coding algorithms & techniques",
-            "link": "https://thatcreativecode.page/"
-        },
-        {
             "label": "Glitch - Friendly community where everyone builds the web",
             "link": "https://glitch.com/"
         },
         {
             "label": "mmm.page - Dead simple, drag & drop websites",
             "link": "https://mmm.page/"
-        },
-        {
-            "label": "Neocities - Create your own free website",
-            "link": "https://neocities.org/"
         },
         {
             "label": "tinytools.directory - Open source, experimental, and tiny tools roundup",
@@ -57,32 +45,12 @@
             "link": "https://theopensci.com/"
         },
         {
-            "label": "BookWyrm - Social reading and reviewing",
-            "link": "https://bookwyrm.social/"
-        },
-        {
             "label": "LibriVox - Free public domain audiobooks",
             "link": "https://librivox.org/"
         },
         {
             "label": "Open Library - Read, borrow, and discover more than 3M books for free",
             "link": "https://openlibrary.org/"
-        },
-        {
-            "label": "oulipo.social - Social network where you can't use the letter e",
-            "link": "https://oulipo.social/public"
-        },
-        {
-            "label": "default filename tv - Youtube videos that were uploaded from the camera without edits to the filename",
-            "link": "https://default-filename-tv.neocities.org/"
-        },
-        {
-            "label": "Letterboxd - Social film discovery",
-            "link": "https://letterboxd.com/"
-        },
-        {
-            "label": "Newgrounds - Animated films and games",
-            "link": "https://www.newgrounds.com/movies"
         },
         {
             "label": "Thought Maybe - Library of films to inspire critical thinking and direct action",
@@ -95,10 +63,6 @@
         {
             "label": "Art Corner - Educational art discord with a focus on learning",
             "link": "https://discord.gg/qD7twYM"
-        },
-        {
-            "label": "DeviantArt - Online art gallery and community",
-            "link": "https://www.deviantart.com/"
         },
         {
             "label": "Europeana - Art, books, films and music from thousands of cultural institutions",
@@ -121,20 +85,12 @@
             "link": "https://artisan.chat/public"
         },
         {
-            "label": "Ravelry - Community site, organizational tool, and yarn & pattern database for knitters and crocheters",
-            "link": "https://www.ravelry.com/"
-        },
-        {
             "label": "Stitchcord - Knitting community on discord",
             "link": "https://discord.gg/PFXSAGM"
         },
         {
             "label": "HOVERSTAT.ES - The home of alternative design, code and content on the world wide web.",
             "link": "https://www.hoverstat.es/"
-        },
-        {
-            "label": "Lookbook.nu - Fashion inspiration from real people around the world",
-            "link": "https://lookbook.nu/"
         },
         {
             "label": "A Website Is A Room - Live feed of websites",
