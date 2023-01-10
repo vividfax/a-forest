@@ -2,9 +2,11 @@ let dirt ;
 let floor;
 let player;
 let house;
+let links;
 let abandonedHouse;
 let dirtimg= [];
 let score = 0;
+
 function preload(){
     dirtimg.push( loadImage('../images/lint1.png'));
     dirtimg.push( loadImage('../images/lint2.png'));
@@ -87,9 +89,8 @@ function removeDirt(player, coin) {
 
        function prepareFrame() {
          setTimeout(() => {
-
         var ifrm = document.createElement("iframe");
-        ifrm.setAttribute("src", "https://art.teleportacia.org/observation/vernacular/");
+        ifrm.setAttribute("src", links.links[rand].link);
         ifrm.style.width = "640px";
         ifrm.style.height = "480px";
         document.body.appendChild(ifrm);
