@@ -1,63 +1,67 @@
 // ---- VARIABLES ---- //
-let terrain = `grass`;
-let footStepsGrass = {};
-let footStepsGrassLength = 5;
-let footStepsGrassPriority = 5;
+const terrain = `grass`;
+const footStepsGrass = {};
+const footStepsGrassLength = 5;
+const footStepsGrassPriority = 5;
 
-let footStepsFlowers = {};
-let footStepsFlowersLength = 5;
-let footStepsFlowersPriority = 5;
+const footStepsFlowers = {};
+const footStepsFlowersLength = 5;
+const footStepsFlowersPriority = 5;
 
-let leafTotree = {};
-let leafTotreeLength = 4;
-let leafTotreePriority = 11;
+const leafTotree = {};
+const leafTotreeLength = 4;
+const leafTotreePriority = 11;
 
-let leaves = {};
-let leavesLength = 10;
-let leavesPriority = 10;
+const leaves = {};
+const leavesLength = 10;
+const leavesPriority = 10;
+const maxLeaves = 2;
+let noOfLeaves = 0;
 
-let letterOpenSound = {};
-let letterOpenSoundLength = 4;
-let letterOpenSoundPriority = 20;
+const letterOpenSound = {};
+const letterOpenSoundLength = 4;
+const letterOpenSoundPriority = 20;
 
-let turnLetterSound = {};
-let turnLetterSoundLength = 4;
-let turnLetterSoundPriority = 20;
+const turnLetterSound = {};
+const turnLetterSoundLength = 4;
+const turnLetterSoundPriority = 20;
 
-let plantingSound = new SoundObj();
-let plantingSoundPriority = 8;
+const plantingSound = new SoundObj();
+const plantingSoundPriority = 8;
 
-let typingSound = new SoundObj();
-let typingSoundPriority = 15;
+const typingSound = new SoundObj();
+const typingSoundPriority = 15;
 
-let bumpSound = new SoundObj();
-let bumpSoundPriority = 7;
+const bumpSound = new SoundObj();
+const bumpSoundPriority = 7;
 
-let resetSound = new SoundObj();
-let resetSoundPriority = 100;
+const resetSound = new SoundObj();
+const resetSoundPriority = 100;
 
-let windSound = new SoundObj();
-let windSoundPriority = 7;
+const windSound = new SoundObj();
+const windSoundPriority = 7;
 
-let houseBrokenSound = new SoundObj();
-let houseBrokenSoundPriority = 12;
+const houseBrokenSound = new SoundObj();
+const houseBrokenSoundPriority = 12;
 
-let houseFixedSound = new SoundObj();
-let houseFixedSoundPriority = 12;
+const houseFixedSound = new SoundObj();
+const houseFixedSoundPriority = 12;
 
-let animalSound = new SoundObj();
-let animalSoundPriority = 8;
+const animalSound = new SoundObj();
+const animalSoundPriority = 8;
 
-let seaLoop = new SoundObj();
-let seaLoopPriority = 20;
+const seaLoop = new SoundObj();
+const seaLoopPriority = 20;
 
-let seagull = new SoundObj();
-let seagullPriority = 10;
+const seagull = new SoundObj();
+const seagullPriority = 10;
 
-let splash = new SoundObj();
-let splashPriority = 6;
+const splash = new SoundObj();
+const splashPriority = 6;
 
-const maxSounds = 10;
+const randomPanner = new Tone.Panner(0).toDestination();
+
+const maxSounds = 5;
 const volOffset = 12;
 
 // ---- SOUND MANAGER OBJECT ---- //
@@ -102,12 +106,18 @@ function SoundObj(player, priority) {
 
 // ---- LOAD SOUNDS HERE ---- //
 function preloadSounds() {
+  // you can adjust volume levels from here
   loadSounds(footStepsFlowers, footStepsFlowersLength, `footstepFlowers`, `SFX/FootstepsFlowers/Step`, footStepsFlowersPriority, -24 + volOffset, 1);
   loadSounds(footStepsGrass, footStepsGrassLength, `footstepGrass`, `SFX/FootstepsGrass/Step`, footStepsGrassPriority, -24 + volOffset, 1);
   loadSounds(leafTotree, leafTotreeLength, `leafToTree`, `SFX/LeafToTree/leafToTree`, leafTotreePriority, -24 + volOffset, 1);
-  loadSounds(leaves, leavesLength, `leaves`, `SFX/Leaves/Leaves`, leavesPriority, -24 + volOffset, 1);
-  loadSounds(letterOpenSound, letterOpenSoundLength, `letterOpenSound`, `SFX/OpenLetter/OpenLetter`, letterOpenSoundPriority, -24 + volOffset, 1);
-  loadSounds(turnLetterSound, turnLetterSoundLength, `turnLetterSound`, `SFX/TurnLetter/TurnLetter`, turnLetterSoundPriority, -24 + volOffset, 1);
+  loadSounds(leaves, leavesLength, `leaves`, `SFX/Leaves/Leaves`, leavesPriority, -20 + volOffset, 1);
+  // connect leaf sounds to stereo panner
+  for(let i = 0; i < leavesLength; i++) {
+    leaves[i].player.connect(randomPanner);
+  }
+
+  loadSounds(letterOpenSound, letterOpenSoundLength, `letterOpenSound`, `SFX/OpenLetter/OpenLetter`, letterOpenSoundPriority, -9 + volOffset, 1);
+  loadSounds(turnLetterSound, turnLetterSoundLength, `turnLetterSound`, `SFX/TurnLetter/TurnLetter`, turnLetterSoundPriority, -9 + volOffset, 1);
 
   loadSound(animalSound, `animal`, `SFX/animal`, animalSoundPriority, -12 + volOffset);
   loadSound(bumpSound, `bump`, `SFX/bump`, bumpSoundPriority, -24 + volOffset);
@@ -120,7 +130,7 @@ function preloadSounds() {
   loadSound(seaLoop, `seaLoop`, `SFX/sealoop`, seaLoopPriority, -24 + volOffset);
   seaLoop.player.loop = true;
   seaLoop.player.fadeOut = 1;
-  loadSound(splash, `splash`, `SFX/splash`, splashPriority, -30);
+  loadSound(splash, `splash`, `SFX/splash`, splashPriority, -15);
 }
 
 // ---- TEMPLATE FOR LOADING SOUNDS ---- //
@@ -224,9 +234,10 @@ function flushQueue() {
         soundManager.soundsQueue[0].player.name,
         soundManager.soundsQueue[0]
       );
-      console.log(`-------- TOTAL SOUNDS = ${soundManager.currentSounds.size}`);
+      // console.log(`-------- TOTAL SOUNDS = ${soundManager.currentSounds.size}`);
       soundManager.removeSoundFromQueue();
     }
+    noOfLeaves = 0;
     return;
   }
   // if max sound limit reached
@@ -245,7 +256,7 @@ function flushQueue() {
     const lowestPrioritySound = getLowestPrioritySound();
     if (lowestPrioritySound.priority <= soundManager.soundsQueue[0].priority) {
       // replace current sound with new sound
-      console.log(`Sound: forced ${lowestPrioritySound.player.name} to stop`);
+      // console.log(`Sound: forced ${lowestPrioritySound.player.name} to stop`);
       lowestPrioritySound.player.stop();
       soundManager.soundsQueue[0].player.start();
       soundManager.addCurrentSound(soundManager.soundsQueue[0].player.name, soundManager.soundsQueue[0]);
@@ -256,6 +267,7 @@ function flushQueue() {
     while(soundManager.soundsQueue.length > 0) {
       soundManager.removeSoundFromQueue();
     }
+    noOfLeaves = 0;
     return;
   }
 }
@@ -281,4 +293,8 @@ function changeTerrain(nextTerrain) {
 
 function stopLoopingSound(player) {
   player.stop();
+}
+
+function randomPanAssignment() {
+  randomPanner.pan.value = random(-1, 1)
 }

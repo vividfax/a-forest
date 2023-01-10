@@ -105,7 +105,13 @@ class Tree {
                             let words = phrase.split(" ");
                             let word = random(words);
                             grid.grid[x][y] = new Leaf(x, y, grid.grid[x][y].fog, word);
-                            if (this.onScreen) addRandomSound(leaves, leavesLength);
+                            if (this.onScreen) {
+                                if(noOfLeaves < maxLeaves) {
+                                    randomPanAssignment();
+                                    addRandomSound(leaves, leavesLength);
+                                    noOfLeaves++;
+                                }
+                            }
                             break;
                         }
                     }

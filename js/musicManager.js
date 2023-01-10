@@ -146,30 +146,30 @@ function checkMusicTransition() {
   // section 1 = 0, section 2 = 2, section 3 = 4, section 4 = 6, section 5 = 8
 
   // -------- transition to section 1 --------
-  if (treesOnScreen < 5 && currentLoopIndex !== 0) {
+  if (treesOnScreen < 10 && currentLoopIndex !== 0) {
    // console.log(`music: -------- call to section 1. current index = ${currentLoopIndex} --------`);
     changeMusicIntensityLevel(0, 0);
   }
 
   // -------- transition to section 2 --------
-  if (treesOnScreen >= 5 && treesOnScreen < 10 && currentLoopIndex !== 2) {
+  if (treesOnScreen >= 10 && treesOnScreen < 20 && currentLoopIndex !== 2) {
   //  console.log(`music: -------- call to section 2. current index = ${currentLoopIndex} --------`);
     changeMusicIntensityLevel(2, 3);
   }
 
   // -------- transition to section 3 --------
-  if (treesOnScreen >= 10 && treesOnScreen < 15 && currentLoopIndex !== 4) {
+  if (treesOnScreen >= 20 && treesOnScreen < 30 && currentLoopIndex !== 4) {
   //  console.log(`music: -------- call to section 3. current index = ${currentLoopIndex} --------`);
     changeMusicIntensityLevel(4, 5);
   }
 
   // -------- transition to section 4 --------
-  if (treesOnScreen >= 15 && treesOnScreen < 20 && currentLoopIndex !== 6) {
+  if (treesOnScreen >= 30 && treesOnScreen < 40 && currentLoopIndex !== 6) {
  //   console.log(`music: -------- call to section 4. current index = ${currentLoopIndex} --------`);
     changeMusicIntensityLevel(6, 7);
   }
   // -------- transition to section 5 --------
-  if (treesOnScreen >= 20 && currentLoopIndex !== 8) {
+  if (treesOnScreen >= 40 && currentLoopIndex !== 8) {
   //  console.log(`music: -------- call to section 5. current index = ${currentLoopIndex} --------`);
     changeMusicIntensityLevel(8, 0);
   }
