@@ -58,7 +58,7 @@ let splash = new SoundObj();
 let splashPriority = 6;
 
 const maxSounds = 10;
-const volOffset = 6;
+const volOffset = 12;
 
 // ---- SOUND MANAGER OBJECT ---- //
 const soundManager = {
@@ -103,7 +103,7 @@ function SoundObj(player, priority) {
 // ---- LOAD SOUNDS HERE ---- //
 function preloadSounds() {
   loadSounds(footStepsFlowers, footStepsFlowersLength, `footstepFlowers`, `SFX/FootstepsFlowers/Step`, footStepsFlowersPriority, -24 + volOffset, 1);
-  loadSounds(footStepsGrass, footStepsGrassLength, `footstepGrass`, `SFX/FootstepsGrass/Step`, footStepsGrassPriority, -30 + volOffset, 1);
+  loadSounds(footStepsGrass, footStepsGrassLength, `footstepGrass`, `SFX/FootstepsGrass/Step`, footStepsGrassPriority, -24 + volOffset, 1);
   loadSounds(leafTotree, leafTotreeLength, `leafToTree`, `SFX/LeafToTree/leafToTree`, leafTotreePriority, -24 + volOffset, 1);
   loadSounds(leaves, leavesLength, `leaves`, `SFX/Leaves/Leaves`, leavesPriority, -24 + volOffset, 1);
   loadSounds(letterOpenSound, letterOpenSoundLength, `letterOpenSound`, `SFX/OpenLetter/OpenLetter`, letterOpenSoundPriority, -24 + volOffset, 1);

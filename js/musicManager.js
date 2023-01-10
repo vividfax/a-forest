@@ -23,6 +23,8 @@ function musicLoadSounds() {
       new Tone.Player(`music/PianoMelody/PianoMelody${i + 1}.mp3`).toDestination()
     );
     pianoMelodies[i].name = `Piano${i}`;
+    // set piano volume here
+    pianoMelodies[i].volume.value = 0;
   }
 
   let index = 1;
@@ -41,6 +43,9 @@ function musicLoadSounds() {
       `synthloop${index}Crossfade`,
       "2m"
     );
+    //change volume of synthloops here. These two values should be the same
+    synthLoops[i].volume.value = 0;
+    synthLoops[i+1].volume.value = 0;
     index++;
   }
 }
