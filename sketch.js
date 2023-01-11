@@ -377,7 +377,11 @@ function draw() {
 
     if (waveCrashNextFrame) {
         waveCrashNextFrame = false;
-        addSound(splash);
+        let individualSplash = new SoundObj();
+        loadSound(individualSplash, `splash`, `SFX/splash`, splashPriority, -30 + volOffset);
+        individualSplash.player.playbackRate = random(0.75,1.25);
+        individualSplash.player.stop();
+        addSound(individualSplash);
     }
 
     updateMarkov();
