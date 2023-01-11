@@ -327,8 +327,11 @@ function draw() {
     displayUI();
     displayPostcard();
 
-
     let currentCell = grid.grid[player.x][player.y];
+
+    housePanelOpen = false;
+    ifrm.style.visibility = "hidden";
+    ifrm.contentWindow.reset();
 
     if (!housePanelOpen && currentCell instanceof House) {
         housePanelOpen = true;
@@ -340,12 +343,13 @@ function draw() {
             ifrm.contentWindow.load();
         }
 
-    } else if (housePanelOpen == true && currentCell instanceof House == false) {
-        housePanelOpen = false;
-        ifrm.style.visibility = "hidden";
-        ifrm.contentWindow.reset();
-        // ifrm.remove("iframe");
     }
+    // else if (housePanelOpen == true && currentCell instanceof House == false) {
+    //     housePanelOpen = false;
+    //     ifrm.style.visibility = "hidden";
+    //     ifrm.contentWindow.reset();
+    //     // ifrm.remove("iframe");
+    // }
 
 
     if (keyIsPressed && !(keyIsDown(ENTER) || keyIsDown(RETURN))) {
@@ -377,11 +381,7 @@ function draw() {
 
     if (waveCrashNextFrame) {
         waveCrashNextFrame = false;
-        let individualSplash = new SoundObj();
-        loadSound(individualSplash, `splash`, `SFX/splash`, splashPriority, -30 + volOffset);
-        individualSplash.player.playbackRate = random(0.75,1.25);
-        individualSplash.player.stop();
-        addSound(individualSplash);
+        addSound(splash);
     }
 
     updateMarkov();
