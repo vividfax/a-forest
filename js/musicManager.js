@@ -34,14 +34,16 @@ function musicLoadSounds() {
     synthLoops[i + 1] = new Tone.Player().toDestination();
     initPlayer(
       synthLoops[i],
-      // `music/synthloops/synthloop${index}.mp3`, // original music file
-      `music/synthloopsLower/synthloopLower${index}.mp3`, // new lower version
+      `music/synthloops/synthloop${index}.mp3`, // original music file
+      // `music/synthloopsLower/synthloopLower${index}.mp3`, // new lower version
+      // `music/synthCombined/synthloopCombined${index}.mp3`, // new combined version
       `synthloop${index}`
     );
     initPlayer(
       synthLoops[i + 1],
-      // `music/synthloops/synthloop${index}.mp3`, // original music file
-      `music/synthloopsLower/synthloopLower${index}.mp3`, // new lower version
+      `music/synthloops/synthloop${index}.mp3`, // original music file
+      // `music/synthloopsLower/synthloopLower${index}.mp3`, // new lower version
+      // `music/synthCombined/synthloopCombined${index}.mp3`, // new combined version
       `synthloop${index}Crossfade`,
       "2m"
     );
