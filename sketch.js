@@ -531,7 +531,7 @@ function displayUI() {
         if (currentCell.maintained) {
             uiText = currentCell.phrase;
         } else {
-            uiText = "";
+            uiText = "Use the MOUSE to maintain the house";
         }
     }
 
@@ -544,7 +544,7 @@ function displayUI() {
         stroke("#eee");
         strokeWeight(17); // 6 or 17?
         strokeJoin(ROUND);
-        fill("#0A0A0A");
+        fill("#412b00");
         text(uiText, leftEdge+280, 20, uiWidth/3, height-40);
         pop();
 
