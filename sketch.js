@@ -381,7 +381,7 @@ function draw() {
 
     if (waveCrashNextFrame) {
         waveCrashNextFrame = false;
-        addSound(splash);
+        addSplashSound();
     }
 
     updateMarkov();
