@@ -40,7 +40,7 @@ function setup() {
     // Move the canvas so it's inside our <div id="sketch-holder">.
     // canvas.parent('sketch-holder');
 
-    floor = new Sprite();
+     floor = new Sprite();
     floor.collider = 'static';
     floor.x = 690
     floor.y = 100;
@@ -56,6 +56,39 @@ function setup() {
     floor.h = 0;
     floor.rotation = -48;
 
+    floor = new Sprite();
+    floor.collider = 'static';
+    floor.x =0
+    floor.y = 400;
+    floor.w = 400;
+    floor.h = 0;
+    floor.rotation = 90;
+
+    
+    floor = new Sprite();
+    floor.collider = 'static';
+    floor.x =800;
+    floor.y = 400;
+    floor.w = 400;
+    floor.h = 0;
+    floor.rotation = 90;
+
+    floor = new Sprite();
+    floor.collider = 'static';
+    floor.x =0;
+    floor.y = 530;
+    floor.w = 2000;
+    floor.h = 0;
+    floor.rotation = 0;
+
+    floor = new Sprite();
+    floor.collider = 'static';
+    floor.x = 400;
+    floor.y = 0;
+    floor.w = 440;
+    floor.h = 0;
+    floor.rotation = 0;
+
   dirt = new Group();
   for (let i = 0; i < 10; i++) {
     let c = createSprite(dirtimg[i],
@@ -70,6 +103,7 @@ function setup() {
 }
 
 function draw() {
+    clear();
     background(abandonedHouse);
   player.velocity.x =
     (mouseX-player.position.x)*0.1;

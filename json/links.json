@@ -25,10 +25,6 @@
       "link": "https://web.archive.org/"
     },
     {
-      "label": "Wiby - Search engine for the classic web",
-      "link": "http://wiby.me/"
-    },
-    {
       "label": "cohost - Social media platform built from the ground up by a small team",
       "link": "https://cohost.org/"
     },
@@ -61,10 +57,6 @@
       "link": "https://www.are.na/"
     },
     {
-      "label": "Art Corner - Educational art discord with a focus on learning",
-      "link": "https://discord.gg/qD7twYM"
-    },
-    {
       "label": "Europeana - Art, books, films and music from thousands of cultural institutions",
       "link": "https://www.europeana.eu/en/collections"
     },
@@ -73,20 +65,8 @@
       "link": "https://www.forum-dessine.fr/forum"
     },
     {
-      "label": "mastodon.art - Your friendly home for all things creative",
-      "link": "https://mastodon.art/public"
-    },
-    {
       "label": "Monoskop - Wiki for arts and studies",
       "link": "https://monoskop.org/Monoskop"
-    },
-    {
-      "label": "artisan.chat - Home for creators, crafters, and artists",
-      "link": "https://artisan.chat/public"
-    },
-    {
-      "label": "Stitchcord - Knitting community on discord",
-      "link": "https://discord.gg/PFXSAGM"
     },
     {
       "label": "HOVERSTAT.ES - The home of alternative design, code and content on the world wide web.",
@@ -113,56 +93,12 @@
       "link": "https://wilderness.land/"
     },
     {
-      "label": "itch.io - Find and share indie games",
-      "link": "https://itch.io/"
-    },
-    {
-      "label": "mastodon.gamedev.place - Community focused on game development",
-      "link": "https://mastodon.gamedev.place/public"
-    },
-    {
-      "label": "Meditations - Launcher that, every day, loads a small game",
-      "link": "http://www.meditations.games/"
-    },
-    {
-      "label": "Folksy - Buy and sell handmade gifts and craft supplies",
-      "link": "https://folksy.com/"
-    },
-    {
-      "label": "Looria - Explore and compare the most popular products",
-      "link": "https://www.looria.com/"
-    },
-    {
-      "label": "Metacritic - Aggregates music, game, tv, and movie reviews from the leading critics",
-      "link": "https://www.metacritic.com/"
-    },
-    {
       "label": "Damaged Earth Catalog - The DAMAGED EARTH CATALOG functions as an evaluation and access device.",
       "link": "https://damaged.bleu255.com/"
     },
     {
-      "label": "Chaos Computer Club - This site offers a wide variety of video and audio material distributed by the Chaos Computer Club. ",
-      "link": "https://media.ccc.de/"
-    },
-    {
-      "label": "Cyberfeminism Index - Cyberfeminism Index is INCOMPLETE and ALWAYS IN PROGRESS. ",
-      "link": "https://cyberfeminismindex.com/"
-    },
-    {
-      "label": "NTS - NTS is a global family of music lovers.",
-      "link": "https://www.nts.live/"
-    },
-    {
       "label": "The Public Domain Review - Dedicated to the exploration of curious and compelling works from the history of art, literature, and ideas.",
       "link": "https://publicdomainreview.org/"
-    },
-    {
-      "label": "Here//&Now - An intimate, webspace for digital mediation through prompted daily reflections.",
-      "link": "https://here-and-now.glitch.me/"
-    },
-    {
-      "label": "Solar Protocol Library - This website is hosted across a network of solar powered servers.",
-      "link": "http://solarprotocol.net/library.html"
     },
     {
       "label": "LURK - We host, facilitate and archive discussions around net- and computational culture and politics.",
@@ -179,10 +115,6 @@
     {
       "label": "Gossip’s Web - The directory of handmade webpages.",
       "link": "https://gossipsweb.net/personal-websites"
-    },
-    {
-      "label": "ooh.directory - A place to find blogs that interest you.",
-      "link": "https://ooh.directory/"
     },
     {
       "label": "Digital Garden - A public notebook / digital garden for The Bentway’s Digital and/as Public Space Micro-Residency.",
@@ -203,10 +135,6 @@
     {
       "label": "UbuWeb - A pirate shadow library consisting of hundreds of thousands of freely downloadable avant-garde artifacts.",
       "link": "https://www.ubu.com/"
-    },
-    {
-      "label": "Hackaday.io - Hackaday.io is the world's largest collaborative hardware development community.",
-      "link": "https://hackaday.io/"
     },
     {
       "label": "Switching Software - A grassroots website, that is trying to let people know about ethical and easy-to-use alternatives to well-known websites, apps and other software.",

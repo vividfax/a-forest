@@ -128,15 +128,20 @@
         #aboutModal {
             display: none;
             position: absolute;
-            left: 0;
-            top: 0;
+            /* left: 0; */
+            /* top: 0; */
             width: 100vw;
             /* Full width */
-            height: 100vh;
+            /* height: 100vh; */
             /* Full height */
             /* Enable scroll if needed */
             z-index: 100;
             pointer-events: none;
+            margin: auto;
+            /* position: absolute; */
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
         }
 
         .modal-content {
@@ -175,24 +180,54 @@
     </div>
 
     <div id="aboutModal">
-        <p class="modal-content"> In the wake of the self-destruction of Twitter, we’re interested in exploring where
-            else people live on the internet. Spaces that don’t rely on the neo-liberal principles furthered by big tech
-            monopolies and their revenue models based on data collection and questionable user retention strategies.
-            Digital literacy is not what it once was, lost in those spiralling digital skyscrapers – which echoes, like
-            a prophecy, the disastrous fate of Pruitt–Igoe. After decades of decay and suffering, the architecture
-            complex was finally demolished in 1972 – most its former 57 acres of land now a forest. Social media may be
-            way past their peak, but it is still difficult to devise what could emerge in their resting grounds. As
-            platforms that went from tools of online connection to powerful and unruly entities capable of shifting the
-            world’s politics, economies and cultures in an unprecedented velocity and scale, it is understandable to see
-            why many didn’t think that their demise was possible. Our work then, proposes this turn to a ‘web-scape’
-            that is much larger than the ‘Big 5’, offering a glimpse to hand-coded meadows and a curated selection of
-            websites and tools that follow the same principles of reclaiming the ruins to grow gentler woodlands. It
-            comes in the form of a walking simulator game, with portals to other websites, which exist as houses in a
-            forest that you grow yourself by leaving messages behind as you wander through the game, as seeds to
-            populate the land. Even though our project is just another tiny slice of the Internet, it will hopefully
-            provide people with the knowledge that other ways of co-existing and collaborating online are possible,
-            beyond the shining, elusive gates erected by the ‘Big 5’.
-        </p>
+        <div class="modal-content">
+            <div style="display: inline-block; width: 34%">
+                <p>Game design and programming:<br>
+                Rianna Suen</p>
+
+                <p>Narrative design and art:<br>
+                Mariana Marangoni</p>
+
+                <p>Music and sound design:<br>
+                Mikey Parsons</p>
+
+                <p>Production:<br>
+                Nick Murray and Mateus Domingos</p>
+
+                <p><i>Wood Wide Web</i> was commissioned by Playing Poetry and Phoenix Cinema and Art Centre, and launched at the National Poetry Library as part of the Poetry Games Exhibition
+            </div>
+            <div style="display: inline-block; width: 65%">
+                <p>
+                    In the wake of the self-destruction of Twitter, we’re interested in exploring where
+                    else people live on the internet. Spaces that don’t rely on the neo-liberal principles furthered by big tech
+                    monopolies and their revenue models based on data collection and questionable user retention strategies.
+                </p>
+                <p>
+                    Digital literacy is not what it once was, lost in those spiralling digital skyscrapers – which echoes, like
+                    a prophecy, the disastrous fate of Pruitt–Igoe. After decades of decay and suffering, the architecture
+                    complex was finally demolished in 1972 – most its former 57 acres of land now a forest. Social media may be
+                    way past their peak, but it is still difficult to devise what could emerge in their resting grounds. As
+                    platforms that went from tools of online connection to powerful and unruly entities capable of shifting the
+                    world’s politics, economies and cultures in an unprecedented velocity and scale, it is understandable to see
+                    why many didn’t think that their demise was possible.
+                </p>
+                <p>
+                    Our work then, proposes this turn to a ‘web-scape’
+                    that is much larger than the ‘Big 5’, offering a glimpse to hand-coded meadows and a curated selection of
+                    websites and tools that follow the same principles of reclaiming the ruins to grow gentler woodlands. It
+                    comes in the form of a walking simulator game, with portals to other websites, which exist as houses in a
+                    forest that you grow yourself by leaving messages behind as you wander through the game, as seeds to
+                    populate the land.
+                </p>
+                <p>
+                    Even though our project is just another tiny slice of the Internet, it will hopefully
+                    provide people with the knowledge that other ways of co-existing and collaborating online are possible,
+                    beyond the shining, elusive gates erected by the ‘Big 5’.
+                </p>
+            </div>
+
+
+        </div>
     </div>
     <div id="p5_loading" class="loadingclass">
         <img src="./images/loading.gif">

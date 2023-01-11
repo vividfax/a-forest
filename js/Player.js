@@ -39,7 +39,7 @@ class Player {
         }
 
         if (targetCell instanceof House) {
-            if (targetCell.visited) {
+            if (targetCell.maintained) {
                 addSound(houseFixedSound);
             } else {
                 addSound(houseBrokenSound);
