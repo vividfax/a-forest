@@ -70,6 +70,7 @@ function setup() {
 }
 
 function draw() {
+    clear();
     background(abandonedHouse);
   player.velocity.x =
     (mouseX-player.position.x)*0.1;
