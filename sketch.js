@@ -883,3 +883,10 @@ function houseMaintained() {
         redraw();
     }
 }
+
+function isHouseMaintained() {
+
+    let currentCell = grid.grid[player.x][player.y];
+
+    return currentCell.maintained;
+}
