@@ -34,18 +34,20 @@ function musicLoadSounds() {
     synthLoops[i + 1] = new Tone.Player().toDestination();
     initPlayer(
       synthLoops[i],
-      `music/synthloops/synthloop${index}.mp3`,
+      // `music/synthloops/synthloop${index}.mp3`, // original music file
+      `music/synthloopsLower/synthloopLower${index}.mp3`, // new lower version
       `synthloop${index}`
     );
     initPlayer(
       synthLoops[i + 1],
-      `music/synthloops/synthloop${index}.mp3`,
+      // `music/synthloops/synthloop${index}.mp3`, // original music file
+      `music/synthloopsLower/synthloopLower${index}.mp3`, // new lower version
       `synthloop${index}Crossfade`,
       "2m"
     );
     //change volume of synthloops here. These two values should be the same
-    synthLoops[i].volume.value = 0;
-    synthLoops[i+1].volume.value = 0;
+    synthLoops[i].volume.value = -12;
+    synthLoops[i+1].volume.value = -12;
     index++;
   }
 }
