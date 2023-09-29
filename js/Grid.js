@@ -29,7 +29,7 @@ class Grid {
         this.growFlowers();
         this.growFlowers();
         this.growFlowers();
-        this.placeHouses();
+        // this.placeHouses();
         this.placeMailboxes();
         this.placeWater();
         this.growWater();
